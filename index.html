@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="Sleep Tracker AI records your nights, wakes you smarter, and turns sleep data into simple coaching." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sleep Tracker AI" />
+  <meta property="og:description" content="Sleep recorder, smart alarm, and AI sleep coach." />
+  <meta property="og:image" content="assets/logo.png" />
+  <title>Sleep Tracker AI</title>
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <div class="loader" id="loader">
+    <img src="assets/logo.png" alt="" width="76" height="76" />
+    <div class="loader-line"><span id="loaderFill"></span></div>
+    <p><span id="loaderPercent">0</span>%</p>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand magnetic" href="#top" aria-label="Sleep Tracker AI home">
+      <img src="assets/logo.png" alt="" width="34" height="34" />
+      <span>Sleep Tracker AI</span>
+    </a>
+    <div class="nav-right">
+      <nav>
+        <a class="magnetic" href="#features" data-i18n="navFeatures">Features</a>
+        <a class="magnetic" href="#download" data-i18n="navDownload">Download</a>
+        <a class="magnetic" href="privacy.html" data-i18n="navPrivacy">Privacy</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn is-active magnetic" type="button" data-lang="en">EN</button>
+        <button class="lang-btn magnetic" type="button" data-lang="ru">RU</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroEyebrow">ANDROID APK NOW / IOS APP STORE SOON</p>
+        <h1>Sleep Tracker AI</h1>
+        <p class="lead" data-i18n="heroLead">Sleep recording, smart alarm, and AI coaching in one quiet app.</p>
+        <div class="actions">
+          <a class="button primary magnetic" href="#download" aria-disabled="true" data-i18n="androidButton">Android APK soon</a>
+          <a class="button ghost magnetic" href="#ios" data-i18n="iosButton">App Store soon</a>
+        </div>
+      </div>
+      <figure class="phone" aria-label="Sleep Tracker AI app preview">
+        <img id="appPreview" src="assets/app-screen-en.jpg" alt="Sleep Tracker AI sleep screen" />
+      </figure>
+      <a class="scroll magnetic" href="#features" data-i18n="scroll">Scroll</a>
+    </section>
+
+    <section class="strip" aria-label="Release info">
+      <div><strong>1.0.0</strong><span data-i18n="stripApk">website APK</span></div>
+      <div><strong>NOWPayments</strong><span data-i18n="stripCrypto">USDT networks</span></div>
+      <div><strong>AI reports</strong><span data-i18n="stripAi">sleep insights</span></div>
+      <div><strong>Android</strong><span data-i18n="stripAndroid">direct install</span></div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="featuresEyebrow">WHAT IT DOES</p>
+        <h2 data-i18n="featuresTitle">Short app. Useful every morning.</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span>01</span>
+          <h3 data-i18n="cardOneTitle">Records nights</h3>
+          <p data-i18n="cardOneText">Tracks sleep sessions, audio events, and wake-up context without turning the app into a dashboard maze.</p>
+        </article>
+        <article class="card">
+          <span>02</span>
+          <h3 data-i18n="cardTwoTitle">Wakes smarter</h3>
+          <p data-i18n="cardTwoText">Alarm and sleep tools are built around the actual night, not a generic timer.</p>
+        </article>
+        <article class="card">
+          <span>03</span>
+          <h3 data-i18n="cardThreeTitle">Explains patterns</h3>
+          <p data-i18n="cardThreeText">Premium adds AI reports that translate raw data into plain next steps.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="download" id="download">
+      <div>
+        <p class="eyebrow" data-i18n="downloadEyebrow">GET THE APP</p>
+        <h2 data-i18n="downloadTitle">Install Android now.</h2>
+        <p data-i18n="downloadText">iOS stays in App Store flow and will be linked here after approval.</p>
+      </div>
+      <div class="download-actions">
+        <a class="button primary magnetic" href="#download" aria-disabled="true" data-i18n="androidShort">Android APK soon</a>
+        <a class="button ghost magnetic" id="ios" href="https://apps.apple.com/" aria-disabled="true" data-i18n="iosShort">iOS soon</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Sleep Tracker AI</span>
+    <div>
+      <a href="privacy.html" data-i18n="navPrivacy">Privacy</a>
+      <a href="terms.html" data-i18n="footerTerms">Terms</a>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
