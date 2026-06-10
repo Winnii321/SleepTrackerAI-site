@@ -493,7 +493,7 @@ h2 {
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
 }
 
-.insight-board,
+.report-board,
 .mini-phone,
 .flow-grid article,
 .privacy-grid article,
@@ -503,7 +503,7 @@ h2 {
   background: var(--panel);
 }
 
-.insight-board {
+.report-board {
   padding: clamp(18px, 3vw, 30px);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
 }
@@ -546,12 +546,12 @@ h2 {
   background: linear-gradient(180deg, var(--cyan), rgba(125, 232, 255, 0.18));
 }
 
-.insight-list {
+.report-list {
   display: grid;
   gap: 10px;
 }
 
-.insight-list div {
+.report-list div {
   display: grid;
   gap: 5px;
   padding: 14px;
@@ -560,13 +560,13 @@ h2 {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.insight-list b,
+.report-list b,
 .flow-grid h3,
 .privacy-grid h3 {
   font-size: 18px;
 }
 
-.insight-list span,
+.report-list span,
 .flow-grid p,
 .privacy-grid p,
 .faq p,
