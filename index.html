@@ -9,7 +9,23 @@
   <meta property="og:title" content="Sleep Tracker AI" />
   <meta property="og:description" content="Sleep recorder, smart alarm, and AI sleep coach." />
   <meta property="og:image" content="assets/logo.png" />
-  <title>Sleep Tracker AI</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Sleep Tracker AI",
+      "description": "Sleep recorder, smart alarm, and AI sleep coach for iOS and Android.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "990",
+        "priceCurrency": "RUB",
+        "name": "Sleep Tracker AI Premium monthly"
+      }
+    }
+    </script>
+    <title>Sleep Tracker AI</title>
   <link rel="icon" href="assets/logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,8 +51,11 @@
     <div class="nav-right">
       <nav>
         <a class="magnetic" href="#features" data-i18n="navFeatures">Features</a>
+        <a class="magnetic" href="#coach" data-i18n="navCoach">AI Coach</a>
+        <a class="magnetic" href="#privacy" data-i18n="navPrivacyBlock">Trust</a>
+        <a class="magnetic" href="#pricing" data-i18n="navPricing">Pricing</a>
         <a class="magnetic" href="#download" data-i18n="navDownload">Download</a>
-        <a class="magnetic" href="privacy.html" data-i18n="navPrivacy">Privacy</a>
+        <a class="magnetic" href="privacy.html" data-i18n="navPrivacy">Legal</a>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
         <button class="lang-btn is-active magnetic" type="button" data-lang="en">EN</button>
@@ -49,12 +68,17 @@
     <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow" data-i18n="heroEyebrow">ANDROID APK NOW / IOS APP STORE SOON</p>
-        <h1>Sleep Tracker AI</h1>
+        <p class="eyebrow" data-i18n="heroEyebrow">ANDROID BETA APK AVAILABLE</p>
+        <h1>Sleep<br />Tracker<br />AI</h1>
         <p class="lead" data-i18n="heroLead">Sleep recording, smart alarm, and AI coaching in one quiet app.</p>
         <div class="actions">
-          <a class="button primary magnetic" href="#download" aria-disabled="true" data-i18n="androidButton">Android APK soon</a>
+          <a class="button primary magnetic" href="#download" data-i18n="androidButton">Download Android APK</a>
           <a class="button ghost magnetic" href="#ios" data-i18n="iosButton">App Store soon</a>
+        </div>
+        <div class="hero-points" aria-label="Product highlights">
+          <span data-i18n="heroPointOne">Audio events, not guesswork</span>
+          <span data-i18n="heroPointTwo">Smart alarm context</span>
+          <span data-i18n="heroPointThree">AI next steps</span>
         </div>
       </div>
       <figure class="phone" aria-label="Sleep Tracker AI app preview">
@@ -64,10 +88,10 @@
     </section>
 
     <section class="strip" aria-label="Release info">
-      <div><strong>1.0.0</strong><span data-i18n="stripApk">website APK</span></div>
-      <div><strong>NOWPayments</strong><span data-i18n="stripCrypto">USDT networks</span></div>
+      <div><strong>1.0.0</strong><span data-i18n="stripApk">Android beta APK</span></div>
+      <div><strong>Robokassa</strong><span data-i18n="stripCrypto">RUB checkout via Robokassa</span></div>
       <div><strong>AI reports</strong><span data-i18n="stripAi">sleep insights</span></div>
-      <div><strong>Android</strong><span data-i18n="stripAndroid">direct install</span></div>
+      <div><strong>Premium</strong><span data-i18n="stripAndroid">from 990 RUB/month</span></div>
     </section>
 
     <section class="section" id="features">
@@ -94,23 +118,180 @@
       </div>
     </section>
 
+    <section class="showcase section-split" id="coach">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="coachEyebrow">AI SLEEP MIRROR</p>
+        <h2 data-i18n="coachTitle">Your night, clearly understood.</h2>
+        <p data-i18n="coachText">Sleep Tracker AI turns recordings, wake-up time, and repeated patterns into a calm morning readout with practical next steps.</p>
+      </div>
+      <div class="insight-board" aria-label="AI sleep report preview">
+        <div class="board-top">
+          <span data-i18n="boardTitle">Morning report</span>
+          <strong>84</strong>
+        </div>
+        <div class="sleep-graph" aria-hidden="true">
+          <span style="height: 34%"></span>
+          <span style="height: 58%"></span>
+          <span style="height: 82%"></span>
+          <span style="height: 42%"></span>
+          <span style="height: 70%"></span>
+          <span style="height: 48%"></span>
+          <span style="height: 76%"></span>
+        </div>
+        <div class="insight-list">
+          <div><b data-i18n="insightOneTitle">Fragmented after 04:10</b><span data-i18n="insightOneText">Audio spikes clustered near the end of the night.</span></div>
+          <div><b data-i18n="insightTwoTitle">Best wake window</b><span data-i18n="insightTwoText">Alarm feels lighter when it follows a calmer interval.</span></div>
+          <div><b data-i18n="insightThreeTitle">Tonight's focus</b><span data-i18n="insightThreeText">Keep the same bedtime and reduce late noise.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section flow">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="flowEyebrow">HOW IT WORKS</p>
+        <h2 data-i18n="flowTitle">Record. Detect. Explain. Improve.</h2>
+      </div>
+      <div class="flow-grid">
+        <article>
+          <span>01</span>
+          <h3 data-i18n="flowOneTitle">Start a night</h3>
+          <p data-i18n="flowOneText">The app records the sleep session and keeps the interface quiet when you are already in bed.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3 data-i18n="flowTwoTitle">Catch events</h3>
+          <p data-i18n="flowTwoText">Snoring, noise, and wake-up context become a timeline instead of a vague score.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3 data-i18n="flowThreeTitle">Read the pattern</h3>
+          <p data-i18n="flowThreeText">AI reports summarize what changed and which habit is worth testing next.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3 data-i18n="flowFourTitle">Wake better</h3>
+          <p data-i18n="flowFourText">Alarm tools are tied to the real night, so mornings feel less random.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-split premium">
+      <div class="mini-phone" aria-label="Premium feature preview">
+        <div class="mini-screen">
+          <div class="mini-status"><span></span><span></span><span></span></div>
+          <h3 data-i18n="premiumMockTitle">Premium insight</h3>
+          <p data-i18n="premiumMockText">Your last 7 nights show later noise and shorter deep rest.</p>
+          <div class="mini-meter"><span></span></div>
+          <ul>
+            <li data-i18n="premiumMockOne">Earlier wind-down target</li>
+            <li data-i18n="premiumMockTwo">AI morning explanation</li>
+            <li data-i18n="premiumMockThree">Trend-based alarm context</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="premiumEyebrow">PREMIUM THAT EARNS ITS PLACE</p>
+        <h2 data-i18n="premiumTitle">Not more dashboards. Better decisions.</h2>
+        <p data-i18n="premiumText">Premium should feel like a sleep analyst beside the app: plain-language reports, pattern changes, and habit suggestions that are specific enough to try tonight.</p>
+        <div class="pill-row">
+          <span data-i18n="premiumPillOne">AI reports</span>
+          <span data-i18n="premiumPillTwo">Trend summaries</span>
+          <span data-i18n="premiumPillThree">Crypto payments ready</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="pricingEyebrow">PREMIUM ACCESS</p>
+        <h2 data-i18n="pricingTitle">Digital subscription for sleep reports.</h2>
+        <p data-i18n="pricingText">Premium unlocks AI weekly reports, extended audio event history, sleep trend summaries, and premium sleep sounds inside the Android app.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <span data-i18n="priceMonthlyLabel">Monthly</span>
+          <strong>990 ₽</strong>
+          <p data-i18n="priceMonthlyText">30 days of Premium access after payment confirmation.</p>
+        </article>
+        <article class="price-card is-featured">
+          <span data-i18n="priceYearlyLabel">Yearly</span>
+          <strong>4 990 ₽</strong>
+          <p data-i18n="priceYearlyText">366 days of Premium access after payment confirmation.</p>
+        </article>
+        <article class="price-card">
+          <span data-i18n="priceDeliveryLabel">Delivery</span>
+          <strong data-i18n="priceDeliveryValue">Digital</strong>
+          <p data-i18n="priceDeliveryText">No physical delivery. Premium is activated in the app after payment provider confirmation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section privacy-section" id="privacy">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="privacyEyebrow">PRIVACY FIRST</p>
+        <h2 data-i18n="privacyTitle">Sleep data is intimate. Treat it that way.</h2>
+      </div>
+      <div class="privacy-grid">
+        <article>
+          <h3 data-i18n="privacyOneTitle">Clear recording control</h3>
+          <p data-i18n="privacyOneText">The product language tells users when recording is active and why each permission exists.</p>
+        </article>
+        <article>
+          <h3 data-i18n="privacyTwoTitle">No ad-tech story</h3>
+          <p data-i18n="privacyTwoText">A sleep app should not feel like a data broker. The site makes that trust promise visible.</p>
+        </article>
+        <article>
+          <h3 data-i18n="privacyThreeTitle">AI with boundaries</h3>
+          <p data-i18n="privacyThreeText">Reports are framed as guidance, not medical diagnosis, with legal pages one tap away.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="faqEyebrow">FAQ</p>
+        <h2 data-i18n="faqTitle">Answers before install.</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary data-i18n="faqOneQ">What does the AI coach actually do?</summary>
+          <p data-i18n="faqOneA">It summarizes sleep sessions, highlights repeated patterns, and suggests one practical change instead of dumping raw charts on you.</p>
+        </details>
+        <details>
+          <summary data-i18n="faqTwoQ">Is this a medical app?</summary>
+          <p data-i18n="faqTwoA">No. Sleep Tracker AI is a wellness and productivity tool. It can help you notice patterns, but it is not a diagnosis or treatment device.</p>
+        </details>
+        <details>
+          <summary data-i18n="faqThreeQ">How do I install the Android APK?</summary>
+          <p data-i18n="faqThreeA">Download the APK, open it on your Android device, and allow installation from this browser if Android asks. iOS remains App Store-only.</p>
+        </details>
+        <details>
+          <summary data-i18n="faqFourQ">What makes it different from a timer?</summary>
+          <p data-i18n="faqFourA">The app keeps the night context: recordings, events, wake-up behavior, and AI explanations that connect them.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="download" id="download">
       <div>
         <p class="eyebrow" data-i18n="downloadEyebrow">GET THE APP</p>
-        <h2 data-i18n="downloadTitle">Install Android now.</h2>
-        <p data-i18n="downloadText">iOS stays in App Store flow and will be linked here after approval.</p>
+        <h2 data-i18n="downloadTitle">Install the Android beta APK.</h2>
+        <p data-i18n="downloadText">Android APK distribution is direct from this site. iOS remains inside the App Store flow when available.</p>
       </div>
       <div class="download-actions">
-        <a class="button primary magnetic" href="#download" aria-disabled="true" data-i18n="androidShort">Android APK soon</a>
-        <a class="button ghost magnetic" id="ios" href="https://apps.apple.com/" aria-disabled="true" data-i18n="iosShort">iOS soon</a>
+        <a class="button primary magnetic" href="https://github.com/Winnii321/SleepTrackerAI-site/releases/download/v1.0.0-116-website/SleepTrackerAI-1.0.0-116-website-crypto-release.apk" data-i18n="androidShort">Download APK</a>
+        <a class="button ghost magnetic" id="ios" href="#download" aria-disabled="true" data-i18n="iosShort">iOS soon</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>Sleep Tracker AI</span>
+    <span data-i18n="footerSeller">Sleep Tracker AI · Contacts and seller requisites</span>
     <div>
-      <a href="privacy.html" data-i18n="navPrivacy">Privacy</a>
+      <a href="offer.html" data-i18n="footerOffer">Offer</a>
+      <a href="refund.html" data-i18n="footerRefund">Refund</a>
+      <a href="contacts.html" data-i18n="footerContacts">Contacts</a>
+      <a href="privacy.html" data-i18n="footerPrivacy">Privacy</a>
       <a href="terms.html" data-i18n="footerTerms">Terms</a>
     </div>
   </footer>
