@@ -876,6 +876,41 @@ h2 {
   line-height: 1.5;
 }
 
+.bug-report {
+  max-width: 760px;
+  margin-top: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(125, 232, 255, 0.06);
+}
+
+.bug-report strong,
+.bug-report p,
+.bug-report a {
+  display: block;
+}
+
+.bug-report strong {
+  margin-bottom: 8px;
+  color: var(--fg);
+  font-size: 15px;
+}
+
+.bug-report p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.bug-report-link {
+  width: fit-content;
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 footer {
   justify-content: space-between;
   gap: 18px;
