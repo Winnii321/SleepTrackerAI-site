@@ -1,8 +1,6 @@
 const loader = document.getElementById('loader');
 const loaderFill = document.getElementById('loaderFill');
 const loaderPercent = document.getElementById('loaderPercent');
-const cursor = document.getElementById('cursor');
-const cursorDot = document.getElementById('cursorDot');
 const nav = document.querySelector('.nav');
 const appPreview = document.getElementById('appPreview');
 const langButtons = document.querySelectorAll('[data-lang]');
@@ -20,6 +18,8 @@ const translations = {
     navDocuments: 'Docs',
     navDownload: 'Download',
     navPrivacy: 'Legal',
+    navContacts: 'Contacts',
+    navOffer: 'Offer',
     heroEyebrow: 'ANDROID BETA APK AVAILABLE',
     heroLead: 'Record the night. Hear the loud moments. See what broke your sleep.',
     androidButton: 'Download Android APK',
@@ -133,7 +133,7 @@ const translations = {
     downloadInstallNote: 'After download, open the APK on Android and allow installation from this browser if Android asks.',
     androidShort: 'Download APK',
     iosShort: 'iOS soon',
-    footerSeller: '© 2026 Dmitrii Evseev. All rights reserved.',
+    footerSeller: '© 2026 Sleep Tracker AI. Seller: Bogdanova Anastasia Vasilievna.',
     footerOffer: 'Offer',
     footerRefund: 'Refund',
     footerContacts: 'Contacts',
@@ -152,6 +152,8 @@ const translations = {
     navDocuments: 'Документы',
     navDownload: 'Скачать',
     navPrivacy: 'Документы',
+    navContacts: 'Контакты',
+    navOffer: 'Оферта',
     heroEyebrow: 'ANDROID BETA APK ДОСТУПЕН',
     heroLead: 'Запиши ночь. Услышь громкие моменты. Пойми, что ломало сон.',
     androidButton: 'Скачать Android APK',
@@ -265,7 +267,7 @@ const translations = {
     downloadInstallNote: 'После скачивания откройте APK на Android и разрешите установку из этого браузера, если Android попросит.',
     androidShort: 'Скачать APK',
     iosShort: 'iOS скоро',
-    footerSeller: '© 2026 Dmitrii Evseev. All rights reserved.',
+    footerSeller: '© 2026 Sleep Tracker AI. Продавец: Богданова Анастасия Васильевна.',
     footerOffer: 'Оферта',
     footerRefund: 'Возврат',
     footerContacts: 'Контакты',
@@ -319,29 +321,3 @@ const tick = window.setInterval(() => {
 window.addEventListener('scroll', () => {
   nav.classList.toggle('is-scrolled', window.scrollY > 16);
 }, { passive: true });
-
-if (window.matchMedia('(pointer:fine)').matches) {
-  let x = window.innerWidth / 2;
-  let y = window.innerHeight / 2;
-  let tx = x;
-  let ty = y;
-
-  window.addEventListener('mousemove', (event) => {
-    tx = event.clientX;
-    ty = event.clientY;
-    cursorDot.style.transform = `translate(${tx - 2}px, ${ty - 2}px)`;
-  }, { passive: true });
-
-  const animate = () => {
-    x += (tx - x) * 0.18;
-    y += (ty - y) * 0.18;
-    cursor.style.transform = `translate(${x - 16}px, ${y - 16}px)`;
-    window.requestAnimationFrame(animate);
-  };
-  animate();
-
-  document.querySelectorAll('a, .magnetic').forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
-  });
-}
