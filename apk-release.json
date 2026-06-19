@@ -13,10 +13,10 @@
   "latestUrl": "https://downloads.sleeptrackerai.org/downloads/latest.json",
   "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.0-120.txt",
   "status": "public_cdn",
-  "sha256": "180e1faeccd112abb12b3e53fd36044244af25061d20bd7e4dff7465fb36e9c2",
+  "sha256": "311762855c855857ff459cc31449bf400031e9d2336a64d92098e54b1daa871d",
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-  "sizeBytes": 358862570,
+  "sizeBytes": 358862686,
   "sizeLabel": "342 MB",
   "releaseDate": "2026-06-19",
-  "updatedAt": "2026-06-19T16:39:08.787Z"
+  "updatedAt": "2026-06-19T16:49:53.811Z"
 }
