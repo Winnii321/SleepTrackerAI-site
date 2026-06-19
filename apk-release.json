@@ -3,38 +3,38 @@
   "package": "com.dmitriiway.sleeptracker",
   "distribution": "website",
   "paymentProvider": "rub",
-  "versionName": "1.0.1",
-  "versionCode": 122,
+  "versionName": "1.0.2",
+  "versionCode": 123,
   "minimumVersionCode": 0,
   "minSupportedVersionCode": 0,
   "forceUpdate": false,
-  "apkName": "sleeptrackerai-1.0.1-122.apk",
-  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.1-122.apk",
+  "apkName": "sleeptrackerai-1.0.2-123.apk",
+  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.2-123.apk",
   "latestUrl": "https://downloads.sleeptrackerai.org/downloads/latest.json",
-  "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.1-122.txt",
+  "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.2-123.txt",
   "status": "public_cdn",
-  "sha256": "e52b1ae526def13e9059bb911f53fd643b96c12fc9b2727b7ccb2260cdbf057f",
+  "sha256": "8e940aa07f41055db00ae155ca8e0a4818a078e9e52be11eb51c8e8306db5aa2",
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-  "sizeBytes": 358864158,
+  "sizeBytes": 358864586,
   "sizeLabel": "342 MB",
   "releaseDate": "2026-06-19",
-  "updatedAt": "2026-06-19T21:55:02.176Z",
-  "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.1-122.txt",
+  "updatedAt": "2026-06-19T22:15:11.535Z",
+  "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.2-123.txt",
   "updateSeverity": "recommended",
   "minSupportedReason": "",
   "changelog": [
-    "Premium checkout no longer asks for unavailable Google sign-in.",
-    "Ruble and crypto payment tabs now show matching prices.",
-    "Annual plan per-month price is rounded and spaced correctly."
+    "Update popup now uses the app or Android system language.",
+    "Russian users now see Russian update notes.",
+    "No sleep, alarm, payment, or premium logic changed."
   ],
   "changelogEn": [
-    "Premium checkout no longer asks for unavailable Google sign-in.",
-    "Ruble and crypto payment tabs now show matching prices.",
-    "Annual plan per-month price is rounded and spaced correctly."
+    "Update popup now uses the app or Android system language.",
+    "Russian users now see Russian update notes.",
+    "No sleep, alarm, payment, or premium logic changed."
   ],
   "changelogRu": [
-    "Оплата Premium больше не просит недоступный вход через Google.",
-    "Вкладки Карта РФ и Crypto показывают свои цены.",
-    "Годовая цена в месяц округлена и показана как RUB 416/мес."
+    "Окно обновления теперь берёт язык приложения или системы Android.",
+    "Русские пользователи теперь видят changelog на русском.",
+    "Логика сна, будильников, оплаты и Premium не менялась."
   ]
 }
