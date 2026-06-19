@@ -810,7 +810,7 @@ h2 {
 
 .download {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.85fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.85fr);
   gap: clamp(22px, 5vw, 64px);
   align-items: center;
   border-top: 1px solid var(--line);
@@ -823,7 +823,7 @@ h2 {
 
 .download-meta {
   display: grid;
-  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  grid-template-columns: repeat(3, minmax(112px, 1fr));
   gap: 10px;
   margin: 0 0 14px;
 }

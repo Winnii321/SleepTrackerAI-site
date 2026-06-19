@@ -29,7 +29,7 @@ function recordReleaseEvent(eventType, properties = {}) {
       eventType,
       installId: getOrCreateWebInstallId(),
       platform: 'web',
-      currentVersionCode: apkReleaseManifest?.versionCode || null,
+      currentVersionCode: null,
       targetVersionCode: apkReleaseManifest?.versionCode || null,
       versionName: apkReleaseManifest?.versionName || null,
       apkName: apkReleaseManifest?.apkName || null,
@@ -457,6 +457,8 @@ function applyApkRelease(manifest) {
   if (manifest.versionName && manifest.versionCode) {
     const versionNode = document.querySelector('[data-apk-version]');
     if (versionNode) versionNode.textContent = `${manifest.versionName} (${manifest.versionCode})`;
+    const stripVersionNode = document.querySelector('[data-strip-version]');
+    if (stripVersionNode) stripVersionNode.textContent = manifest.versionName;
   }
   if (manifest.sizeLabel) {
       const sizeNode = document.querySelector('[data-apk-size]');

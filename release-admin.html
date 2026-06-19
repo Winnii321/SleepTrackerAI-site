@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://qliouorzmcmzahgzrepu.supabase.co; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" />
   <title>Sleep Tracker AI Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -210,7 +211,7 @@
       min-height: 148px;
       padding: 18px;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .card::before {
       content: "";
@@ -284,6 +285,7 @@
       font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
+      white-space: normal;
     }
     .badge.good { color: var(--green); border-color: rgba(181, 255, 106, 0.35); }
     .badge.warn { color: var(--warn); border-color: rgba(251, 191, 36, 0.35); }
@@ -330,7 +332,7 @@
       grid-auto-columns: 1fr;
       gap: 8px;
       align-items: end;
-      padding-top: 18px;
+      padding: 18px 0 30px;
     }
     .spark span {
       min-height: 4px;
@@ -419,6 +421,8 @@
 
     @media (max-width: 980px) {
       .topbar, .control-band, .two-col { display: block; }
+      .panel-head { display: block; }
+      .panel-head .badge { margin-top: 10px; }
       .top-actions, .range-tabs { margin-top: 12px; justify-content: flex-start; }
       .kpi-grid, .attention-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -617,8 +621,6 @@
     let range = '30d';
     let manifest = null;
 
-    tokenInput.value = localStorage.getItem('release-admin-token') || '';
-
     function $(id) { return document.getElementById(id); }
     function clear(node) { node.replaceChildren(); }
     function setText(id, value) { $(id).textContent = value === undefined || value === null || value === '' ? '—' : String(value); }
@@ -730,25 +732,27 @@
         statusNode.textContent = 'Нужен RELEASE_ADMIN_TOKEN.';
         return;
       }
-      localStorage.setItem('release-admin-token', token);
       statusNode.textContent = 'Loading dashboard data...';
       $('load').disabled = true;
-      const url = new URL(ENDPOINT);
-      url.searchParams.set('range', range);
-      url.searchParams.set('limit', '20000');
-      const response = await fetch(url.toString(), {
-        headers: {
-          apikey: KEY,
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      $('load').disabled = false;
-      if (!response.ok) {
-        statusNode.textContent = data.error || `Ошибка ${response.status}`;
-        return;
+      try {
+        const url = new URL(ENDPOINT);
+        url.searchParams.set('range', range);
+        url.searchParams.set('limit', '20000');
+        const response = await fetch(url.toString(), {
+          headers: {
+            apikey: KEY,
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          statusNode.textContent = data.error || `Ошибка ${response.status}`;
+          return;
+        }
+        render(data);
+      } finally {
+        $('load').disabled = false;
       }
-      render(data);
     }
 
     function render(data) {
