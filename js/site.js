@@ -4,6 +4,41 @@ const loaderPercent = document.getElementById('loaderPercent');
 const nav = document.querySelector('.nav');
 const appPreview = document.getElementById('appPreview');
 const langButtons = document.querySelectorAll('[data-lang]');
+let apkReleaseManifest = null;
+
+const RELEASE_EVENTS_ENDPOINT = 'https://qliouorzmcmzahgzrepu.supabase.co/functions/v1/release-events';
+const SUPABASE_PUBLIC_KEY = 'sb_publishable_oyQkQoBL4LjDD0g_X_-R-Q_JgmrhUqx';
+
+function recordReleaseEvent(eventType, properties = {}) {
+  try {
+    const body = JSON.stringify({
+      eventType,
+      platform: 'web',
+      currentVersionCode: apkReleaseManifest?.versionCode || null,
+      targetVersionCode: apkReleaseManifest?.versionCode || null,
+      versionName: apkReleaseManifest?.versionName || null,
+      apkName: apkReleaseManifest?.apkName || null,
+      source: 'website',
+      properties,
+    });
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      navigator.sendBeacon(RELEASE_EVENTS_ENDPOINT, blob);
+      return;
+    }
+    fetch(RELEASE_EVENTS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLIC_KEY,
+        'Content-Type': 'application/json',
+      },
+      body,
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Download must not depend on metrics.
+  }
+}
 
 const translations = {
   en: {
@@ -22,7 +57,7 @@ const translations = {
     navOffer: 'Offer',
     heroEyebrow: 'ANDROID BETA APK AVAILABLE',
     heroLead: 'Record the night. Hear the loud moments. See what broke your sleep.',
-    androidButton: 'Download Android APK',
+    androidButton: 'Manual APK install',
     iosButton: 'App Store soon',
     bugReportButton: 'Report a bug',
     heroPointOne: 'Snoring and night noise',
@@ -121,18 +156,20 @@ const translations = {
     faqTwoQ: 'Is this a medical app?',
     faqTwoA: 'No. It helps you notice sleep and noise patterns. It is not a diagnosis or treatment device.',
     faqThreeQ: 'How do I install the Android APK?',
-    faqThreeA: 'Download the APK, open it on your Android device, and allow installation from this browser if Android asks. iOS remains App Store-only.',
+    faqThreeA: 'Download the APK, open it on your Android device, and allow installation from this browser if Android asks. This is not a Google Play install.',
     faqFourQ: 'What makes it different from a timer?',
     faqFourA: 'The app keeps the night context: recordings, events, wake-up behavior, and reports that connect them.',
     downloadEyebrow: 'GET THE APP',
-    downloadTitle: 'Install the Android beta APK.',
-    downloadText: 'Android APK distribution is direct from this site. This file is for Android only.',
+    downloadTitle: 'Manual Android APK install.',
+    downloadText: 'Android APK distribution is direct from this site/CDN. This file is for Android only and is not delivered through Google Play.',
     downloadVersionLabel: 'Version',
     downloadUpdatedLabel: 'Updated',
-    downloadUpdatedValue: 'June 18, 2026',
+    downloadUpdatedValue: 'June 19, 2026',
     downloadSizeLabel: 'Size',
-    downloadInstallNote: 'After download, open the APK on Android and allow installation from this browser if Android asks.',
-    androidShort: 'Download APK',
+    downloadInstallNote: 'After download, open the APK on Android. If Android asks, allow installs from this browser, then return to the downloaded file.',
+    downloadWarning: 'This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.',
+    androidShort: 'Manual APK install',
+    androidUnavailable: 'APK link pending',
     iosShort: 'iOS soon',
     bugReportShort: 'Report bug',
     bugReportTitle: 'Found a bug?',
@@ -161,7 +198,7 @@ const translations = {
     navOffer: 'Оферта',
     heroEyebrow: 'ANDROID BETA APK ДОСТУПЕН',
     heroLead: 'Запиши ночь. Услышь громкие моменты. Пойми, что ломало сон.',
-    androidButton: 'Скачать Android APK',
+    androidButton: 'Установить APK вручную',
     iosButton: 'App Store скоро',
     bugReportButton: 'Сообщить о баге',
     heroPointOne: 'Храп и ночной шум',
@@ -260,18 +297,20 @@ const translations = {
     faqTwoQ: 'Это медицинское приложение?',
     faqTwoA: 'Нет. Приложение помогает замечать сон и ночной шум. Это не диагностика и не лечение.',
     faqThreeQ: 'Как установить Android APK?',
-    faqThreeA: 'Скачайте APK, откройте его на Android-устройстве и разрешите установку из браузера, если Android попросит. iOS остается только через App Store.',
+    faqThreeA: 'Скачайте APK, откройте его на Android-устройстве и разрешите установку из браузера, если Android попросит. Это не установка через Google Play.',
     faqFourQ: 'Чем это отличается от таймера?',
     faqFourA: 'Приложение сохраняет контекст ночи: записи, события, пробуждение и отчеты, которые связывают все вместе.',
     downloadEyebrow: 'СКАЧАТЬ',
-    downloadTitle: 'Установите Android beta APK.',
-    downloadText: 'Android APK распространяется напрямую с сайта. Этот файл только для Android.',
+    downloadTitle: 'Ручная установка Android APK.',
+    downloadText: 'Android APK распространяется напрямую с сайта/CDN. Этот файл только для Android и не устанавливается через Google Play.',
     downloadVersionLabel: 'Версия',
     downloadUpdatedLabel: 'Обновлено',
-    downloadUpdatedValue: '18 июня 2026 г.',
+    downloadUpdatedValue: 'June 19, 2026',
     downloadSizeLabel: 'Размер',
-    downloadInstallNote: 'После скачивания откройте APK на Android и разрешите установку из этого браузера, если Android попросит.',
-    androidShort: 'Скачать APK',
+    downloadInstallNote: 'После скачивания откройте APK на Android. Если Android попросит, разрешите установку из этого браузера и вернитесь к скачанному файлу.',
+    downloadWarning: 'Это ручная установка Android APK, не установка через Google Play. Android может попросить разрешить установку из этого браузера.',
+    androidShort: 'Установить APK',
+    androidUnavailable: 'APK-ссылка готовится',
     iosShort: 'iOS скоро',
     bugReportShort: 'Сообщить о баге',
     bugReportTitle: 'Нашли баг?',
@@ -307,6 +346,7 @@ function setLanguage(lang) {
     button.classList.toggle('is-active', button.dataset.lang === nextLang);
   });
   window.localStorage.setItem('sleeptracker-lang', nextLang);
+  if (apkReleaseManifest) applyApkRelease(apkReleaseManifest);
 }
 
 const savedLang = window.localStorage.getItem('sleeptracker-lang');
@@ -316,6 +356,69 @@ setLanguage(savedLang || browserLang);
 langButtons.forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
+
+function applyApkRelease(manifest) {
+  const download = document.getElementById('androidDownload');
+  const dict = translations[document.documentElement.lang] || translations.en;
+  if (download) {
+    if (manifest.apkUrl) {
+      download.href = manifest.apkUrl;
+      download.removeAttribute('rel');
+      download.removeAttribute('aria-disabled');
+      download.setAttribute('download', manifest.apkName || '');
+      download.textContent = dict.androidShort;
+      download.onclick = () => {
+        recordReleaseEvent('download_clicked', {
+          apkUrl: manifest.apkUrl,
+          versionCode: manifest.versionCode || null,
+          versionName: manifest.versionName || null,
+          apkName: manifest.apkName || null,
+        });
+      };
+    } else {
+      download.href = 'https://t.me/DMITRIIWAY';
+      download.rel = 'noopener noreferrer';
+      download.setAttribute('aria-disabled', 'true');
+      download.removeAttribute('download');
+      download.textContent = dict.androidUnavailable;
+      download.onclick = null;
+    }
+  }
+  if (manifest.versionName && manifest.versionCode) {
+    const versionNode = document.querySelector('[data-apk-version]');
+    if (versionNode) versionNode.textContent = `${manifest.versionName} (${manifest.versionCode})`;
+  }
+  if (manifest.sizeLabel) {
+    const sizeNode = document.querySelector('[data-apk-size]');
+    if (sizeNode) sizeNode.textContent = manifest.sizeLabel;
+  }
+  if (manifest.package) {
+    const packageNode = document.querySelector('[data-apk-package]');
+    if (packageNode) packageNode.textContent = manifest.package;
+  }
+  if (manifest.sha256) {
+    const shaNode = document.querySelector('[data-apk-sha]');
+    if (shaNode) shaNode.textContent = manifest.sha256;
+  }
+  if (manifest.signerSha256) {
+    const signerNode = document.querySelector('[data-apk-signer]');
+    if (signerNode) signerNode.textContent = manifest.signerSha256;
+  }
+}
+
+async function hydrateApkRelease() {
+  try {
+    const response = await fetch('apk-release.json', { cache: 'no-store' });
+    if (!response.ok) return;
+    const manifest = await response.json();
+    apkReleaseManifest = manifest;
+    applyApkRelease(manifest);
+  } catch {
+    // Keep Telegram fallback when metadata cannot be loaded.
+  }
+}
+
+hydrateApkRelease();
 
 let progress = 0;
 const tick = window.setInterval(() => {
