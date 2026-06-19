@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "app": "Sleep Tracker AI",
   "package": "com.dmitriiway.sleeptracker",
   "distribution": "website",
@@ -17,8 +18,9 @@
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
   "sizeBytes": 358864586,
   "sizeLabel": "342 MB",
-  "releaseDate": "2026-06-19",
+  "releaseDate": "2026-06-20",
   "updatedAt": "2026-06-19T22:15:11.535Z",
+  "historyGeneratedAt": "2026-06-20T00:00:00.000+02:00",
   "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.2-123.txt",
   "updateSeverity": "recommended",
   "minSupportedReason": "",
@@ -36,5 +38,134 @@
     "Окно обновления теперь берёт язык приложения или системы Android.",
     "Русские пользователи теперь видят changelog на русском.",
     "Логика сна, будильников, оплаты и Premium не менялась."
+  ],
+  "releases": [
+    {
+      "id": "1.0.2-123",
+      "versionName": "1.0.2",
+      "versionCode": 123,
+      "lifecycle": "latest",
+      "listed": true,
+      "downloadable": true,
+      "publishType": "hotfix",
+      "summary": {
+        "en": "Update popup now uses the app or Android system language.",
+        "ru": "Окно обновления теперь берёт язык приложения или системы Android."
+      },
+      "releaseDate": "2026-06-20",
+      "createdAt": "2026-06-19T22:13:29.156Z",
+      "updatedAt": "2026-06-19T22:15:11.535Z",
+      "apkName": "sleeptrackerai-1.0.2-123.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.2-123.apk",
+      "sha256": "8e940aa07f41055db00ae155ca8e0a4818a078e9e52be11eb51c8e8306db5aa2",
+      "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
+      "sizeBytes": 358864586,
+      "sizeLabel": "342 MB",
+      "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.2-123.txt",
+      "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.2-123.txt",
+      "updateSeverity": "recommended",
+      "forceUpdate": false,
+      "minSupportedVersionCode": 0,
+      "minSupportedReason": "",
+      "changelog": [
+        "Update popup now uses the app or Android system language.",
+        "Russian users now see Russian update notes.",
+        "No sleep, alarm, payment, or premium logic changed."
+      ],
+      "changelogEn": [
+        "Update popup now uses the app or Android system language.",
+        "Russian users now see Russian update notes.",
+        "No sleep, alarm, payment, or premium logic changed."
+      ],
+      "changelogRu": [
+        "Окно обновления теперь берёт язык приложения или системы Android.",
+        "Русские пользователи теперь видят changelog на русском.",
+        "Логика сна, будильников, оплаты и Premium не менялась."
+      ]
+    },
+    {
+      "id": "1.0.1-122",
+      "versionName": "1.0.1",
+      "versionCode": 122,
+      "lifecycle": "previous",
+      "listed": true,
+      "downloadable": true,
+      "publishType": "hotfix",
+      "summary": {
+        "en": "Premium checkout and paywall prices fixed.",
+        "ru": "Исправлены оплата Premium и цены на paywall."
+      },
+      "releaseDate": "2026-06-19",
+      "createdAt": "2026-06-19T21:55:02.176Z",
+      "updatedAt": "2026-06-19T21:55:02.176Z",
+      "apkName": "sleeptrackerai-1.0.1-122.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.1-122.apk",
+      "sha256": "e52b1ae526def13e9059bb911f53fd643b96c12fc9b2727b7ccb2260cdbf057f",
+      "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
+      "sizeBytes": 358864158,
+      "sizeLabel": "342 MB",
+      "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.1-122.txt",
+      "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.1-122.txt",
+      "updateSeverity": "recommended",
+      "forceUpdate": false,
+      "minSupportedVersionCode": 0,
+      "minSupportedReason": "",
+      "changelog": [
+        "Premium checkout no longer asks for unavailable Google sign-in.",
+        "Ruble and crypto payment tabs now show matching prices.",
+        "Annual plan per-month price is rounded and spaced correctly."
+      ],
+      "changelogEn": [
+        "Premium checkout no longer asks for unavailable Google sign-in.",
+        "Ruble and crypto payment tabs now show matching prices.",
+        "Annual plan per-month price is rounded and spaced correctly."
+      ],
+      "changelogRu": [
+        "Оплата Premium больше не просит недоступный вход через Google.",
+        "Вкладки Карта РФ и Crypto показывают свои цены.",
+        "Годовая цена в месяц округлена и показана как RUB 416/мес."
+      ]
+    },
+    {
+      "id": "1.0.0-121",
+      "versionName": "1.0.0",
+      "versionCode": 121,
+      "lifecycle": "previous",
+      "listed": true,
+      "downloadable": true,
+      "publishType": "public",
+      "summary": {
+        "en": "Initial public website APK with external payments.",
+        "ru": "Первый публичный APK с сайта и внешней оплатой."
+      },
+      "releaseDate": "2026-06-19",
+      "apkName": "sleeptrackerai-1.0.0-121.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.0-121.apk",
+      "sha256": "113410b7fed70e31431fc5e5c9843d97adea3c097c8541425fd945a73f3cce21",
+      "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
+      "sizeBytes": 358862682,
+      "sizeLabel": "342 MB",
+      "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.0-121.txt",
+      "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog-1.0.0-121.txt",
+      "updateSeverity": "recommended",
+      "forceUpdate": false,
+      "minSupportedVersionCode": 0,
+      "minSupportedReason": "",
+      "changelog": [
+        "Temporary manual Android APK install, not a Google Play install.",
+        "Website distribution build with external payment provider mode.",
+        "Premium, paid AI, and cloud sync must be validated by server entitlement."
+      ],
+      "changelogEn": [
+        "Temporary manual Android APK install, not a Google Play install.",
+        "Website distribution build with external payment provider mode.",
+        "Premium, paid AI, and cloud sync must be validated by server entitlement."
+      ],
+      "changelogRu": [
+        "Ручная установка Android APK с сайта, не через Google Play.",
+        "Сборка для сайта с внешней оплатой.",
+        "Premium, платный AI и cloud sync проверяются через серверный доступ."
+      ]
+    }
   ]
 }

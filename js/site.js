@@ -183,6 +183,10 @@ const translations = {
     downloadSizeLabel: 'Size',
     downloadInstallNote: 'After download, open the APK on Android. If Android asks, allow installs from this browser, then return to the downloaded file.',
     downloadWarning: 'This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.',
+    releaseHistoryTitle: 'Release history',
+    releaseHistoryHint: 'Latest first',
+    releaseHistoryLatest: 'Latest',
+    releaseHistoryEmpty: 'Release notes are being prepared',
     releaseNotesTitle: "What's new",
     releaseNotesLink: 'Full changelog',
     verifyFileTitle: 'Verify file',
@@ -323,10 +327,14 @@ const translations = {
     downloadText: 'Android APK распространяется напрямую с сайта/CDN. Этот файл только для Android и не устанавливается через Google Play.',
     downloadVersionLabel: 'Версия',
     downloadUpdatedLabel: 'Обновлено',
-    downloadUpdatedValue: 'June 20, 2026',
+    downloadUpdatedValue: '20 июня 2026',
     downloadSizeLabel: 'Размер',
     downloadInstallNote: 'После скачивания откройте APK на Android. Если Android попросит, разрешите установку из этого браузера и вернитесь к скачанному файлу.',
     downloadWarning: 'Это ручная установка Android APK, не установка через Google Play. Android может попросить разрешить установку из этого браузера.',
+    releaseHistoryTitle: 'История версий',
+    releaseHistoryHint: 'Сначала новая',
+    releaseHistoryLatest: 'Последняя',
+    releaseHistoryEmpty: 'Описание версии готовится',
     releaseNotesTitle: 'Что нового',
     releaseNotesLink: 'Полный changelog',
     verifyFileTitle: 'Проверить файл',
@@ -380,7 +388,9 @@ langButtons.forEach((button) => {
 
 function formatReleaseDate(value) {
   if (!value) return '';
-  const date = new Date(value);
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(String(value))
+    ? new Date(Number(value.slice(0, 4)), Number(value.slice(5, 7)) - 1, Number(value.slice(8, 10)))
+    : new Date(value);
   if (Number.isNaN(date.getTime())) return '';
   const lang = document.documentElement.lang === 'ru' ? 'ru-RU' : 'en-US';
   return new Intl.DateTimeFormat(lang, {
@@ -399,18 +409,87 @@ function changelogItems(manifest) {
     .slice(0, 3);
 }
 
-function renderReleaseNotes(manifest) {
+function releaseSummary(release) {
+  const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
+  const summary = release.summary;
+  if (summary && typeof summary === 'object' && summary[lang]) return summary[lang];
+  const localized = lang === 'ru' ? release.summaryRu : release.summaryEn;
+  if (localized) return localized;
+  const items = changelogItems(release);
+  return items[0] || '';
+}
+
+function releaseHistoryItems(manifest) {
+  const releases = Array.isArray(manifest.releases)
+    ? manifest.releases.filter((item) => item && item.versionCode)
+    : [];
+  const current = {
+    ...manifest,
+    id: `${manifest.versionName || 'latest'}-${manifest.versionCode || '0'}`,
+    lifecycle: 'latest',
+  };
+  const byCode = new Map();
+  releases.forEach((item) => byCode.set(String(item.versionCode), item));
+  if (manifest.versionCode) byCode.set(String(manifest.versionCode), { ...byCode.get(String(manifest.versionCode)), ...current });
+  return [...byCode.values()].sort((a, b) => numSafe(b.versionCode) - numSafe(a.versionCode)).slice(0, 6);
+}
+
+function numSafe(value) {
+  return Number.isFinite(Number(value)) ? Number(value) : 0;
+}
+
+function renderReleaseHistory(manifest) {
   const notes = document.querySelector('[data-release-notes]');
-  const list = document.querySelector('[data-release-notes-list]');
+  const list = document.querySelector('[data-release-history-list]');
   const link = document.querySelector('[data-release-notes-link]');
   if (!notes || !list) return;
   list.replaceChildren();
-  const items = changelogItems(manifest);
   const dict = translations[document.documentElement.lang] || translations.en;
-  const visibleItems = items.length > 0 ? items : [dict.androidUnavailable];
-  visibleItems.forEach((item) => {
+  const releases = releaseHistoryItems(manifest);
+  releases.forEach((release, index) => {
     const li = document.createElement('li');
-    li.textContent = item;
+    li.className = index === 0 ? 'release-entry is-latest' : 'release-entry';
+
+    const top = document.createElement('div');
+    top.className = 'release-entry-top';
+
+    const version = document.createElement('strong');
+    version.className = 'release-version';
+    version.textContent = `${release.versionName || '—'} (${release.versionCode || '—'})`;
+    top.appendChild(version);
+
+    if (index === 0) {
+      const badge = document.createElement('span');
+      badge.className = 'release-badge';
+      badge.textContent = dict.releaseHistoryLatest;
+      top.appendChild(badge);
+    }
+
+    const formattedDate = formatReleaseDate(release.releaseDate || release.updatedAt || release.createdAt);
+    if (formattedDate) {
+      const date = document.createElement('span');
+      date.className = 'release-date';
+      date.textContent = formattedDate;
+      top.appendChild(date);
+    }
+
+    li.appendChild(top);
+
+    if (index === 0) {
+      const bullets = changelogItems(release);
+      const ul = document.createElement('ul');
+      (bullets.length ? bullets : [dict.releaseHistoryEmpty]).forEach((item) => {
+        const bullet = document.createElement('li');
+        bullet.textContent = item;
+        ul.appendChild(bullet);
+      });
+      li.appendChild(ul);
+    } else {
+      const p = document.createElement('p');
+      p.textContent = releaseSummary(release) || dict.releaseHistoryEmpty;
+      li.appendChild(p);
+    }
+
     list.appendChild(li);
   });
   const releaseNotesUrl = manifest.releaseNotesUrl || manifest.changelogUrl;
@@ -481,7 +560,7 @@ function applyApkRelease(manifest) {
       const signerNode = document.querySelector('[data-apk-signer]');
       if (signerNode) signerNode.textContent = manifest.signerSha256;
   }
-  renderReleaseNotes(manifest);
+  renderReleaseHistory(manifest);
 }
 
 async function hydrateApkRelease() {
