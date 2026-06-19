@@ -91,6 +91,48 @@
       <div><strong>Android</strong><span data-i18n="stripAndroid">direct install</span></div>
     </section>
 
+    <section class="download" id="download">
+      <div>
+        <p class="eyebrow" data-i18n="downloadEyebrow">GET THE APP</p>
+        <h2 data-i18n="downloadTitle">Manual Android APK install.</h2>
+        <p data-i18n="downloadText">Android APK distribution is direct from this site/CDN. This file is for Android only and is not delivered through Google Play.</p>
+        <div class="download-actions">
+          <a class="button primary magnetic" id="androidDownload" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="androidShort">Manual APK install</a>
+          <a class="button ghost magnetic" id="ios" href="https://apps.apple.com/" aria-disabled="true" data-i18n="iosShort">iOS soon</a>
+          <a class="button ghost magnetic" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="bugReportShort">Report bug</a>
+        </div>
+      </div>
+      <div class="download-panel">
+        <dl class="download-meta" aria-label="APK file details">
+          <div>
+            <dt data-i18n="downloadVersionLabel">Version</dt>
+            <dd data-apk-version>1.0.1 (122)</dd>
+          </div>
+          <div>
+            <dt data-i18n="downloadUpdatedLabel">Updated</dt>
+            <dd data-i18n="downloadUpdatedValue">June 19, 2026</dd>
+          </div>
+          <div>
+            <dt data-i18n="downloadSizeLabel">Size</dt>
+            <dd data-apk-size>342 MB</dd>
+          </div>
+        </dl>
+        <div class="release-notes" data-release-notes>
+          <strong data-i18n="releaseNotesTitle">What's new</strong>
+          <ul data-release-notes-list></ul>
+          <a class="release-notes-link" href="#" target="_blank" rel="noopener" data-release-notes-link data-i18n="releaseNotesLink">Full changelog</a>
+        </div>
+        <details class="verify-file">
+          <summary data-i18n="verifyFileTitle">Verify file</summary>
+          <p><span>Package</span><code data-apk-package>com.dmitriiway.sleeptracker</code></p>
+          <p><span>SHA-256</span><code data-apk-sha>e52b1ae526def13e9059bb911f53fd643b96c12fc9b2727b7ccb2260cdbf057f</code></p>
+          <p><span>Signer SHA-256</span><code data-apk-signer>99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f</code></p>
+        </details>
+        <p class="download-note" data-i18n="downloadInstallNote">After download, open the APK on Android. If Android asks, allow installs from this browser, then return to the downloaded file.</p>
+        <p class="download-warning" data-i18n="downloadWarning">This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.</p>
+      </div>
+    </section>
+
     <section class="section" id="features">
       <div class="section-head">
         <p class="eyebrow" data-i18n="featuresEyebrow">WHAT IT DOES</p>
@@ -299,43 +341,11 @@
       </div>
     </section>
 
-    <section class="download" id="download">
-      <div>
-        <p class="eyebrow" data-i18n="downloadEyebrow">GET THE APP</p>
-        <h2 data-i18n="downloadTitle">Install Android now.</h2>
-        <p data-i18n="downloadText">iOS stays in App Store flow and will be linked here after approval.</p>
-        <dl class="download-meta" aria-label="APK file details">
-          <div>
-            <dt data-i18n="downloadVersionLabel">Version</dt>
-            <dd data-apk-version>1.0.0 (121)</dd>
-          </div>
-          <div>
-            <dt data-i18n="downloadUpdatedLabel">Updated</dt>
-            <dd data-i18n="downloadUpdatedValue">June 19, 2026</dd>
-          </div>
-          <div>
-            <dt data-i18n="downloadSizeLabel">Size</dt>
-            <dd data-apk-size>342 MB</dd>
-          </div>
-          <div>
-            <dt>Package</dt>
-            <dd><code data-apk-package>com.dmitriiway.sleeptracker</code></dd>
-          </div>
-        </dl>
-        <p class="download-note" data-i18n="downloadInstallNote">After download, open the APK on Android and allow installation from this browser if Android asks.</p>
-        <p class="download-warning" data-i18n="downloadWarning">This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.</p>
-        <p class="download-hash"><span>SHA-256</span><code data-apk-sha>113410b7fed70e31431fc5e5c9843d97adea3c097c8541425fd945a73f3cce21</code></p>
-        <p class="download-hash"><span>Signer SHA-256</span><code data-apk-signer>99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f</code></p>
-        <div class="bug-report">
-          <strong data-i18n="bugReportTitle">Found a bug?</strong>
-          <p data-i18n="bugReportText">Before messaging, open Settings in the app, go to log diagnostics, export the log file, and send it with a short description. It helps move the beta faster.</p>
-          <a class="bug-report-link magnetic" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="bugReportTelegram">Message @DMITRIIWAY</a>
-        </div>
-      </div>
-      <div class="download-actions">
-        <a class="button primary magnetic" id="androidDownload" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="androidShort">Manual APK install</a>
-        <a class="button ghost magnetic" id="ios" href="https://apps.apple.com/" aria-disabled="true" data-i18n="iosShort">iOS soon</a>
-        <a class="button ghost magnetic" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="bugReportShort">Report bug</a>
+    <section class="section bug-report-section">
+      <div class="bug-report">
+        <strong data-i18n="bugReportTitle">Found a bug?</strong>
+        <p data-i18n="bugReportText">Before messaging, open Settings in the app, go to log diagnostics, export the log file, and send it with a short description. It helps move the beta faster.</p>
+        <a class="bug-report-link magnetic" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="bugReportTelegram">Message @DMITRIIWAY</a>
       </div>
     </section>
   </main>

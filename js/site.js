@@ -8,11 +8,26 @@ let apkReleaseManifest = null;
 
 const RELEASE_EVENTS_ENDPOINT = 'https://qliouorzmcmzahgzrepu.supabase.co/functions/v1/release-events';
 const SUPABASE_PUBLIC_KEY = 'sb_publishable_oyQkQoBL4LjDD0g_X_-R-Q_JgmrhUqx';
+const WEB_INSTALL_ID_KEY = 'sleeptracker-web-install-id';
+const LAST_DOWNLOAD_CLICK_ID_KEY = 'sleeptracker-last-download-click-id';
+
+function randomId() {
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function getOrCreateWebInstallId() {
+  const existing = window.localStorage.getItem(WEB_INSTALL_ID_KEY);
+  if (existing) return existing;
+  const next = randomId();
+  window.localStorage.setItem(WEB_INSTALL_ID_KEY, next);
+  return next;
+}
 
 function recordReleaseEvent(eventType, properties = {}) {
   try {
     const body = JSON.stringify({
       eventType,
+      installId: getOrCreateWebInstallId(),
       platform: 'web',
       currentVersionCode: apkReleaseManifest?.versionCode || null,
       targetVersionCode: apkReleaseManifest?.versionCode || null,
@@ -168,6 +183,9 @@ const translations = {
     downloadSizeLabel: 'Size',
     downloadInstallNote: 'After download, open the APK on Android. If Android asks, allow installs from this browser, then return to the downloaded file.',
     downloadWarning: 'This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.',
+    releaseNotesTitle: "What's new",
+    releaseNotesLink: 'Full changelog',
+    verifyFileTitle: 'Verify file',
     androidShort: 'Manual APK install',
     androidUnavailable: 'APK link pending',
     iosShort: 'iOS soon',
@@ -309,6 +327,9 @@ const translations = {
     downloadSizeLabel: 'Размер',
     downloadInstallNote: 'После скачивания откройте APK на Android. Если Android попросит, разрешите установку из этого браузера и вернитесь к скачанному файлу.',
     downloadWarning: 'Это ручная установка Android APK, не установка через Google Play. Android может попросить разрешить установку из этого браузера.',
+    releaseNotesTitle: 'Что нового',
+    releaseNotesLink: 'Полный changelog',
+    verifyFileTitle: 'Проверить файл',
     androidShort: 'Установить APK',
     androidUnavailable: 'APK-ссылка готовится',
     iosShort: 'iOS скоро',
@@ -357,6 +378,52 @@ langButtons.forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
 
+function formatReleaseDate(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const lang = document.documentElement.lang === 'ru' ? 'ru-RU' : 'en-US';
+  return new Intl.DateTimeFormat(lang, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+}
+
+function changelogItems(manifest) {
+  const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
+  const localized = lang === 'ru' ? manifest.changelogRu : manifest.changelogEn;
+  const fallback = manifest.changelog;
+  return (Array.isArray(localized) ? localized : Array.isArray(fallback) ? fallback : [])
+    .filter(Boolean)
+    .slice(0, 3);
+}
+
+function renderReleaseNotes(manifest) {
+  const notes = document.querySelector('[data-release-notes]');
+  const list = document.querySelector('[data-release-notes-list]');
+  const link = document.querySelector('[data-release-notes-link]');
+  if (!notes || !list) return;
+  list.replaceChildren();
+  const items = changelogItems(manifest);
+  const dict = translations[document.documentElement.lang] || translations.en;
+  const visibleItems = items.length > 0 ? items : [dict.androidUnavailable];
+  visibleItems.forEach((item) => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  const releaseNotesUrl = manifest.releaseNotesUrl || manifest.changelogUrl;
+  if (link) {
+    if (releaseNotesUrl) {
+      link.href = releaseNotesUrl;
+      link.hidden = false;
+    } else {
+      link.hidden = true;
+    }
+  }
+}
+
 function applyApkRelease(manifest) {
   const download = document.getElementById('androidDownload');
   const dict = translations[document.documentElement.lang] || translations.en;
@@ -368,7 +435,10 @@ function applyApkRelease(manifest) {
       download.setAttribute('download', manifest.apkName || '');
       download.textContent = dict.androidShort;
       download.onclick = () => {
+        const downloadClickId = randomId();
+        window.localStorage.setItem(LAST_DOWNLOAD_CLICK_ID_KEY, downloadClickId);
         recordReleaseEvent('download_clicked', {
+          downloadClickId,
           apkUrl: manifest.apkUrl,
           versionCode: manifest.versionCode || null,
           versionName: manifest.versionName || null,
@@ -389,8 +459,13 @@ function applyApkRelease(manifest) {
     if (versionNode) versionNode.textContent = `${manifest.versionName} (${manifest.versionCode})`;
   }
   if (manifest.sizeLabel) {
-    const sizeNode = document.querySelector('[data-apk-size]');
-    if (sizeNode) sizeNode.textContent = manifest.sizeLabel;
+      const sizeNode = document.querySelector('[data-apk-size]');
+      if (sizeNode) sizeNode.textContent = manifest.sizeLabel;
+  }
+  if (manifest.releaseDate || manifest.updatedAt) {
+    const updatedNode = document.querySelector('[data-i18n="downloadUpdatedValue"]');
+    const formatted = formatReleaseDate(manifest.releaseDate || manifest.updatedAt);
+    if (updatedNode && formatted) updatedNode.textContent = formatted;
   }
   if (manifest.package) {
     const packageNode = document.querySelector('[data-apk-package]');
@@ -401,9 +476,10 @@ function applyApkRelease(manifest) {
     if (shaNode) shaNode.textContent = manifest.sha256;
   }
   if (manifest.signerSha256) {
-    const signerNode = document.querySelector('[data-apk-signer]');
-    if (signerNode) signerNode.textContent = manifest.signerSha256;
+      const signerNode = document.querySelector('[data-apk-signer]');
+      if (signerNode) signerNode.textContent = manifest.signerSha256;
   }
+  renderReleaseNotes(manifest);
 }
 
 async function hydrateApkRelease() {
