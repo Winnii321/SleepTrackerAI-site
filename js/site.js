@@ -327,7 +327,7 @@ const translations = {
     downloadText: 'Android APK распространяется напрямую с сайта/CDN. Этот файл только для Android и не устанавливается через Google Play.',
     downloadVersionLabel: 'Версия',
     downloadUpdatedLabel: 'Обновлено',
-    downloadUpdatedValue: '20 июня 2026',
+    downloadUpdatedValue: 'June 20, 2026',
     downloadSizeLabel: 'Размер',
     downloadInstallNote: 'После скачивания откройте APK на Android. Если Android попросит, разрешите установку из этого браузера и вернитесь к скачанному файлу.',
     downloadWarning: 'Это ручная установка Android APK, не установка через Google Play. Android может попросить разрешить установку из этого браузера.',
