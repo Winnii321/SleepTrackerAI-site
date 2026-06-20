@@ -856,7 +856,7 @@
         const response = await fetch('apk-release.json', { cache: 'no-store' });
         if (!response.ok) return;
         manifest = await response.json();
-        setText('kpiVersion', `${manifest.versionName || '—'} (${manifest.versionCode || '—'})`);
+        setText('kpiVersion', displayVersionName(manifest) || '—');
         setText('kpiVersionNote', `${manifest.sizeLabel || '—'} · ${manifest.status || manifest.distribution || 'website'} · ${manifest.releaseDate || '—'}`);
         document.querySelector('.card.skeleton')?.classList.remove('skeleton');
       } catch {
@@ -1037,6 +1037,10 @@
       return releases.find((item) => String(item.versionCode) === String(code));
     }
 
+    function displayVersionName(item) {
+      return item?.publicVersionName || item?.displayVersionName || item?.versionName || '';
+    }
+
     function buildVersionRows(release) {
       const downloads = release.downloadsByTarget || {};
       const prompted = release.promptedByTarget || {};
@@ -1050,7 +1054,7 @@
         ...((release.updateFunnel || []).map((item) => String(item.targetVersionCode)).filter(Boolean)),
         ...((manifest?.releases || []).map((item) => String(item.versionCode)).filter(Boolean)),
       ])].sort((a, b) => num(b) - num(a));
-      return keys.map((key) => {
+      const rows = keys.map((key) => {
         const active = activeByCode.get(key) || {};
         const listed = manifestReleaseByCode(key) || {};
         return {
@@ -1058,6 +1062,7 @@
           ...active,
           versionCode: active.versionCode || listed.versionCode || key,
           versionName: active.versionName || listed.versionName || '',
+          publicVersionName: listed.publicVersionName || listed.displayVersionName || '',
           activeInstalls30d: active.activeInstalls30d || 0,
           share: active.share || 0,
           downloads: downloads[key] || 0,
@@ -1065,6 +1070,27 @@
           clicks: clicks[key] || 0,
         };
       });
+      const grouped = new Map();
+      rows.forEach((row) => {
+        const key = displayVersionName(row) || String(row.versionCode);
+        const existing = grouped.get(key);
+        if (!existing) {
+          grouped.set(key, { ...row, versionCodes: [row.versionCode].filter(Boolean) });
+          return;
+        }
+        existing.versionCodes = [...new Set([...(existing.versionCodes || []), row.versionCode].filter(Boolean))];
+        existing.activeInstalls30d += row.activeInstalls30d || 0;
+        existing.share += row.share || 0;
+        existing.downloads += row.downloads || 0;
+        existing.prompted += row.prompted || 0;
+        existing.clicks += row.clicks || 0;
+        if (num(row.versionCode) > num(existing.versionCode)) {
+          existing.versionCode = row.versionCode;
+          existing.versionName = row.versionName;
+          existing.publicVersionName = row.publicVersionName;
+        }
+      });
+      return [...grouped.values()].sort((a, b) => num(b.versionCode) - num(a.versionCode));
     }
 
     function addVersionStat(title, value, note) {
@@ -1096,7 +1122,7 @@
       rows.forEach((item) => {
         const option = document.createElement('option');
         option.value = String(item.versionCode);
-        option.textContent = item.versionName ? `${item.versionName} (${item.versionCode})` : String(item.versionCode);
+        option.textContent = displayVersionName(item) || String(item.versionCode);
         options.push(option);
       });
       select.replaceChildren(...options);
@@ -1127,14 +1153,14 @@
         const filteredRelease = filteredData?.release || {};
         const filteredEvents = filteredData?.recentEvents || [];
         const funnel = (release.updateFunnel || []).find((item) => String(item.targetVersionCode) === selectedVersionCode) || {};
-        addVersionStat('Выбрана версия', row.versionName ? `${row.versionName} (${row.versionCode})` : row.versionCode, 'Деталь за тот же период');
+        addVersionStat('Выбрана версия', displayVersionName(row) || row.versionCode, 'Деталь за тот же период');
         addVersionStat('Активные установки', fmt(row.activeInstalls30d || 0), `${pct(row.share || 0)} от активных`);
         addVersionStat('Скачивания', fmt(row.downloads || filteredRelease.downloads?.total || 0), 'По целевой версии');
         addVersionStat('События версии', fmt(filteredEvents.length), `${fmt(funnel.prompted || row.prompted || 0)} показов · ${fmt(funnel.updateClicks || row.clicks || 0)} кликов`);
       }
 
       tableRows('versionsRows', rows, 7, (tableRow, item) => {
-        cell(tableRow, item.versionName ? `${item.versionName} (${item.versionCode})` : item.versionCode, { code: true });
+        cell(tableRow, displayVersionName(item) || item.versionCode, { code: true });
         cell(tableRow, fmt(item.activeInstalls30d));
         cell(tableRow, pct(item.share));
         cell(tableRow, fmt(item.downloads));

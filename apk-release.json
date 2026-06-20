@@ -5,6 +5,7 @@
   "distribution": "website",
   "paymentProvider": "rub",
   "versionName": "1.0.3",
+  "publicVersionName": "1.0.2",
   "versionCode": 124,
   "minimumVersionCode": 0,
   "minSupportedVersionCode": 0,
@@ -29,45 +30,46 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "The update window no longer interrupts active sleep recording or a ringing alarm.",
-    "Old beta builds move testers to the current APK after repeated postpones.",
-    "Release admin now shows skipped updates, version adoption, and stuck old installs."
+    "The update window no longer opens over active sleep recording or a ringing alarm.",
+    "Russian testers now see the update text and release notes in Russian.",
+    "Old beta APKs move to the current build after repeated Later taps instead of staying on known-bug versions."
   ],
   "changelogEn": [
-    "The update window no longer interrupts active sleep recording or a ringing alarm.",
-    "Old beta builds move testers to the current APK after repeated postpones.",
-    "Release admin now shows skipped updates, version adoption, and stuck old installs."
+    "The update window no longer opens over active sleep recording or a ringing alarm.",
+    "Russian testers now see the update text and release notes in Russian.",
+    "Old beta APKs move to the current build after repeated Later taps instead of staying on known-bug versions."
   ],
   "changelogRu": [
-    "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
-    "После повторных «Позже» старая beta всё равно доводит до свежей сборки.",
-    "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
+    "Окно обновления больше не открывается поверх активной записи сна или звенящего будильника.",
+    "Русские beta-тестеры теперь видят текст обновления и release notes на русском.",
+    "Старые beta APK после повторных «Позже» доводят до текущей сборки, а не остаются на версиях с известными багами."
   ],
   "fullChangelogEn": [
-    "The update window no longer interrupts active sleep recording or a ringing alarm.",
+    "The update window no longer opens over active sleep recording or a ringing alarm.",
     "After repeated postpones, old beta builds move testers to the current APK instead of leaving them on known-bug versions.",
     "Optional update reminders reappear after a quiet interval instead of spamming the user.",
-    "Release admin now shows skipped updates, version adoption, and stuck old installs."
+    "Russian testers now see the update text and release notes in Russian."
   ],
   "fullChangelogRu": [
-    "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+    "Окно обновления больше не открывается поверх активной записи сна или звенящего будильника.",
     "После повторных «Позже» старая beta доводит тестера до свежей сборки, а не оставляет на версии с известными багами.",
     "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
-    "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
+    "Русские beta-тестеры теперь видят текст обновления и release notes на русском."
   ],
   "historyGeneratedAt": "2026-06-20T07:37:45.401Z",
   "releases": [
     {
       "id": "1.0.3-124",
       "versionName": "1.0.3",
+      "publicVersionName": "1.0.2",
       "versionCode": 124,
       "lifecycle": "latest",
       "listed": true,
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "en": "The update window no longer interrupts active sleep recording or a ringing alarm.",
-        "ru": "Окно обновления больше не перебивает запись сна и звенящий будильник."
+        "en": "The update window no longer opens over active sleep recording or a ringing alarm.",
+        "ru": "Окно обновления больше не открывается поверх записи сна и звенящего будильника."
       },
       "releaseDate": "2026-06-20",
       "createdAt": "2026-06-20T07:29:04.951Z",
@@ -90,31 +92,31 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "The update window no longer interrupts active sleep recording or a ringing alarm.",
-        "Old beta builds move testers to the current APK after repeated postpones.",
-        "Release admin now shows skipped updates, version adoption, and stuck old installs."
+        "The update window no longer opens over active sleep recording or a ringing alarm.",
+        "Old beta APKs move to the current build after repeated Later taps instead of staying on known-bug versions.",
+        "Russian testers now see the update text and release notes in Russian."
       ],
       "changelogEn": [
-        "The update window no longer interrupts active sleep recording or a ringing alarm.",
-        "Old beta builds move testers to the current APK after repeated postpones.",
-        "Release admin now shows skipped updates, version adoption, and stuck old installs."
+        "The update window no longer opens over active sleep recording or a ringing alarm.",
+        "Old beta APKs move to the current build after repeated Later taps instead of staying on known-bug versions.",
+        "Russian testers now see the update text and release notes in Russian."
       ],
       "changelogRu": [
-        "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
-        "После повторных «Позже» старая beta всё равно доводит до свежей сборки.",
-        "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
+        "Окно обновления больше не открывается поверх активной записи сна или звенящего будильника.",
+        "Старые beta APK после повторных «Позже» доводят до текущей сборки, а не остаются на версиях с известными багами.",
+        "Русские beta-тестеры теперь видят текст обновления и release notes на русском."
       ],
       "fullChangelogEn": [
-        "The update window no longer interrupts active sleep recording or a ringing alarm.",
+        "The update window no longer opens over active sleep recording or a ringing alarm.",
         "After repeated postpones, old beta builds move testers to the current APK instead of leaving them on known-bug versions.",
         "Optional update reminders reappear after a quiet interval instead of spamming the user.",
-        "Release admin now shows skipped updates, version adoption, and stuck old installs."
+        "Russian testers now see the update text and release notes in Russian."
       ],
       "fullChangelogRu": [
-        "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+        "Окно обновления больше не открывается поверх активной записи сна или звенящего будильника.",
         "После повторных «Позже» старая beta доводит тестера до свежей сборки, а не оставляет на версии с известными багами.",
         "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
-        "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
+        "Русские beta-тестеры теперь видят текст обновления и release notes на русском."
       ]
     },
     {

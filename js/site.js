@@ -415,6 +415,20 @@ function releaseSummary(release) {
   return items[0] || '';
 }
 
+function displayVersionName(release) {
+  return release?.publicVersionName || release?.displayVersionName || release?.versionName || '';
+}
+
+function mergeTextArray(primary, secondary) {
+  const merged = [];
+  [...(Array.isArray(primary) ? primary : []), ...(Array.isArray(secondary) ? secondary : [])]
+    .filter(Boolean)
+    .forEach((item) => {
+      if (!merged.includes(item)) merged.push(item);
+    });
+  return merged;
+}
+
 function releaseHistoryItems(manifest) {
   const releases = Array.isArray(manifest.releases)
     ? manifest.releases.filter((item) => item && item.versionCode)
@@ -427,7 +441,30 @@ function releaseHistoryItems(manifest) {
   const byCode = new Map();
   releases.forEach((item) => byCode.set(String(item.versionCode), item));
   if (manifest.versionCode) byCode.set(String(manifest.versionCode), { ...byCode.get(String(manifest.versionCode)), ...current });
-  return [...byCode.values()].sort((a, b) => numSafe(b.versionCode) - numSafe(a.versionCode)).slice(0, 6);
+  const byVersion = new Map();
+  [...byCode.values()]
+    .sort((a, b) => numSafe(b.versionCode) - numSafe(a.versionCode))
+    .forEach((item) => {
+      const publicName = displayVersionName(item);
+      const key = publicName || String(item.versionCode);
+      const existing = byVersion.get(key);
+      if (!existing) {
+        byVersion.set(key, {
+          ...item,
+          versionName: publicName || item.versionName,
+          technicalVersionName: item.versionName,
+          versionCodes: [item.versionCode].filter(Boolean),
+        });
+        return;
+      }
+      existing.versionCodes = mergeTextArray(existing.versionCodes, [item.versionCode]);
+      existing.changelog = mergeTextArray(existing.changelog, item.changelog);
+      existing.changelogEn = mergeTextArray(existing.changelogEn, item.changelogEn);
+      existing.changelogRu = mergeTextArray(existing.changelogRu, item.changelogRu);
+      existing.fullChangelogEn = mergeTextArray(existing.fullChangelogEn, item.fullChangelogEn);
+      existing.fullChangelogRu = mergeTextArray(existing.fullChangelogRu, item.fullChangelogRu);
+    });
+  return [...byVersion.values()].sort((a, b) => numSafe(b.versionCode) - numSafe(a.versionCode)).slice(0, 6);
 }
 
 function numSafe(value) {
@@ -450,7 +487,7 @@ function renderReleaseHistory(manifest) {
 
     const version = document.createElement('strong');
     version.className = 'release-version';
-    version.textContent = release.versionName || '—';
+    version.textContent = displayVersionName(release) || '—';
     top.appendChild(version);
 
     if (index === 0) {
@@ -487,11 +524,12 @@ function applyApkRelease(manifest) {
   const download = document.getElementById('androidDownload');
   const dict = translations[document.documentElement.lang] || translations.en;
   if (download) {
+    const publicVersion = displayVersionName(manifest);
     if (manifest.apkUrl) {
       download.href = manifest.apkUrl;
       download.removeAttribute('rel');
       download.removeAttribute('aria-disabled');
-      download.setAttribute('download', manifest.versionName ? `sleeptrackerai-${manifest.versionName}.apk` : 'sleeptrackerai.apk');
+      download.setAttribute('download', publicVersion ? `sleeptrackerai-${publicVersion}.apk` : 'sleeptrackerai.apk');
       download.textContent = dict.androidShort;
       download.onclick = () => {
         const downloadClickId = randomId();
@@ -501,6 +539,7 @@ function applyApkRelease(manifest) {
           apkUrl: manifest.apkUrl,
           versionCode: manifest.versionCode || null,
           versionName: manifest.versionName || null,
+          publicVersionName: publicVersion || null,
           apkName: manifest.apkName || null,
         });
       };
@@ -513,11 +552,12 @@ function applyApkRelease(manifest) {
       download.onclick = null;
     }
   }
-  if (manifest.versionName) {
+  const publicVersion = displayVersionName(manifest);
+  if (publicVersion) {
     const versionNode = document.querySelector('[data-apk-version]');
-    if (versionNode) versionNode.textContent = manifest.versionName;
+    if (versionNode) versionNode.textContent = publicVersion;
     const stripVersionNode = document.querySelector('[data-strip-version]');
-    if (stripVersionNode) stripVersionNode.textContent = manifest.versionName;
+    if (stripVersionNode) stripVersionNode.textContent = publicVersion;
   }
   if (manifest.sizeLabel) {
       const sizeNode = document.querySelector('[data-apk-size]');
