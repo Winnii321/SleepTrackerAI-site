@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/site.css" />
+  <link rel="stylesheet" href="css/site.css?v=20260620c" />
 </head>
 <body>
   <div class="loader" id="loader">
@@ -68,7 +68,7 @@
         <h1>Sleep<br />Tracker<br />AI</h1>
         <p class="lead" data-i18n="heroLead">Sleep recording, smart alarm, and AI coaching in one quiet app.</p>
         <div class="actions">
-          <a class="button primary magnetic" href="#download" data-i18n="androidButton">Manual APK install</a>
+          <a class="button primary magnetic" href="#download" data-i18n="androidButton">Download APK</a>
           <a class="button ghost magnetic" href="#ios" data-i18n="iosButton">App Store soon</a>
           <a class="button ghost magnetic" href="https://t.me/DMITRIIWAY" rel="noopener noreferrer" data-i18n="bugReportButton">Report a bug</a>
         </div>
@@ -130,9 +130,9 @@
                 <span class="release-date">June 20, 2026</span>
               </div>
               <ul>
-                <li>The update prompt no longer opens during a sleep recording or ringing alarm.</li>
-                <li>Repeated Later taps now move testers to the current build instead of leaving them on old versions.</li>
-                <li>Release metrics now record postponed updates and forced-update moments.</li>
+                <li>The update window no longer interrupts active sleep recording or a ringing alarm.</li>
+                <li>Old beta builds move testers to the current APK after repeated postpones.</li>
+                <li>Release admin now shows skipped updates, version adoption, and stuck old installs.</li>
               </ul>
             </li>
             <li class="release-entry">
@@ -140,63 +140,32 @@
                 <strong class="release-version">1.0.2</strong>
                 <span class="release-date">June 20, 2026</span>
               </div>
-              <p>Update notes now use Russian when the app or Android system language is Russian.</p>
+              <ul>
+                <li>Russian testers now see the update window and release notes in Russian.</li>
+                <li>The app chooses update text from the app language or Android locale.</li>
+              </ul>
             </li>
             <li class="release-entry">
               <div class="release-entry-top">
                 <strong class="release-version">1.0.1</strong>
                 <span class="release-date">June 19, 2026</span>
               </div>
-              <p>Premium checkout no longer asks for unavailable Google sign-in.</p>
+              <ul>
+                <li>Robokassa checkout no longer blocks payment behind unavailable Google sign-in.</li>
+                <li>Ruble and crypto paywall tabs now show matching prices.</li>
+              </ul>
             </li>
             <li class="release-entry">
               <div class="release-entry-top">
                 <strong class="release-version">1.0.0</strong>
                 <span class="release-date">June 17, 2026</span>
               </div>
-              <p>First public Android beta build from the Sleep Tracker AI site.</p>
-            </li>
-          </ol>
-          <button class="release-notes-link" type="button" aria-expanded="false" aria-controls="fullChangelog" data-release-notes-link data-i18n="releaseNotesLink">Full changelog</button>
-          <div class="full-changelog" id="fullChangelog" hidden data-full-changelog>
-            <article>
-              <h4>1.0.3</h4>
-              <span>June 20, 2026</span>
-              <ul>
-                <li>The update prompt waits until sleep tracking and alarm ringing are safe.</li>
-                <li>After 10 Later taps, the update becomes required for that target version.</li>
-                <li>Optional update reminders reappear after a quiet interval instead of spamming the user.</li>
-                <li>Release analytics now records postponed updates and hard-update limits.</li>
-              </ul>
-            </article>
-            <article>
-              <h4>1.0.2</h4>
-              <span>June 20, 2026</span>
-              <ul>
-                <li>Update notes can now be shown in Russian.</li>
-                <li>The update window chooses the language from the app or Android system locale.</li>
-                <li>Russian beta testers no longer see English-only release notes.</li>
-              </ul>
-            </article>
-            <article>
-              <h4>1.0.1</h4>
-              <span>June 19, 2026</span>
-              <ul>
-                <li>Premium checkout no longer asks for unavailable Google sign-in.</li>
-                <li>Ruble and crypto payment tabs now show matching prices.</li>
-                <li>The yearly plan per-month label is rounded and spaced correctly.</li>
-              </ul>
-            </article>
-            <article>
-              <h4>1.0.0</h4>
-              <span>June 17, 2026</span>
               <ul>
                 <li>First public Android beta build from the Sleep Tracker AI site.</li>
-                <li>External payment mode prepared for Premium access.</li>
-                <li>Premium, paid AI, and cloud sync are checked through server entitlement.</li>
+                <li>Premium access is checked through server entitlement.</li>
               </ul>
-            </article>
-          </div>
+            </li>
+          </ol>
         </div>
         <details class="verify-file">
           <summary data-i18n="verifyFileTitle">Verify file</summary>
@@ -436,6 +405,6 @@
     </div>
   </footer>
 
-  <script src="js/site.js"></script>
+  <script src="js/site.js?v=20260620c"></script>
 </body>
 </html>

@@ -29,31 +29,31 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "The update prompt no longer opens during a sleep recording or ringing alarm.",
-    "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
-    "Release metrics now record postponed updates and forced-update moments."
+    "The update window no longer interrupts active sleep recording or a ringing alarm.",
+    "Old beta builds move testers to the current APK after repeated postpones.",
+    "Release admin now shows skipped updates, version adoption, and stuck old installs."
   ],
   "changelogEn": [
-    "The update prompt no longer opens during a sleep recording or ringing alarm.",
-    "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
-    "Release metrics now record postponed updates and forced-update moments."
+    "The update window no longer interrupts active sleep recording or a ringing alarm.",
+    "Old beta builds move testers to the current APK after repeated postpones.",
+    "Release admin now shows skipped updates, version adoption, and stuck old installs."
   ],
   "changelogRu": [
-    "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
-    "После нескольких нажатий «Позже» тестеры переходят на свежую сборку, а не остаются на старых версиях.",
-    "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+    "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+    "После повторных «Позже» старая beta всё равно доводит до свежей сборки.",
+    "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
   ],
   "fullChangelogEn": [
-    "The update prompt no longer opens during a sleep recording or ringing alarm.",
-    "After 10 Later taps, the update becomes required for that target version.",
+    "The update window no longer interrupts active sleep recording or a ringing alarm.",
+    "After repeated postpones, old beta builds move testers to the current APK instead of leaving them on known-bug versions.",
     "Optional update reminders reappear after a quiet interval instead of spamming the user.",
-    "Release metrics now record postponed updates and forced-update moments."
+    "Release admin now shows skipped updates, version adoption, and stuck old installs."
   ],
   "fullChangelogRu": [
-    "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
-    "После 10 нажатий «Позже» обновление становится обязательным для этой версии.",
+    "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+    "После повторных «Позже» старая beta доводит тестера до свежей сборки, а не оставляет на версии с известными багами.",
     "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
-    "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+    "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
   ],
   "historyGeneratedAt": "2026-06-20T07:37:45.401Z",
   "releases": [
@@ -66,8 +66,8 @@
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "en": "The update prompt no longer interrupts a sleep recording or ringing alarm.",
-        "ru": "Окно обновления больше не мешает записи сна или звенящему будильнику."
+        "en": "The update window no longer interrupts active sleep recording or a ringing alarm.",
+        "ru": "Окно обновления больше не перебивает запись сна и звенящий будильник."
       },
       "releaseDate": "2026-06-20",
       "createdAt": "2026-06-20T07:29:04.951Z",
@@ -90,31 +90,31 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "The update prompt no longer opens during a sleep recording or ringing alarm.",
-        "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
-        "Release metrics now record postponed updates and forced-update moments."
+        "The update window no longer interrupts active sleep recording or a ringing alarm.",
+        "Old beta builds move testers to the current APK after repeated postpones.",
+        "Release admin now shows skipped updates, version adoption, and stuck old installs."
       ],
       "changelogEn": [
-        "The update prompt no longer opens during a sleep recording or ringing alarm.",
-        "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
-        "Release metrics now record postponed updates and forced-update moments."
+        "The update window no longer interrupts active sleep recording or a ringing alarm.",
+        "Old beta builds move testers to the current APK after repeated postpones.",
+        "Release admin now shows skipped updates, version adoption, and stuck old installs."
       ],
       "changelogRu": [
-        "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
-        "После нескольких нажатий «Позже» тестеры переходят на свежую сборку, а не остаются на старых версиях.",
-        "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+        "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+        "После повторных «Позже» старая beta всё равно доводит до свежей сборки.",
+        "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
       ],
       "fullChangelogEn": [
-        "The update prompt no longer opens during a sleep recording or ringing alarm.",
-        "After 10 Later taps, the update becomes required for that target version.",
+        "The update window no longer interrupts active sleep recording or a ringing alarm.",
+        "After repeated postpones, old beta builds move testers to the current APK instead of leaving them on known-bug versions.",
         "Optional update reminders reappear after a quiet interval instead of spamming the user.",
-        "Release metrics now record postponed updates and forced-update moments."
+        "Release admin now shows skipped updates, version adoption, and stuck old installs."
       ],
       "fullChangelogRu": [
-        "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
-        "После 10 нажатий «Позже» обновление становится обязательным для этой версии.",
+        "Окно обновления больше не перебивает активную запись сна и звенящий будильник.",
+        "После повторных «Позже» старая beta доводит тестера до свежей сборки, а не оставляет на версии с известными багами.",
         "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
-        "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+        "Админка релизов теперь видит отложенные обновления, adoption версий и зависшие старые установки."
       ]
     },
     {

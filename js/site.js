@@ -187,8 +187,6 @@ const translations = {
     releaseHistoryLatest: 'Latest',
     releaseHistoryEmpty: 'Release notes are being prepared',
     releaseNotesTitle: "What's new",
-    releaseNotesLink: 'Full changelog',
-    releaseNotesHide: 'Hide changelog',
     verifyFileTitle: 'Verify file',
     androidShort: 'Download APK',
     androidUnavailable: 'APK link pending',
@@ -335,8 +333,6 @@ const translations = {
     releaseHistoryLatest: 'Последняя',
     releaseHistoryEmpty: 'Описание версии готовится',
     releaseNotesTitle: 'Что нового',
-    releaseNotesLink: 'Полный changelog',
-    releaseNotesHide: 'Скрыть changelog',
     verifyFileTitle: 'Проверить файл',
     androidShort: 'Скачать APK',
     androidUnavailable: 'APK-ссылка готовится',
@@ -376,7 +372,6 @@ function setLanguage(lang) {
   });
   window.localStorage.setItem('sleeptracker-lang', nextLang);
   if (apkReleaseManifest) applyApkRelease(apkReleaseManifest);
-  syncFullChangelogToggle();
 }
 
 const savedLang = window.localStorage.getItem('sleeptracker-lang');
@@ -401,23 +396,13 @@ function formatReleaseDate(value) {
   }).format(date);
 }
 
-function changelogItems(manifest) {
+function changelogItems(manifest, limit = 3) {
   const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
   const localized = lang === 'ru' ? manifest.changelogRu : manifest.changelogEn;
   const fallback = manifest.changelog;
   return (Array.isArray(localized) ? localized : Array.isArray(fallback) ? fallback : [])
     .filter(Boolean)
-    .slice(0, 3);
-}
-
-function fullChangelogItems(release) {
-  const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
-  const localized = lang === 'ru'
-    ? (release.fullChangelogRu || release.detailsRu || release.changelogRu)
-    : (release.fullChangelogEn || release.detailsEn || release.changelogEn);
-  const fallback = release.fullChangelog || release.details || release.changelog;
-  return (Array.isArray(localized) ? localized : Array.isArray(fallback) ? fallback : [])
-    .filter(Boolean);
+    .slice(0, limit);
 }
 
 function releaseSummary(release) {
@@ -449,51 +434,9 @@ function numSafe(value) {
   return Number.isFinite(Number(value)) ? Number(value) : 0;
 }
 
-function syncFullChangelogToggle() {
-  const button = document.querySelector('[data-release-notes-link]');
-  const panel = document.querySelector('[data-full-changelog]');
-  if (!button || !panel) return;
-  const dict = translations[document.documentElement.lang] || translations.en;
-  const isOpen = !panel.hidden;
-  button.textContent = isOpen ? dict.releaseNotesHide : dict.releaseNotesLink;
-  button.setAttribute('aria-expanded', String(isOpen));
-}
-
-function renderFullChangelog(releases) {
-  const panel = document.querySelector('[data-full-changelog]');
-  if (!panel) return;
-  panel.replaceChildren();
-  const dict = translations[document.documentElement.lang] || translations.en;
-  releases.forEach((release) => {
-    const article = document.createElement('article');
-
-    const title = document.createElement('h4');
-    title.textContent = release.versionName || '—';
-    article.appendChild(title);
-
-    const formattedDate = formatReleaseDate(release.releaseDate || release.updatedAt || release.createdAt);
-    if (formattedDate) {
-      const date = document.createElement('span');
-      date.textContent = formattedDate;
-      article.appendChild(date);
-    }
-
-    const ul = document.createElement('ul');
-    const items = fullChangelogItems(release);
-    (items.length ? items : [releaseSummary(release) || dict.releaseHistoryEmpty]).forEach((item) => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      ul.appendChild(li);
-    });
-    article.appendChild(ul);
-    panel.appendChild(article);
-  });
-}
-
 function renderReleaseHistory(manifest) {
   const notes = document.querySelector('[data-release-notes]');
   const list = document.querySelector('[data-release-history-list]');
-  const button = document.querySelector('[data-release-notes-link]');
   if (!notes || !list) return;
   list.replaceChildren();
   const dict = translations[document.documentElement.lang] || translations.en;
@@ -527,28 +470,17 @@ function renderReleaseHistory(manifest) {
 
     li.appendChild(top);
 
-    if (index === 0) {
-      const bullets = changelogItems(release);
-      const ul = document.createElement('ul');
-      (bullets.length ? bullets : [dict.releaseHistoryEmpty]).forEach((item) => {
-        const bullet = document.createElement('li');
-        bullet.textContent = item;
-        ul.appendChild(bullet);
-      });
-      li.appendChild(ul);
-    } else {
-      const p = document.createElement('p');
-      p.textContent = releaseSummary(release) || dict.releaseHistoryEmpty;
-      li.appendChild(p);
-    }
+    const bullets = changelogItems(release, index === 0 ? 3 : 2);
+    const ul = document.createElement('ul');
+    (bullets.length ? bullets : [releaseSummary(release) || dict.releaseHistoryEmpty]).forEach((item) => {
+      const bullet = document.createElement('li');
+      bullet.textContent = item;
+      ul.appendChild(bullet);
+    });
+    li.appendChild(ul);
 
     list.appendChild(li);
   });
-  renderFullChangelog(releases);
-  if (button) {
-    button.hidden = releases.length === 0;
-    syncFullChangelogToggle();
-  }
 }
 
 function applyApkRelease(manifest) {
@@ -559,7 +491,7 @@ function applyApkRelease(manifest) {
       download.href = manifest.apkUrl;
       download.removeAttribute('rel');
       download.removeAttribute('aria-disabled');
-      download.setAttribute('download', manifest.apkName || '');
+      download.setAttribute('download', manifest.versionName ? `sleeptrackerai-${manifest.versionName}.apk` : 'sleeptrackerai.apk');
       download.textContent = dict.androidShort;
       download.onclick = () => {
         const downloadClickId = randomId();
@@ -624,13 +556,6 @@ async function hydrateApkRelease() {
 }
 
 hydrateApkRelease();
-
-document.querySelector('[data-release-notes-link]')?.addEventListener('click', () => {
-  const panel = document.querySelector('[data-full-changelog]');
-  if (!panel) return;
-  panel.hidden = !panel.hidden;
-  syncFullChangelogToggle();
-});
 
 let progress = 0;
 const tick = window.setInterval(() => {
