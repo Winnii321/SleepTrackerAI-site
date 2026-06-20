@@ -1025,11 +1025,65 @@ h2 {
 
 .release-notes-link {
   width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--cyan);
+  font-family: inherit;
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
   overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.full-changelog {
+  display: grid;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.full-changelog[hidden] {
+  display: none;
+}
+
+.full-changelog article {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.full-changelog h4 {
+  margin: 0;
+  color: var(--fg);
+  font-size: 15px;
+}
+
+.full-changelog article > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.full-changelog li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.full-changelog li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
 }
 
 .verify-file {

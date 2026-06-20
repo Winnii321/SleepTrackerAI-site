@@ -72,7 +72,7 @@ const translations = {
     navOffer: 'Offer',
     heroEyebrow: 'ANDROID BETA APK AVAILABLE',
     heroLead: 'Record the night. Hear the loud moments. See what broke your sleep.',
-    androidButton: 'Manual APK install',
+    androidButton: 'Download APK',
     iosButton: 'App Store soon',
     bugReportButton: 'Report a bug',
     heroPointOne: 'Snoring and night noise',
@@ -171,26 +171,26 @@ const translations = {
     faqTwoQ: 'Is this a medical app?',
     faqTwoA: 'No. It helps you notice sleep and noise patterns. It is not a diagnosis or treatment device.',
     faqThreeQ: 'How do I install the Android APK?',
-    faqThreeA: 'Download the APK, open it on your Android device, and allow installation from this browser if Android asks. This is not a Google Play install.',
+    faqThreeA: 'Download the APK, open it on your Android device, and follow the Android system prompts.',
     faqFourQ: 'What makes it different from a timer?',
     faqFourA: 'The app keeps the night context: recordings, events, wake-up behavior, and reports that connect them.',
     downloadEyebrow: 'GET THE APP',
-    downloadTitle: 'Manual Android APK install.',
-    downloadText: 'Android APK distribution is direct from this site/CDN. This file is for Android only and is not delivered through Google Play.',
+    downloadTitle: 'Download Android APK.',
+    downloadText: 'The latest Sleep Tracker AI Android build is here with version details, release notes, and file verification.',
     downloadVersionLabel: 'Version',
     downloadUpdatedLabel: 'Updated',
     downloadUpdatedValue: 'June 20, 2026',
     downloadSizeLabel: 'Size',
-    downloadInstallNote: 'After download, open the APK on Android. If Android asks, allow installs from this browser, then return to the downloaded file.',
-    downloadWarning: 'This is a manual Android APK install, not a Google Play install. Android may ask you to allow installs from this browser.',
+    downloadInstallNote: 'After download, open the APK on Android and follow the system prompts.',
     releaseHistoryTitle: 'Release history',
     releaseHistoryHint: 'Latest first',
     releaseHistoryLatest: 'Latest',
     releaseHistoryEmpty: 'Release notes are being prepared',
     releaseNotesTitle: "What's new",
     releaseNotesLink: 'Full changelog',
+    releaseNotesHide: 'Hide changelog',
     verifyFileTitle: 'Verify file',
-    androidShort: 'Manual APK install',
+    androidShort: 'Download APK',
     androidUnavailable: 'APK link pending',
     iosShort: 'iOS soon',
     bugReportShort: 'Report bug',
@@ -220,7 +220,7 @@ const translations = {
     navOffer: 'Оферта',
     heroEyebrow: 'ANDROID BETA APK ДОСТУПЕН',
     heroLead: 'Запиши ночь. Услышь громкие моменты. Пойми, что ломало сон.',
-    androidButton: 'Установить APK вручную',
+    androidButton: 'Скачать APK',
     iosButton: 'App Store скоро',
     bugReportButton: 'Сообщить о баге',
     heroPointOne: 'Храп и ночной шум',
@@ -319,26 +319,26 @@ const translations = {
     faqTwoQ: 'Это медицинское приложение?',
     faqTwoA: 'Нет. Приложение помогает замечать сон и ночной шум. Это не диагностика и не лечение.',
     faqThreeQ: 'Как установить Android APK?',
-    faqThreeA: 'Скачайте APK, откройте его на Android-устройстве и разрешите установку из браузера, если Android попросит. Это не установка через Google Play.',
+    faqThreeA: 'Скачайте APK, откройте его на Android-устройстве и следуйте подсказкам Android.',
     faqFourQ: 'Чем это отличается от таймера?',
     faqFourA: 'Приложение сохраняет контекст ночи: записи, события, пробуждение и отчеты, которые связывают все вместе.',
     downloadEyebrow: 'СКАЧАТЬ',
-    downloadTitle: 'Ручная установка Android APK.',
-    downloadText: 'Android APK распространяется напрямую с сайта/CDN. Этот файл только для Android и не устанавливается через Google Play.',
+    downloadTitle: 'Скачать Android APK.',
+    downloadText: 'Здесь лежит свежая Android-сборка Sleep Tracker AI: версия, дата, что изменилось и проверка файла.',
     downloadVersionLabel: 'Версия',
     downloadUpdatedLabel: 'Обновлено',
-    downloadUpdatedValue: 'June 20, 2026',
+    downloadUpdatedValue: '20 июня 2026 г.',
     downloadSizeLabel: 'Размер',
-    downloadInstallNote: 'После скачивания откройте APK на Android. Если Android попросит, разрешите установку из этого браузера и вернитесь к скачанному файлу.',
-    downloadWarning: 'Это ручная установка Android APK, не установка через Google Play. Android может попросить разрешить установку из этого браузера.',
+    downloadInstallNote: 'После скачивания откройте APK на Android и следуйте подсказкам системы.',
     releaseHistoryTitle: 'История версий',
     releaseHistoryHint: 'Сначала новая',
     releaseHistoryLatest: 'Последняя',
     releaseHistoryEmpty: 'Описание версии готовится',
     releaseNotesTitle: 'Что нового',
     releaseNotesLink: 'Полный changelog',
+    releaseNotesHide: 'Скрыть changelog',
     verifyFileTitle: 'Проверить файл',
-    androidShort: 'Установить APK',
+    androidShort: 'Скачать APK',
     androidUnavailable: 'APK-ссылка готовится',
     iosShort: 'iOS скоро',
     bugReportShort: 'Сообщить о баге',
@@ -376,6 +376,7 @@ function setLanguage(lang) {
   });
   window.localStorage.setItem('sleeptracker-lang', nextLang);
   if (apkReleaseManifest) applyApkRelease(apkReleaseManifest);
+  syncFullChangelogToggle();
 }
 
 const savedLang = window.localStorage.getItem('sleeptracker-lang');
@@ -409,6 +410,16 @@ function changelogItems(manifest) {
     .slice(0, 3);
 }
 
+function fullChangelogItems(release) {
+  const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
+  const localized = lang === 'ru'
+    ? (release.fullChangelogRu || release.detailsRu || release.changelogRu)
+    : (release.fullChangelogEn || release.detailsEn || release.changelogEn);
+  const fallback = release.fullChangelog || release.details || release.changelog;
+  return (Array.isArray(localized) ? localized : Array.isArray(fallback) ? fallback : [])
+    .filter(Boolean);
+}
+
 function releaseSummary(release) {
   const lang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
   const summary = release.summary;
@@ -438,10 +449,51 @@ function numSafe(value) {
   return Number.isFinite(Number(value)) ? Number(value) : 0;
 }
 
+function syncFullChangelogToggle() {
+  const button = document.querySelector('[data-release-notes-link]');
+  const panel = document.querySelector('[data-full-changelog]');
+  if (!button || !panel) return;
+  const dict = translations[document.documentElement.lang] || translations.en;
+  const isOpen = !panel.hidden;
+  button.textContent = isOpen ? dict.releaseNotesHide : dict.releaseNotesLink;
+  button.setAttribute('aria-expanded', String(isOpen));
+}
+
+function renderFullChangelog(releases) {
+  const panel = document.querySelector('[data-full-changelog]');
+  if (!panel) return;
+  panel.replaceChildren();
+  const dict = translations[document.documentElement.lang] || translations.en;
+  releases.forEach((release) => {
+    const article = document.createElement('article');
+
+    const title = document.createElement('h4');
+    title.textContent = release.versionName || '—';
+    article.appendChild(title);
+
+    const formattedDate = formatReleaseDate(release.releaseDate || release.updatedAt || release.createdAt);
+    if (formattedDate) {
+      const date = document.createElement('span');
+      date.textContent = formattedDate;
+      article.appendChild(date);
+    }
+
+    const ul = document.createElement('ul');
+    const items = fullChangelogItems(release);
+    (items.length ? items : [releaseSummary(release) || dict.releaseHistoryEmpty]).forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+    article.appendChild(ul);
+    panel.appendChild(article);
+  });
+}
+
 function renderReleaseHistory(manifest) {
   const notes = document.querySelector('[data-release-notes]');
   const list = document.querySelector('[data-release-history-list]');
-  const link = document.querySelector('[data-release-notes-link]');
+  const button = document.querySelector('[data-release-notes-link]');
   if (!notes || !list) return;
   list.replaceChildren();
   const dict = translations[document.documentElement.lang] || translations.en;
@@ -455,7 +507,7 @@ function renderReleaseHistory(manifest) {
 
     const version = document.createElement('strong');
     version.className = 'release-version';
-    version.textContent = `${release.versionName || '—'} (${release.versionCode || '—'})`;
+    version.textContent = release.versionName || '—';
     top.appendChild(version);
 
     if (index === 0) {
@@ -492,14 +544,10 @@ function renderReleaseHistory(manifest) {
 
     list.appendChild(li);
   });
-  const releaseNotesUrl = manifest.releaseNotesUrl || manifest.changelogUrl;
-  if (link) {
-    if (releaseNotesUrl) {
-      link.href = releaseNotesUrl;
-      link.hidden = false;
-    } else {
-      link.hidden = true;
-    }
+  renderFullChangelog(releases);
+  if (button) {
+    button.hidden = releases.length === 0;
+    syncFullChangelogToggle();
   }
 }
 
@@ -533,9 +581,9 @@ function applyApkRelease(manifest) {
       download.onclick = null;
     }
   }
-  if (manifest.versionName && manifest.versionCode) {
+  if (manifest.versionName) {
     const versionNode = document.querySelector('[data-apk-version]');
-    if (versionNode) versionNode.textContent = `${manifest.versionName} (${manifest.versionCode})`;
+    if (versionNode) versionNode.textContent = manifest.versionName;
     const stripVersionNode = document.querySelector('[data-strip-version]');
     if (stripVersionNode) stripVersionNode.textContent = manifest.versionName;
   }
@@ -576,6 +624,13 @@ async function hydrateApkRelease() {
 }
 
 hydrateApkRelease();
+
+document.querySelector('[data-release-notes-link]')?.addEventListener('click', () => {
+  const panel = document.querySelector('[data-full-changelog]');
+  if (!panel) return;
+  panel.hidden = !panel.hidden;
+  syncFullChangelogToggle();
+});
 
 let progress = 0;
 const tick = window.setInterval(() => {

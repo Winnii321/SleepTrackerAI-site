@@ -29,19 +29,31 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "Update reminders now become required after 10 Later taps.",
-    "The update prompt waits until sleep tracking or alarm ringing is safe.",
-    "Release tracking now records later taps and hard-update limits."
+    "The update prompt no longer opens during a sleep recording or ringing alarm.",
+    "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
+    "Release metrics now record postponed updates and forced-update moments."
   ],
   "changelogEn": [
-    "Update reminders now become required after 10 Later taps.",
-    "The update prompt waits until sleep tracking or alarm ringing is safe.",
-    "Release tracking now records later taps and hard-update limits."
+    "The update prompt no longer opens during a sleep recording or ringing alarm.",
+    "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
+    "Release metrics now record postponed updates and forced-update moments."
   ],
   "changelogRu": [
-    "Обновление теперь можно отложить только 10 раз.",
-    "Окно обновления не лезет во время записи сна или активного будильника.",
-    "Статистика релизов теперь считает отказы и момент обязательного обновления."
+    "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
+    "После нескольких нажатий «Позже» тестеры переходят на свежую сборку, а не остаются на старых версиях.",
+    "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+  ],
+  "fullChangelogEn": [
+    "The update prompt no longer opens during a sleep recording or ringing alarm.",
+    "After 10 Later taps, the update becomes required for that target version.",
+    "Optional update reminders reappear after a quiet interval instead of spamming the user.",
+    "Release metrics now record postponed updates and forced-update moments."
+  ],
+  "fullChangelogRu": [
+    "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
+    "После 10 нажатий «Позже» обновление становится обязательным для этой версии.",
+    "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
+    "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
   ],
   "historyGeneratedAt": "2026-06-20T07:37:45.401Z",
   "releases": [
@@ -54,8 +66,8 @@
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "en": "Update reminders now become required after 10 Later taps.",
-        "ru": "Обновление теперь можно отложить только 10 раз."
+        "en": "The update prompt no longer interrupts a sleep recording or ringing alarm.",
+        "ru": "Окно обновления больше не мешает записи сна или звенящему будильнику."
       },
       "releaseDate": "2026-06-20",
       "createdAt": "2026-06-20T07:29:04.951Z",
@@ -78,19 +90,31 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "Update reminders now become required after 10 Later taps.",
-        "The update prompt waits until sleep tracking or alarm ringing is safe.",
-        "Release tracking now records later taps and hard-update limits."
+        "The update prompt no longer opens during a sleep recording or ringing alarm.",
+        "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
+        "Release metrics now record postponed updates and forced-update moments."
       ],
       "changelogEn": [
-        "Update reminders now become required after 10 Later taps.",
-        "The update prompt waits until sleep tracking or alarm ringing is safe.",
-        "Release tracking now records later taps and hard-update limits."
+        "The update prompt no longer opens during a sleep recording or ringing alarm.",
+        "Repeated Later taps now move testers to the current build instead of leaving them on old versions.",
+        "Release metrics now record postponed updates and forced-update moments."
       ],
       "changelogRu": [
-        "Обновление теперь можно отложить только 10 раз.",
-        "Окно обновления не лезет во время записи сна или активного будильника.",
-        "Статистика релизов теперь считает отказы и момент обязательного обновления."
+        "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
+        "После нескольких нажатий «Позже» тестеры переходят на свежую сборку, а не остаются на старых версиях.",
+        "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
+      ],
+      "fullChangelogEn": [
+        "The update prompt no longer opens during a sleep recording or ringing alarm.",
+        "After 10 Later taps, the update becomes required for that target version.",
+        "Optional update reminders reappear after a quiet interval instead of spamming the user.",
+        "Release metrics now record postponed updates and forced-update moments."
+      ],
+      "fullChangelogRu": [
+        "Окно обновления больше не открывается поверх записи сна или звенящего будильника.",
+        "После 10 нажатий «Позже» обновление становится обязательным для этой версии.",
+        "Необязательное напоминание возвращается через спокойный интервал, а не спамит постоянно.",
+        "Статистика релизов теперь видит отложенные обновления и момент обязательного обновления."
       ]
     },
     {
@@ -102,8 +126,8 @@
       "downloadable": true,
       "publishType": "hotfix",
       "summary": {
-        "en": "Update popup now uses the app or Android system language.",
-        "ru": "Окно обновления теперь берёт язык приложения или системы Android."
+        "en": "Update notes can now be shown in Russian.",
+        "ru": "Примечания к обновлению теперь показываются на русском."
       },
       "releaseDate": "2026-06-20",
       "createdAt": "2026-06-19T22:13:29.156Z",
@@ -121,19 +145,29 @@
       "minSupportedVersionCode": 0,
       "minSupportedReason": "",
       "changelog": [
-        "Update popup now uses the app or Android system language.",
-        "Russian users now see Russian update notes.",
-        "No sleep, alarm, payment, or premium logic changed."
+        "Update notes can now be shown in Russian.",
+        "The update window chooses the language from the app or Android system locale.",
+        "Russian beta testers no longer see English-only release notes."
       ],
       "changelogEn": [
-        "Update popup now uses the app or Android system language.",
-        "Russian users now see Russian update notes.",
-        "No sleep, alarm, payment, or premium logic changed."
+        "Update notes can now be shown in Russian.",
+        "The update window chooses the language from the app or Android system locale.",
+        "Russian beta testers no longer see English-only release notes."
       ],
       "changelogRu": [
-        "Окно обновления теперь берёт язык приложения или системы Android.",
-        "Русские пользователи теперь видят changelog на русском.",
-        "Логика сна, будильников, оплаты и Premium не менялась."
+        "Примечания к обновлению теперь показываются на русском.",
+        "Окно обновления берёт язык из приложения или системного языка Android.",
+        "Русские beta-тестеры больше не видят английский changelog."
+      ],
+      "fullChangelogEn": [
+        "Update notes can now be shown in Russian.",
+        "The update window chooses the language from the app or Android system locale.",
+        "Russian beta testers no longer see English-only release notes."
+      ],
+      "fullChangelogRu": [
+        "Примечания к обновлению теперь показываются на русском.",
+        "Окно обновления берёт язык из приложения или системного языка Android.",
+        "Русские beta-тестеры больше не видят английский changelog."
       ]
     },
     {
@@ -177,6 +211,18 @@
         "Оплата Premium больше не просит недоступный вход через Google.",
         "Вкладки Карта РФ и Crypto показывают свои цены.",
         "Годовая цена в месяц округлена и показана как RUB 416/мес."
+      ],
+      "fullChangelogEn": [
+        "Premium checkout no longer asks for unavailable Google sign-in.",
+        "Ruble and crypto payment tabs now show matching prices.",
+        "Annual plan per-month price is rounded and spaced correctly.",
+        "Payment activation still happens server-side through provider webhooks and entitlement checks."
+      ],
+      "fullChangelogRu": [
+        "Оплата Premium больше не просит недоступный вход через Google.",
+        "Вкладки Карта РФ и Crypto показывают свои цены.",
+        "Годовая цена в месяц округлена и показана как RUB 416/мес.",
+        "Активация Premium остаётся серверной: через webhook платежа и проверку entitlement."
       ]
     },
     {
@@ -191,7 +237,7 @@
         "en": "Initial public website APK with external payments.",
         "ru": "Первый публичный APK с сайта и внешней оплатой."
       },
-      "releaseDate": "2026-06-19",
+      "releaseDate": "2026-06-17",
       "apkName": "sleeptrackerai-1.0.0-121.apk",
       "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.0-121.apk",
       "sha256": "113410b7fed70e31431fc5e5c9843d97adea3c097c8541425fd945a73f3cce21",
@@ -205,19 +251,31 @@
       "minSupportedVersionCode": 0,
       "minSupportedReason": "",
       "changelog": [
-        "Temporary manual Android APK install, not a Google Play install.",
+        "First public Android beta build from the Sleep Tracker AI site.",
         "Website distribution build with external payment provider mode.",
         "Premium, paid AI, and cloud sync must be validated by server entitlement."
       ],
       "changelogEn": [
-        "Temporary manual Android APK install, not a Google Play install.",
+        "First public Android beta build from the Sleep Tracker AI site.",
         "Website distribution build with external payment provider mode.",
         "Premium, paid AI, and cloud sync must be validated by server entitlement."
       ],
       "changelogRu": [
-        "Ручная установка Android APK с сайта, не через Google Play.",
+        "Первая публичная Android beta-сборка с сайта Sleep Tracker AI.",
         "Сборка для сайта с внешней оплатой.",
         "Premium, платный AI и cloud sync проверяются через серверный доступ."
+      ],
+      "fullChangelogEn": [
+        "First public Android beta build from the Sleep Tracker AI site.",
+        "Website distribution build with external payment provider mode.",
+        "Premium, paid AI, and cloud sync must be validated by server entitlement.",
+        "Built with release signing, R8/shrink, non-debuggable release checks, and APK secret scan."
+      ],
+      "fullChangelogRu": [
+        "Первая публичная Android beta-сборка с сайта Sleep Tracker AI.",
+        "Сборка для сайта с внешней оплатой.",
+        "Premium, платный AI и cloud sync проверяются через серверный доступ.",
+        "Сборка подписана release-ключом, не debuggable, прошла shrink/R8 и проверку на секреты в APK."
       ]
     }
   ]
