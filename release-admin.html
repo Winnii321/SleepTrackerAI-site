@@ -107,7 +107,7 @@
 
     .control-band {
       display: grid;
-      grid-template-columns: minmax(260px, 1fr) auto auto;
+      grid-template-columns: minmax(220px, 0.9fr) minmax(220px, 1fr) auto auto;
       gap: 12px;
       align-items: end;
       padding: 12px;
@@ -115,6 +115,16 @@
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.035);
       margin-bottom: 10px;
+    }
+    .unlock-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .unlock-row input { min-width: 0; }
+    .control-band .unlock-row .button {
+      width: auto;
+      flex: 0 0 auto;
     }
     label {
       display: block;
@@ -522,8 +532,15 @@
 
     <section class="control-band" aria-label="Параметры админки">
       <div>
-        <label for="token">RELEASE_ADMIN_TOKEN</label>
-        <input id="token" type="password" autocomplete="off" placeholder="Вставьте токен" />
+        <label for="adminPassword">Пароль</label>
+        <div class="unlock-row">
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Введите пароль" />
+          <button class="button" type="button" id="unlock">Войти</button>
+        </div>
+      </div>
+      <div>
+        <label for="token">Токен</label>
+        <input id="token" type="password" autocomplete="off" placeholder="Появится после пароля" />
       </div>
       <div>
         <label>Период</label>
@@ -536,7 +553,7 @@
       </div>
       <button class="button primary" type="button" id="load">Обновить</button>
     </section>
-    <div class="status" id="status">Введите токен и обновите данные.</div>
+    <div class="status" id="status">Введите пароль или токен и обновите данные.</div>
 
     <section class="kpi-grid" id="kpis">
       <article class="card skeleton"><span>Текущий релиз</span><strong id="kpiVersion">—</strong><small id="kpiVersionNote">Загружаем манифест...</small></article>
@@ -694,7 +711,10 @@
   <script>
     const ENDPOINT = 'https://qliouorzmcmzahgzrepu.supabase.co/functions/v1/release-admin';
     const KEY = 'sb_publishable_oyQkQoBL4LjDD0g_X_-R-Q_JgmrhUqx';
+    const TOKEN_STORAGE_KEY = 'sleeptracker.releaseAdminToken';
+    const passwordInput = document.getElementById('adminPassword');
     const tokenInput = document.getElementById('token');
+    const unlockButton = document.getElementById('unlock');
     const statusNode = document.getElementById('status');
     let range = '30d';
     let manifest = null;
@@ -881,6 +901,41 @@
       return data;
     }
 
+    function saveToken(token) {
+      tokenInput.value = token;
+      localStorage.setItem(TOKEN_STORAGE_KEY, token);
+    }
+
+    async function unlockWithPassword() {
+      const password = passwordInput.value.trim();
+      if (!password) {
+        statusNode.textContent = 'Введите пароль.';
+        return;
+      }
+      statusNode.textContent = 'Проверяем пароль...';
+      unlockButton.disabled = true;
+      try {
+        const url = new URL(ENDPOINT);
+        url.searchParams.set('action', 'unlock');
+        const response = await fetch(url.toString(), {
+          method: 'POST',
+          headers: {
+            apikey: KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ password }),
+        });
+        const data = await response.json();
+        if (!response.ok || !data.token) throw new Error(data.error || `Ошибка ${response.status}`);
+        saveToken(data.token);
+        passwordInput.value = '';
+        statusNode.textContent = 'Пароль принят. Токен сохранен в этом браузере.';
+        await load();
+      } finally {
+        unlockButton.disabled = false;
+      }
+    }
+
     async function loadSelectedVersion() {
       if (!lastData) return;
       if (selectedVersionCode === 'all') {
@@ -895,9 +950,10 @@
     async function load() {
       const token = tokenInput.value.trim();
       if (!token) {
-        statusNode.textContent = 'Нужен RELEASE_ADMIN_TOKEN.';
+        statusNode.textContent = 'Введите пароль или RELEASE_ADMIN_TOKEN.';
         return;
       }
+      localStorage.setItem(TOKEN_STORAGE_KEY, token);
       statusNode.textContent = 'Загружаем данные...';
       $('load').disabled = true;
       try {
@@ -1241,6 +1297,25 @@
       }, 'Событий платежей пока нет');
     }
 
+    unlockButton.addEventListener('click', () => {
+      unlockWithPassword().catch((error) => {
+        unlockButton.disabled = false;
+        statusNode.textContent = error.message || 'Ошибка входа';
+      });
+    });
+    passwordInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        unlockWithPassword().catch((error) => {
+          unlockButton.disabled = false;
+          statusNode.textContent = error.message || 'Ошибка входа';
+        });
+      }
+    });
+    tokenInput.addEventListener('change', () => {
+      const token = tokenInput.value.trim();
+      if (token) localStorage.setItem(TOKEN_STORAGE_KEY, token);
+    });
     document.getElementById('load').addEventListener('click', () => {
       load().catch((error) => {
         $('load').disabled = false;
@@ -1270,7 +1345,18 @@
       });
     });
 
+    const savedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (savedToken) {
+      tokenInput.value = savedToken;
+      statusNode.textContent = 'Токен взят из этого браузера. Загружаем данные...';
+    }
+
     hydrateManifest();
+    if (savedToken) {
+      load().catch((error) => {
+        statusNode.textContent = error.message || 'Ошибка загрузки';
+      });
+    }
   </script>
 </body>
 </html>
