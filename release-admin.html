@@ -689,6 +689,7 @@
           <button type="button" data-range="7d">7 д</button>
           <button type="button" data-range="30d" class="is-active">30 д</button>
           <button type="button" data-range="90d">90 д</button>
+          <button type="button" data-range="all">Все</button>
         </div>
       </div>
       <button class="button primary" type="button" id="load">Обновить</button>
@@ -731,7 +732,7 @@
             <div class="chart-copy">
               <div>
                 <h2>Скачивания APK</h2>
-                <p class="muted">Сайт и клики из окна обновления.</p>
+                <p class="muted">Клики на сайте и в окне обновления. Новые скачивания появятся здесь по дням.</p>
               </div>
               <span class="badge" id="downloadTotalBadge">—</span>
             </div>
@@ -918,7 +919,7 @@
     function fmt(value) { return new Intl.NumberFormat('ru-RU').format(num(value)); }
     function pct(value) { return `${num(value).toFixed(num(value) % 1 ? 1 : 0)}%`; }
     function rangeLabel(value) {
-      return { '24h': '24 ч', '7d': '7 д', '30d': '30 д', '90d': '90 д' }[value] || value || '—';
+      return { '24h': '24 ч', '7d': '7 д', '30d': '30 д', '90d': '90 д', all: 'Все время', custom: 'Период' }[value] || value || '—';
     }
     function dateTime(value) {
       if (!value) return '—';
@@ -1015,13 +1016,52 @@
       return parts.length >= 3 ? `${parts[2]}.${parts[1]}` : String(value || '');
     }
 
-    function renderChartBars(id, byDay, mapper, emptyText) {
+    function addDays(date, days) {
+      const next = new Date(date);
+      next.setUTCDate(next.getUTCDate() + days);
+      return next;
+    }
+
+    function dayFromDate(value) {
+      const date = new Date(String(value || ''));
+      return Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
+    }
+
+    function firstReleaseDay() {
+      const releaseDays = (manifest?.releases || [])
+        .map((item) => dayFromDate(item.releaseDate || item.updatedAt || item.publishedAt))
+        .filter(Boolean)
+        .sort();
+      return releaseDays[0] || '2026-06-17';
+    }
+
+    function chartDays(data, byDay) {
+      const currentRange = data?.range || range;
+      const untilDay = dayFromDate(data?.until) || dayFromDate(new Date().toISOString());
+      let sinceDay = dayFromDate(data?.since);
+      if (currentRange === 'all') {
+        const eventDays = Object.keys(byDay || {}).filter(Boolean).sort();
+        sinceDay = eventDays[0] || firstReleaseDay();
+      }
+      if (!sinceDay || !untilDay) return Object.keys(byDay || {}).sort();
+      const start = new Date(`${sinceDay}T00:00:00.000Z`);
+      const end = new Date(`${untilDay}T00:00:00.000Z`);
+      if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start > end) return Object.keys(byDay || {}).sort();
+      const days = [];
+      for (let cursor = start; cursor <= end; cursor = addDays(cursor, 1)) {
+        days.push(cursor.toISOString().slice(0, 10));
+        if (days.length >= 370) break;
+      }
+      return days;
+    }
+
+    function renderChartBars(id, byDay, mapper, emptyText, data) {
       const node = $(id);
       clear(node);
-      const entries = Object.entries(byDay || {})
-        .sort(([a], [b]) => a.localeCompare(b))
-        .slice(-14)
-        .map(([day, value]) => ({ day, value: mapper(value) }))
+      const source = byDay || {};
+      const days = chartDays(data, source);
+      const entries = days
+        .map((day) => ({ day, value: mapper(source[day] || {}) }))
         .filter((item) => num(item.value) >= 0);
       if (!entries.length || entries.every((item) => num(item.value) === 0)) {
         const empty = document.createElement('div');
@@ -1108,8 +1148,8 @@
       setText('downloadTotalBadge', `${fmt(downloadTotal)} всего`);
       setText('providerTotalBadge', providerTotal ? `${fmt(providerTotal)} заказов` : 'нет заказов');
       setText('planTotalBadge', planTotal ? `${fmt(planTotal)} покупок` : 'нет покупок');
-      renderChartBars('paymentChart', orders.paidByDay || {}, (value) => num(value), 'Оплат за период пока нет.');
-      renderChartBars('downloadChart', release.downloads?.byDay || {}, (counts) => num(counts.download_clicked) + num(counts.update_download_clicked), 'Скачиваний за период пока нет.');
+      renderChartBars('paymentChart', orders.paidByDay || {}, (value) => num(value), 'Оплат за период пока нет.', data);
+      renderChartBars('downloadChart', release.downloads?.byDay || {}, (counts) => num(counts.download_clicked) + num(counts.update_download_clicked), 'Скачиваний за период пока нет.', data);
       renderSplitList('providerSplit', orders.byProvider || {}, { empty: 'Заказов пока нет.', label: (value) => label('provider', value) });
       renderSplitList('planSplit', orders.byPlan || {}, { empty: 'Покупок тарифов пока нет.', label: (value) => label('plan', value) });
       renderPremiumVisual(entitlements);
