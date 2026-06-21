@@ -382,6 +382,34 @@
     .split-list .chart-empty {
       min-height: 110px;
     }
+    .download-summary {
+      display: grid;
+      grid-template-columns: minmax(140px, 0.55fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .download-total strong {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 0.9;
+    }
+    .download-total span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .download-note {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
     .split-list {
       display: grid;
       gap: 12px;
@@ -646,6 +674,7 @@
       .chart-bars,
       .chart-panel.primary .chart-bars { height: 150px; gap: 4px; }
       .chart-bar:nth-child(odd) small { display: none; }
+      .download-summary { grid-template-columns: 1fr; }
       .split-row { grid-template-columns: 1fr auto; }
       .split-track { grid-column: 1 / -1; grid-row: 2; }
       .meter-wrap { grid-template-columns: 1fr; }
@@ -732,11 +761,20 @@
             <div class="chart-copy">
               <div>
                 <h2>Скачивания APK</h2>
-                <p class="muted">Клики на сайте и в окне обновления. Новые скачивания появятся здесь по дням.</p>
+                <p class="muted">Кнопки скачивания на сайте и в окне обновления.</p>
               </div>
               <span class="badge" id="downloadTotalBadge">—</span>
             </div>
-            <div class="chart-bars" id="downloadChart"></div>
+            <div class="download-summary">
+              <div class="download-total">
+                <strong id="downloadHero">—</strong>
+                <span id="downloadHeroNote">кликов за период</span>
+              </div>
+              <div>
+                <div class="split-list" id="downloadSplit"></div>
+                <p class="download-note" id="downloadLastNote">Новые скачивания появятся здесь сразу после клика.</p>
+              </div>
+            </div>
           </article>
 
           <article class="panel chart-panel">
@@ -1092,7 +1130,7 @@
       const rows = Array.isArray(mapOrRows)
         ? mapOrRows
         : Object.entries(mapOrRows || {}).map(([label, value]) => ({ label, value }));
-      const filtered = rows.filter((row) => num(row.value) > 0).slice(0, options.limit || 5);
+      const filtered = rows.filter((row) => options.keepZero || num(row.value) > 0).slice(0, options.limit || 5);
       if (!filtered.length) {
         const div = document.createElement('div');
         div.className = 'chart-empty';
@@ -1133,23 +1171,44 @@
       setText('premiumBadge', total ? `${fmt(active)} / ${fmt(total)}` : 'нет данных');
     }
 
+    function latestNonZeroDay(byDay, mapper) {
+      return Object.entries(byDay || {})
+        .map(([day, value]) => ({ day, value: mapper(value) }))
+        .filter((item) => num(item.value) > 0)
+        .sort((a, b) => b.day.localeCompare(a.day))[0] || null;
+    }
+
+    function renderDownloadSummary(data) {
+      const release = data.release || {};
+      const website = num(release.downloads?.total || 0);
+      const update = num(release.downloads?.update || 0);
+      const total = website + update;
+      const latestDay = latestNonZeroDay(release.downloads?.byDay || {}, (counts) => num(counts.download_clicked) + num(counts.update_download_clicked));
+      setText('downloadHero', fmt(total));
+      setText('downloadHeroNote', total === 1 ? 'клик за период' : 'кликов за период');
+      setText('downloadTotalBadge', total ? `${fmt(total)} всего` : 'нет кликов');
+      setText('downloadLastNote', latestDay ? `Последний день с кликами: ${dateLabel(latestDay.day)} · ${fmt(latestDay.value)}` : 'Новые скачивания появятся здесь сразу после клика.');
+      renderSplitList('downloadSplit', [
+        { label: 'Сайт', value: website },
+        { label: 'Окно обновления', value: update },
+      ], { empty: 'Скачиваний пока нет.', keepZero: true });
+    }
+
     function renderOverviewCharts(data) {
       const release = data.release || {};
       const orders = data.payments?.orders || {};
       const entitlements = data.payments?.entitlements || {};
       const revenue = data.revenue || {};
-      const downloadTotal = (release.downloads?.total || 0) + (release.downloads?.update || 0);
       const paidTotal = orders.paid || 0;
       const planTotal = Object.values(orders.byPlan || {}).reduce((sum, value) => sum + num(value), 0);
       const providerTotal = Object.values(orders.byProvider || {}).reduce((sum, value) => sum + num(value), 0);
 
       setText('heroRevenue', moneyMap(revenue.grossPaid?.byCurrency));
       setText('heroRevenueNote', `${fmt(paidTotal)} оплаченных заказов за период`);
-      setText('downloadTotalBadge', `${fmt(downloadTotal)} всего`);
       setText('providerTotalBadge', providerTotal ? `${fmt(providerTotal)} заказов` : 'нет заказов');
       setText('planTotalBadge', planTotal ? `${fmt(planTotal)} покупок` : 'нет покупок');
       renderChartBars('paymentChart', orders.paidByDay || {}, (value) => num(value), 'Оплат за период пока нет.', data);
-      renderChartBars('downloadChart', release.downloads?.byDay || {}, (counts) => num(counts.download_clicked) + num(counts.update_download_clicked), 'Скачиваний за период пока нет.', data);
+      renderDownloadSummary(data);
       renderSplitList('providerSplit', orders.byProvider || {}, { empty: 'Заказов пока нет.', label: (value) => label('provider', value) });
       renderSplitList('planSplit', orders.byPlan || {}, { empty: 'Покупок тарифов пока нет.', label: (value) => label('plan', value) });
       renderPremiumVisual(entitlements);
@@ -1257,7 +1316,7 @@
       setText('kpiDownloads', fmt((release.downloads?.total || 0) + (release.downloads?.update || 0)));
       setText('kpiDownloadsNote', `${fmt(release.downloads?.total || 0)} сайт · ${fmt(release.downloads?.update || 0)} обновления`);
       setText('kpiActive', fmt(release.totalActiveInstalls || 0));
-      setText('kpiActiveNote', 'уникальные установки');
+      setText('kpiActiveNote', '1 устройство = 1 установка');
       setText('kpiAdoption', pct(release.latestAdoptionRate || 0));
       setText('kpiAdoptionNote', `${fmt(release.latestActiveInstalls || 0)} на последней`);
       setText('kpiCtr', pct(release.updateCtr || 0));
