@@ -74,7 +74,7 @@
     }
     .subtitle {
       margin: 8px 0 0;
-      max-width: 820px;
+      max-width: 620px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.45;
@@ -107,7 +107,7 @@
 
     .control-band {
       display: grid;
-      grid-template-columns: minmax(220px, 0.9fr) minmax(220px, 1fr) auto auto;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
       gap: 12px;
       align-items: end;
       padding: 12px;
@@ -126,6 +126,20 @@
       width: auto;
       flex: 0 0 auto;
     }
+    .token-details {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    .token-details summary {
+      width: fit-content;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .token-details input { margin-top: 8px; max-width: 420px; }
     label {
       display: block;
       margin-bottom: 7px;
@@ -157,8 +171,7 @@
       border-radius: 6px;
       background: rgba(255, 255, 255, 0.035);
     }
-    .range-tabs button,
-    .tabs button {
+    .range-tabs button {
       border: 0;
       border-radius: 4px;
       color: var(--muted);
@@ -171,8 +184,7 @@
       height: 34px;
       font-size: 11px;
     }
-    .range-tabs button.is-active,
-    .tabs button.is-active {
+    .range-tabs button.is-active {
       color: #050505;
       background: #fff;
     }
@@ -183,27 +195,11 @@
       line-height: 1.5;
     }
 
-    .tabs {
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-      padding: 4px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.035);
-      margin: 12px 0;
-    }
-    .tabs button {
-      height: 34px;
-      padding: 0 18px;
-      white-space: nowrap;
-      font-size: 12px;
-    }
-
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 12px;
+      margin-bottom: 10px;
     }
     .card,
     .panel {
@@ -255,6 +251,7 @@
       font-size: clamp(20px, 2vw, 30px);
       line-height: 1.08;
     }
+    .is-technical-kpi { display: none; }
 
     .section { display: none; }
     .section.is-active { display: block; }
@@ -301,12 +298,14 @@
     .badge.warn { color: var(--warn); border-color: rgba(251, 191, 36, 0.35); }
     .badge.bad { color: var(--red); border-color: rgba(251, 113, 133, 0.35); }
 
-    .bar-list { display: grid; gap: 12px; }
+    .bar-list { display: grid; gap: 4px; }
     .bar-row {
       display: grid;
-      grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.5fr) auto;
-      gap: 12px;
+      grid-template-columns: minmax(110px, 1fr) auto;
+      gap: 10px;
       align-items: center;
+      min-height: 34px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.075);
     }
     .bar-label {
       min-width: 0;
@@ -316,55 +315,18 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .bar-track {
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.075);
-      overflow: hidden;
-    }
-    .bar-fill {
-      display: block;
-      height: 100%;
-      width: 0;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--green), var(--cyan));
-    }
+    .bar-track,
+    .bar-fill { display: none; }
     .bar-value {
       color: var(--fg);
       font-size: 12px;
       font-weight: 800;
       text-align: right;
     }
-    .spark {
-      height: 150px;
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 1fr;
-      gap: 8px;
-      align-items: end;
-      padding: 18px 0 30px;
-    }
-    .spark span {
-      min-height: 4px;
-      border-radius: 5px 5px 0 0;
-      background: linear-gradient(180deg, var(--cyan), rgba(125, 232, 255, 0.18));
-      position: relative;
-    }
-    .spark span::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 50%;
-      bottom: -24px;
-      transform: translateX(-50%);
-      color: var(--muted);
-      font-size: 10px;
-      white-space: nowrap;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 780px;
+      min-width: 520px;
     }
     th, td {
       border-bottom: 1px solid var(--line);
@@ -399,6 +361,18 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
     }
+    .technical-summary {
+      width: fit-content;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 800;
+    }
+    details.panel[open] .technical-summary {
+      margin-bottom: 14px;
+      color: var(--fg);
+    }
     .version-tools {
       display: flex;
       align-items: center;
@@ -408,33 +382,6 @@
     }
     .version-tools select {
       min-width: 190px;
-    }
-    .version-summary-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .version-stat {
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.035);
-    }
-    .version-stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-    .version-stat strong {
-      display: block;
-      margin-top: 6px;
-      font-family: var(--display);
-      font-size: 24px;
-      overflow-wrap: anywhere;
     }
     .diagnostic-links {
       display: flex;
@@ -459,6 +406,14 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.035);
+    }
+    .attention.good {
+      border-color: rgba(181, 255, 106, 0.28);
+      background: rgba(181, 255, 106, 0.055);
+    }
+    .attention.warn {
+      border-color: rgba(251, 191, 36, 0.35);
+      background: rgba(251, 191, 36, 0.055);
     }
     .attention strong {
       display: block;
@@ -491,13 +446,13 @@
       .range-tabs { margin-top: 12px; justify-content: flex-start; }
       .control-band > * + * { margin-top: 12px; }
       .control-band .button { width: 100%; }
-      .kpi-grid, .attention-grid, .version-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .kpi-grid, .attention-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 620px) {
       main { width: min(100% - 24px, 1440px); padding-top: 18px; }
-      .kpi-grid, .attention-grid, .version-summary-grid { grid-template-columns: 1fr; }
+      .kpi-grid, .attention-grid { grid-template-columns: 1fr; }
       .card { min-height: 88px; }
-      .bar-row { grid-template-columns: 1fr; gap: 6px; }
+      .bar-row { grid-template-columns: 1fr auto; gap: 8px; }
       .bar-label {
         white-space: normal;
         overflow: visible;
@@ -508,15 +463,7 @@
         text-align: left;
         overflow-wrap: anywhere;
       }
-      .spark {
-        gap: 4px;
-        height: 180px;
-      }
-      .spark span:nth-child(odd)::after {
-        display: none;
-      }
-      .tabs button { padding: 0 12px; }
-      table { min-width: 620px; }
+      table { min-width: 460px; }
     }
   </style>
 </head>
@@ -526,7 +473,7 @@
       <div>
         <p class="eyebrow">Sleep Tracker AI</p>
         <h1>Админ-панель</h1>
-        <p class="subtitle">Релизы, APK-загрузки, обновления, платежи Robokassa/crypto/Paddle, Premium-доступ и доставка через Cloudflare.</p>
+        <p class="subtitle">Базовая статистика: релиз, скачивания, установки, оплаты, Premium и проблемы.</p>
       </div>
     </header>
 
@@ -539,10 +486,6 @@
         </div>
       </div>
       <div>
-        <label for="token">Токен</label>
-        <input id="token" type="password" autocomplete="off" placeholder="Появится после пароля" />
-      </div>
-      <div>
         <label>Период</label>
         <div class="range-tabs" id="rangeTabs">
           <button type="button" data-range="24h">24 ч</button>
@@ -552,27 +495,12 @@
         </div>
       </div>
       <button class="button primary" type="button" id="load">Обновить</button>
+      <details class="token-details">
+        <summary>Токен вручную</summary>
+        <input id="token" type="password" autocomplete="off" placeholder="Появится после пароля" />
+      </details>
     </section>
     <div class="status" id="status">Введите пароль или токен и обновите данные.</div>
-
-    <section class="kpi-grid" id="kpis">
-      <article class="card skeleton"><span>Текущий релиз</span><strong id="kpiVersion">—</strong><small id="kpiVersionNote">Загружаем манифест...</small></article>
-      <article class="card"><span>Клики скачивания</span><strong id="kpiDownloads">—</strong><small id="kpiDownloadsNote">Сайт + обновления</small></article>
-      <article class="card"><span>Активные установки</span><strong id="kpiActive">—</strong><small id="kpiActiveNote">Уникальные установки за период</small></article>
-      <article class="card purple"><span>Доля последней</span><strong id="kpiAdoption">—</strong><small id="kpiAdoptionNote">Доля актуальной версии</small></article>
-      <article class="card"><span>CTR обновлений</span><strong id="kpiCtr">—</strong><small id="kpiCtrNote">Показ → клик</small></article>
-      <article class="card"><span>Оплачено / Premium</span><strong id="kpiPaid">—</strong><small id="kpiPaidNote">Заказы / активный доступ</small></article>
-      <article class="card purple"><span>Выручка</span><strong id="kpiRevenue">—</strong><small id="kpiRevenueNote">Валовая выручка по валютам</small></article>
-      <article class="card warn"><span>Cloudflare CDN</span><strong id="kpiCloudflare">—</strong><small id="kpiCloudflareNote">Только через сервер</small></article>
-    </section>
-
-    <nav class="tabs" id="tabs" aria-label="Разделы админки">
-      <button type="button" class="is-active" data-tab="overview">Обзор</button>
-      <button type="button" data-tab="payments">Платежи</button>
-      <button type="button" data-tab="entitlements">Premium</button>
-      <button type="button" data-tab="cloudflare">Cloudflare</button>
-      <button type="button" data-tab="events">События</button>
-    </nav>
 
     <section class="section is-active" id="overview">
       <div class="panel">
@@ -586,53 +514,23 @@
         <div class="attention-grid" id="attentionGrid"></div>
       </div>
 
-      <div class="two-col">
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>Динамика скачиваний</h2>
-              <p class="muted">События по дням. Клики не равны уникальным установкам.</p>
-            </div>
-          </div>
-          <div class="spark" id="downloadSpark"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>Воронка обновлений</h2>
-              <p class="muted">Показы, клики и открытие целевых версий.</p>
-            </div>
-          </div>
-          <div class="bar-list" id="funnelBars"></div>
-        </div>
-      </div>
-
-      <div class="two-col">
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>Динамика платежей</h2>
-              <p class="muted">Оплаченные заказы по дням.</p>
-            </div>
-          </div>
-          <div class="spark" id="paymentSpark"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>Выручка по валютам</h2>
-              <p class="muted">Валовая оплаченная выручка по валютам.</p>
-            </div>
-          </div>
-          <div class="bar-list" id="revenueBars"></div>
-        </div>
-      </div>
+      <section class="kpi-grid" id="kpis">
+        <article class="card skeleton"><span>Текущий релиз</span><strong id="kpiVersion">—</strong><small id="kpiVersionNote">Загружаем манифест...</small></article>
+        <article class="card"><span>Скачивания</span><strong id="kpiDownloads">—</strong><small id="kpiDownloadsNote">Сайт + обновления</small></article>
+        <article class="card"><span>Активные установки</span><strong id="kpiActive">—</strong><small id="kpiActiveNote">Уникальные установки за период</small></article>
+        <article class="card"><span>Оплаты</span><strong id="kpiPaid">—</strong><small id="kpiPaidNote">Оплачено / ожидает</small></article>
+        <article class="card"><span>Premium</span><strong id="kpiPremium">—</strong><small id="kpiPremiumNote">Активный доступ</small></article>
+        <article class="card purple"><span>Выручка</span><strong id="kpiRevenue">—</strong><small id="kpiRevenueNote">Валовая выручка по валютам</small></article>
+        <article class="card purple is-technical-kpi"><span>Доля последней</span><strong id="kpiAdoption">—</strong><small id="kpiAdoptionNote">Доля актуальной версии</small></article>
+        <article class="card is-technical-kpi"><span>CTR обновлений</span><strong id="kpiCtr">—</strong><small id="kpiCtrNote">Показ → клик</small></article>
+        <article class="card warn is-technical-kpi"><span>Cloudflare CDN</span><strong id="kpiCloudflare">—</strong><small id="kpiCloudflareNote">Только через сервер</small></article>
+      </section>
 
       <div class="panel">
         <div class="panel-head">
           <div>
             <h2>Версии</h2>
-            <p class="muted">Сверху общая статистика. Здесь можно посмотреть конкретную сборку за выбранный период.</p>
+            <p class="muted">Коротко по каждой публичной версии.</p>
           </div>
           <div class="version-tools">
             <label for="versionSelect">Показать</label>
@@ -641,71 +539,50 @@
             </select>
           </div>
         </div>
-        <div class="version-summary-grid" id="versionSummaryGrid"></div>
-        <div class="table-wrap"><table><thead><tr><th>Версия</th><th>Активные установки</th><th>Доля</th><th>Скачивания</th><th>CDN APK</th><th>Показы</th><th>Клики обновления</th><th>CTR</th></tr></thead><tbody id="versionsRows"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Версия</th><th>Активные установки</th><th>Доля</th><th>Скачивания</th></tr></thead><tbody id="versionsRows"></tbody></table></div>
         <div class="diagnostic-links">
           <a href="index.html">На сайт</a>
           <a href="apk-release.json" target="_blank" rel="noopener">APK-манифест</a>
           <a href="https://downloads.sleeptrackerai.org/downloads/latest.json" target="_blank" rel="noopener">latest.json</a>
         </div>
       </div>
+
+      <details class="panel">
+        <summary class="technical-summary">Технические детали</summary>
+        <div class="two-col">
+          <div>
+            <h3>Провайдеры</h3>
+            <div class="bar-list" id="providerBars"></div>
+          </div>
+          <div>
+            <h3>Тарифы</h3>
+            <div class="bar-list" id="planBars"></div>
+          </div>
+        </div>
+        <div class="two-col">
+          <div>
+            <h3>Статусы заказов</h3>
+            <div class="bar-list" id="statusBars"></div>
+          </div>
+          <div>
+            <h3>Premium-доступ</h3>
+            <div class="bar-list" id="entitlementBars"></div>
+          </div>
+        </div>
+        <div class="two-col">
+          <div>
+            <h3>Cloudflare CDN</h3>
+            <span class="badge" id="cfStatus">—</span>
+            <div class="bar-list" id="cdnBars"></div>
+          </div>
+          <div>
+            <h3>Origin R2</h3>
+            <div class="bar-list" id="r2Bars"></div>
+          </div>
+        </div>
+      </details>
     </section>
 
-    <section class="section" id="payments">
-      <div class="two-col">
-        <div class="panel">
-          <div class="panel-head"><div><h2>Провайдеры</h2><p class="muted">Robokassa приходит как provider <code>rub</code>.</p></div></div>
-          <div class="bar-list" id="providerBars"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><div><h2>Тарифы</h2><p class="muted">Месячные и годовые покупки.</p></div></div>
-          <div class="bar-list" id="planBars"></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div><h2>Статусы заказов</h2><p class="muted">Ожидает, оплачен, ошибка, возврат, истек и отменен.</p></div></div>
-        <div class="bar-list" id="statusBars"></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div><h2>Последние заказы</h2><p class="muted">Только маскированные ID. Сырые payload платежей не возвращаются.</p></div></div>
-        <div class="table-wrap"><table><thead><tr><th>Создан</th><th>Заказ</th><th>Пользователь</th><th>Провайдер</th><th>Тариф</th><th>Статус</th><th>Сумма</th><th>Premium</th></tr></thead><tbody id="paymentRows"></tbody></table></div>
-      </div>
-    </section>
-
-    <section class="section" id="entitlements">
-      <div class="panel">
-        <div class="panel-head"><div><h2>Premium-доступ</h2><p class="muted">Права доступа — источник правды по платному доступу.</p></div></div>
-        <div class="bar-list" id="entitlementBars"></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div><h2>Последние права доступа</h2><p class="muted">Маскированные пользователи, провайдер, тариф, статус и срок.</p></div></div>
-        <div class="table-wrap"><table><thead><tr><th>Пользователь</th><th>Провайдер</th><th>Тариф</th><th>Статус</th><th>Активен</th><th>Premium до</th><th>Обновлено</th></tr></thead><tbody id="entitlementRows"></tbody></table></div>
-      </div>
-    </section>
-
-    <section class="section" id="cloudflare">
-      <div class="two-col">
-        <div class="panel">
-          <div class="panel-head"><div><h2>CDN-запросы</h2><p class="muted">Запросы Cloudflare по APK/download путям.</p></div><span class="badge" id="cfStatus">—</span></div>
-          <div class="bar-list" id="cdnBars"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><div><h2>Origin R2</h2><p class="muted">Операции R2 отдельно от cached downloads.</p></div></div>
-          <div class="bar-list" id="r2Bars"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="events">
-      <div class="panel">
-        <div class="panel-head"><div><h2>Последние события релиза</h2><p class="muted">Диагностика внизу, отдельно от операционного обзора.</p></div></div>
-        <div class="table-wrap"><table><thead><tr><th>Время</th><th>Событие</th><th>Установка</th><th>Текущая</th><th>Целевая</th><th>APK</th><th>Источник</th><th>Обязательное</th></tr></thead><tbody id="eventRows"></tbody></table></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div><h2>Последние события платежей</h2><p class="muted">Provider event ID маскируются, payload скрыт.</p></div></div>
-        <div class="table-wrap"><table><thead><tr><th>Время</th><th>Провайдер</th><th>Событие</th><th>Событие провайдера</th></tr></thead><tbody id="paymentEventRows"></tbody></table></div>
-      </div>
-    </section>
   </main>
 
   <script>
@@ -938,13 +815,8 @@
 
     async function loadSelectedVersion() {
       if (!lastData) return;
-      if (selectedVersionCode === 'all') {
-        selectedVersionData = null;
-        renderVersionPanel(lastData, null);
-        return;
-      }
-      selectedVersionData = await fetchDashboard(selectedVersionCode);
-      renderVersionPanel(lastData, selectedVersionData);
+      selectedVersionData = null;
+      renderVersionPanel(lastData, null);
     }
 
     async function load() {
@@ -960,7 +832,6 @@
         const data = await fetchDashboard();
         selectedVersionData = null;
         render(data);
-        if (selectedVersionCode !== 'all') await loadSelectedVersion();
       } finally {
         $('load').disabled = false;
       }
@@ -984,8 +855,10 @@
       setText('kpiAdoptionNote', `${fmt(release.latestActiveInstalls || 0)} на последней`);
       setText('kpiCtr', pct(release.updateCtr || 0));
       setText('kpiCtrNote', `${fmt(data.totals?.update_download_clicked || 0)} кликов / ${fmt(data.totals?.update_prompted || 0)} показов`);
-      setText('kpiPaid', `${fmt(orders.paid || 0)} / ${fmt(entitlements.active || 0)}`);
+      setText('kpiPaid', fmt(orders.paid || 0));
       setText('kpiPaidNote', `${fmt(orders.pending || 0)} ожидают · ${fmt(orders.failed || 0)} ошибок`);
+      setText('kpiPremium', fmt(entitlements.active || 0));
+      setText('kpiPremiumNote', `${fmt(entitlements.total || 0)} всего прав доступа`);
       setText('kpiRevenue', moneyMap(revenue.grossPaid?.byCurrency));
       setText('kpiRevenueNote', 'До возвратов и комиссий');
       const cdnRequests = cloudflare.cdn?.requests ?? null;
@@ -993,99 +866,47 @@
       setText('kpiCloudflareNote', cloudflare.configured ? `${label('cloudflare', cloudflare.status || 'ok')} · CDN-запросы` : 'Не настроено');
       setText('windowBadge', `${rangeLabel(data.range || range)} · ${dateTime(data.since)} → ${dateTime(data.until)}`);
 
-      renderAttention(attention);
-      renderSpark(release.downloads?.byDay || {});
-      renderPaymentSpark(orders.paidByDay || {});
-      renderRevenueBars(revenue.grossPaid?.byCurrency || {});
-      renderFunnel(release.updateFunnel || []);
+      renderAttention(attention, cloudflare);
       renderVersionPanel(data, selectedVersionData);
       renderPayments(data);
       renderEntitlements(data);
       renderCloudflare(cloudflare);
-      renderEvents(data);
       statusNode.textContent = `Готово. Период: ${rangeLabel(data.range || range)}. Обновлено: ${new Date().toLocaleTimeString('ru-RU')}.`;
     }
 
-    function renderAttention(attention) {
+    function renderAttention(attention, cloudflare) {
       const items = [
-        ['Ожидают > 15 мин', attention.pendingOrdersOlderThan15m || 0],
-        ['Оплачено без Premium', attention.paidOrdersWithoutEntitlement || 0],
-        ['Ошибки обновлений', attention.failedUpdateChecks || 0],
-        ['Устаревшие установки', attention.staleInstalls || 0],
-      ];
+        { label: 'Платежи ждут >15 мин', value: attention.pendingOrdersOlderThan15m || 0, kind: 'warn' },
+        { label: 'Оплачено, но Premium не выдан', value: attention.paidOrdersWithoutEntitlement || 0, kind: 'warn' },
+        { label: 'Ошибки обновлений', value: attention.failedUpdateChecks || 0, kind: 'warn' },
+        { label: 'Устаревшие установки', value: attention.staleInstalls || 0, kind: 'warn' },
+      ].filter((item) => num(item.value) > 0);
+      if (!cloudflare.configured) {
+        items.push({ label: 'Доставка APK не полностью подключена', value: '!', kind: 'warn' });
+      }
       const grid = $('attentionGrid');
       clear(grid);
-      items.forEach(([label, value]) => {
+      if (!items.length) {
         const item = document.createElement('div');
-        item.className = 'attention';
+        item.className = 'attention good';
         const strong = document.createElement('strong');
-        strong.textContent = fmt(value);
+        strong.textContent = 'OK';
+        const span = document.createElement('span');
+        span.textContent = 'Критичных проблем нет за выбранный период';
+        item.append(strong, span);
+        grid.appendChild(item);
+        return;
+      }
+      items.forEach(({ label, value, kind }) => {
+        const item = document.createElement('div');
+        item.className = `attention ${kind || ''}`.trim();
+        const strong = document.createElement('strong');
+        strong.textContent = typeof value === 'number' ? fmt(value) : String(value);
         const span = document.createElement('span');
         span.textContent = label;
         item.append(strong, span);
         grid.appendChild(item);
       });
-    }
-
-    function renderSpark(byDay) {
-      const node = $('downloadSpark');
-      clear(node);
-      const entries = Object.entries(byDay || {}).sort(([a], [b]) => a.localeCompare(b)).slice(-14);
-      if (!entries.length) {
-        const empty = document.createElement('div');
-        empty.className = 'empty';
-        empty.textContent = 'Событий скачивания пока нет.';
-        node.appendChild(empty);
-        return;
-      }
-      const values = entries.map(([, counts]) => num(counts.download_clicked) + num(counts.update_download_clicked));
-      const max = Math.max(...values, 1);
-      entries.forEach(([day, counts]) => {
-        const value = num(counts.download_clicked) + num(counts.update_download_clicked);
-        const bar = document.createElement('span');
-        bar.style.height = `${Math.max(4, Math.round((value / max) * 100))}%`;
-        bar.dataset.label = day.slice(5);
-        bar.title = `${day}: ${fmt(value)}`;
-        node.appendChild(bar);
-      });
-    }
-
-    function renderFunnel(rows) {
-      barList('funnelBars', rows.map((row) => ({
-        label: `${row.targetVersionCode} · показы`,
-        value: row.prompted,
-        valueLabel: `${fmt(row.prompted)} / ${fmt(row.updateClicks)} кликов · ${pct(row.promptToClickRate || 0)}`,
-      })), { empty: 'Показов обновления пока нет.' });
-    }
-
-    function renderPaymentSpark(byDay) {
-      const node = $('paymentSpark');
-      clear(node);
-      const entries = Object.entries(byDay || {}).sort(([a], [b]) => a.localeCompare(b)).slice(-14);
-      if (!entries.length) {
-        const empty = document.createElement('div');
-        empty.className = 'empty';
-        empty.textContent = 'Оплаченных заказов пока нет.';
-        node.appendChild(empty);
-        return;
-      }
-      const values = entries.map(([, value]) => num(value));
-      const max = Math.max(...values, 1);
-      entries.forEach(([day, value]) => {
-        const bar = document.createElement('span');
-        bar.style.height = `${Math.max(4, Math.round((num(value) / max) * 100))}%`;
-        bar.dataset.label = day.slice(5);
-        bar.title = `${day}: ${fmt(value)} оплаченных заказов`;
-        node.appendChild(bar);
-      });
-    }
-
-    function renderRevenueBars(byCurrency) {
-      barList('revenueBars', Object.entries(byCurrency || {}).map(([currency, value]) => ({
-        label: currency,
-        value,
-        valueLabel: `${fmt(value)} ${currency}`,
-      })), { empty: 'Оплаченной выручки пока нет.' });
     }
 
     function manifestReleaseByCode(code) {
@@ -1156,24 +977,6 @@
       return [...grouped.values()].sort((a, b) => num(b.versionCode) - num(a.versionCode));
     }
 
-    function addVersionStat(title, value, note) {
-      const grid = $('versionSummaryGrid');
-      const item = document.createElement('div');
-      item.className = 'version-stat';
-      const span = document.createElement('span');
-      span.textContent = title;
-      const strong = document.createElement('strong');
-      strong.textContent = value === undefined || value === null || value === '' ? '—' : String(value);
-      item.append(span, strong);
-      if (note) {
-        const small = document.createElement('small');
-        small.className = 'muted';
-        small.textContent = note;
-        item.appendChild(small);
-      }
-      grid.appendChild(item);
-    }
-
     function renderVersionSelect(rows) {
       const select = $('versionSelect');
       if (!select) return;
@@ -1198,44 +1001,15 @@
       const release = data.release || {};
       const rows = buildVersionRows(data);
       renderVersionSelect(rows);
-      const hasCdnMetrics = Boolean(data.cloudflare?.configured && data.cloudflare?.cdn?.byVersionCode);
-      const totalCdnDownloads = hasCdnMetrics ? rows.reduce((sum, row) => sum + (row.cdnDownloads || 0), 0) : null;
-      const cdnNote = hasCdnMetrics ? 'Фактические запросы APK' : 'Cloudflare не настроен';
+      const visibleRows = selectedVersionCode === 'all'
+        ? rows
+        : rows.filter((item) => String(item.versionCode) === selectedVersionCode);
 
-      const summaryGrid = $('versionSummaryGrid');
-      clear(summaryGrid);
-      if (selectedVersionCode === 'all') {
-        addVersionStat('Режим', 'Все версии', 'Верхние KPI тоже общие');
-        addVersionStat('Активные установки', fmt(release.totalActiveInstalls || 0), `${fmt(release.staleInstalls || 0)} устаревших`);
-        addVersionStat('Скачивания', fmt((release.downloads?.total || 0) + (release.downloads?.update || 0)), 'Сайт + обновления');
-        addVersionStat('CDN APK', totalCdnDownloads === null ? '—' : fmt(totalCdnDownloads), cdnNote);
-        addVersionStat('CTR обновлений', pct(release.updateCtr || 0), 'Показ → клик');
-      } else {
-        const row = rows.find((item) => String(item.versionCode) === selectedVersionCode) || {
-          versionCode: selectedVersionCode,
-          versionName: '',
-          activeInstalls30d: 0,
-          share: 0,
-        };
-        const filteredRelease = filteredData?.release || {};
-        const filteredEvents = filteredData?.recentEvents || [];
-        const funnel = (release.updateFunnel || []).find((item) => String(item.targetVersionCode) === selectedVersionCode) || {};
-        addVersionStat('Выбрана версия', displayVersionName(row) || row.versionCode, 'Деталь за тот же период');
-        addVersionStat('Активные установки', fmt(row.activeInstalls30d || 0), `${pct(row.share || 0)} от активных`);
-        addVersionStat('Скачивания', fmt(row.downloads || filteredRelease.downloads?.total || 0), 'По целевой версии');
-        addVersionStat('CDN APK', hasCdnMetrics ? fmt(row.cdnDownloads || 0) : '—', cdnNote);
-        addVersionStat('События версии', fmt(filteredEvents.length), `${fmt(funnel.prompted || row.prompted || 0)} показов · ${fmt(funnel.updateClicks || row.clicks || 0)} кликов`);
-      }
-
-      tableRows('versionsRows', rows, 8, (tableRow, item) => {
+      tableRows('versionsRows', visibleRows, 4, (tableRow, item) => {
         cell(tableRow, displayVersionName(item) || item.versionCode, { code: true });
         cell(tableRow, fmt(item.activeInstalls30d));
         cell(tableRow, pct(item.share));
         cell(tableRow, fmt(item.downloads));
-        cell(tableRow, hasCdnMetrics ? fmt(item.cdnDownloads || 0) : '—');
-        cell(tableRow, fmt(item.prompted));
-        cell(tableRow, fmt(item.clicks));
-        cell(tableRow, pct(item.prompted ? (item.clicks || 0) / item.prompted * 100 : 0));
       }, 'Версий пока нет');
     }
 
@@ -1244,30 +1018,11 @@
       barList('providerBars', orders.byProvider || {}, { empty: 'Заказов пока нет.', label: (value) => label('provider', value) });
       barList('planBars', orders.byPlan || {}, { empty: 'Тарифов пока нет.', label: (value) => label('plan', value) });
       barList('statusBars', orders.byStatus || {}, { empty: 'Статусов заказов пока нет.', label: (value) => label('orderStatus', value) });
-      tableRows('paymentRows', data.recentPaymentOrders || [], 8, (row, item) => {
-        cell(row, dateTime(item.createdAt));
-        cell(row, item.orderId, { code: true });
-        cell(row, item.userId, { code: true });
-        cell(row, label('provider', item.provider), { badge: true, kind: item.provider === 'rub' ? 'good' : '' });
-        cell(row, label('plan', item.plan));
-        cell(row, label('orderStatus', item.statusNormalized), { badge: true, kind: item.statusNormalized === 'paid' ? 'good' : item.statusNormalized === 'pending' ? 'warn' : 'bad' });
-        cell(row, `${fmt(item.amount)} ${item.currency}`);
-        cell(row, item.entitlementActive ? label('bool', 'active') : label('bool', 'missing'), { badge: true, kind: item.entitlementActive ? 'good' : 'warn' });
-      }, 'Заказов пока нет');
     }
 
     function renderEntitlements(data) {
       const entitlements = data.payments?.entitlements || {};
       barList('entitlementBars', entitlements.byStatus || {}, { empty: 'Прав доступа пока нет.', label: (value) => label('entitlementStatus', value) });
-      tableRows('entitlementRows', data.recentEntitlements || [], 7, (row, item) => {
-        cell(row, item.userId, { code: true });
-        cell(row, label('provider', item.provider), { badge: true, kind: item.provider === 'rub' ? 'good' : '' });
-        cell(row, label('plan', item.plan));
-        cell(row, label('entitlementStatus', item.status), { badge: true, kind: item.active ? 'good' : 'warn' });
-        cell(row, item.active ? label('bool', 'yes') : label('bool', 'no'));
-        cell(row, dateTime(item.premiumUntil));
-        cell(row, dateTime(item.updatedAt));
-      }, 'Прав доступа пока нет');
     }
 
     function renderCloudflare(cloudflare) {
@@ -1276,25 +1031,6 @@
       $('cfStatus').className = `badge ${cloudflare.configured && status === 'ok' ? 'good' : 'warn'}`;
       barList('cdnBars', cloudflare.cdn?.byPath || {}, { empty: cloudflare.note || cloudflare.error || 'Данных CDN пока нет.' });
       barList('r2Bars', cloudflare.r2?.byOperation || {}, { empty: cloudflare.note || cloudflare.error || 'Данных R2 пока нет.' });
-    }
-
-    function renderEvents(data) {
-      tableRows('eventRows', data.recentEvents || [], 8, (row, item) => {
-        cell(row, dateTime(item.created_at));
-        cell(row, label('event', item.event_type), { badge: true });
-        cell(row, item.install_id, { code: true });
-        cell(row, item.current_version_code);
-        cell(row, item.target_version_code);
-        cell(row, item.apk_name, { code: true });
-        cell(row, item.source);
-        cell(row, item.forced ? label('bool', 'yes') : label('bool', 'no'), { badge: true, kind: item.forced ? 'warn' : '' });
-      }, 'Событий релиза пока нет');
-      tableRows('paymentEventRows', data.recentPaymentEvents || [], 4, (row, item) => {
-        cell(row, dateTime(item.createdAt));
-        cell(row, label('provider', item.provider), { badge: true });
-        cell(row, item.eventType);
-        cell(row, item.providerEventId, { code: true });
-      }, 'Событий платежей пока нет');
     }
 
     unlockButton.addEventListener('click', () => {
@@ -1337,14 +1073,6 @@
         renderVersionPanel(lastData, null);
       }
     });
-    document.querySelectorAll('#tabs button').forEach((button) => {
-      button.addEventListener('click', () => {
-        const tab = button.dataset.tab;
-        document.querySelectorAll('#tabs button').forEach((node) => node.classList.toggle('is-active', node === button));
-        document.querySelectorAll('.section').forEach((node) => node.classList.toggle('is-active', node.id === tab));
-      });
-    });
-
     const savedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
     if (savedToken) {
       tokenInput.value = savedToken;
