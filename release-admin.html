@@ -199,7 +199,7 @@
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 12px;
-      margin-bottom: 10px;
+      margin: 6px 0 12px;
     }
     .card,
     .panel {
@@ -208,10 +208,11 @@
       background: var(--panel);
     }
     .card {
-      min-height: 92px;
-      padding: 12px;
+      min-height: 116px;
+      padding: 14px;
       position: relative;
       overflow: visible;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
     }
     .card::before {
       content: "";
@@ -220,6 +221,11 @@
       height: 3px;
       background: linear-gradient(90deg, var(--cyan), var(--green));
       opacity: 0.9;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(125, 232, 255, 0.32);
+      background: rgba(255, 255, 255, 0.052);
     }
     .card.warn::before { background: linear-gradient(90deg, var(--warn), var(--red)); }
     .card.purple::before { background: linear-gradient(90deg, var(--purple), var(--cyan)); }
@@ -260,6 +266,16 @@
       grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
       gap: 12px;
     }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.85fr);
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .chart-stack {
+      display: grid;
+      gap: 12px;
+    }
     .panel {
       padding: 12px;
       margin-bottom: 10px;
@@ -280,6 +296,168 @@
     h2 { font-size: 22px; }
     h3 { font-size: 18px; }
     .muted { color: var(--muted); }
+    .chart-panel {
+      min-height: 260px;
+      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.028)),
+        var(--panel);
+      position: relative;
+    }
+    .chart-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--cyan), rgba(167, 139, 250, 0.75));
+    }
+    .chart-panel.primary {
+      min-height: 330px;
+    }
+    .chart-copy {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .chart-value {
+      display: block;
+      margin-top: 10px;
+      font-family: var(--display);
+      font-size: clamp(30px, 4.6vw, 58px);
+      line-height: 0.95;
+      overflow-wrap: anywhere;
+    }
+    .chart-note {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .chart-bars {
+      height: 174px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(12px, 1fr);
+      gap: 7px;
+      align-items: end;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .chart-panel.primary .chart-bars { height: 216px; }
+    .chart-bar {
+      min-height: 100%;
+      display: flex;
+      align-items: end;
+      position: relative;
+    }
+    .chart-bar span {
+      width: 100%;
+      min-height: 4px;
+      border-radius: 6px 6px 2px 2px;
+      background: linear-gradient(180deg, var(--cyan), rgba(181, 255, 106, 0.82));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: height 240ms ease, opacity 180ms ease;
+    }
+    .chart-bar small {
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      transform: translateX(-50%);
+      color: rgba(248, 247, 242, 0.44);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+    .chart-empty {
+      min-height: 174px;
+      display: grid;
+      place-items: center;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .split-list .chart-empty {
+      min-height: 110px;
+    }
+    .split-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .split-row {
+      display: grid;
+      grid-template-columns: minmax(88px, 0.7fr) minmax(0, 1.4fr) auto;
+      gap: 10px;
+      align-items: center;
+    }
+    .split-label {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .split-track {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+    .split-fill {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+    .split-value {
+      color: var(--fg);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .meter-wrap {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      min-height: 154px;
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .meter-ring {
+      --meter: 0%;
+      width: 128px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #080808 0 56%, transparent 57%),
+        conic-gradient(var(--green) 0 var(--meter), rgba(255, 255, 255, 0.1) var(--meter) 100%);
+      border: 1px solid var(--line);
+    }
+    .meter-ring strong {
+      font-family: var(--display);
+      font-size: 26px;
+    }
+    .meter-copy strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 30px;
+      line-height: 1;
+    }
+    .meter-copy span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -360,6 +538,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
+      margin-bottom: 14px;
     }
     .technical-summary {
       width: fit-content;
@@ -439,8 +618,19 @@
     }
     @keyframes shimmer { 100% { transform: translateX(100%); } }
 
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
     @media (max-width: 980px) {
-      .topbar, .control-band, .two-col { display: block; }
+      .topbar, .control-band, .two-col, .dashboard-grid { display: block; }
       .panel-head { display: block; }
       .panel-head .badge { margin-top: 10px; }
       .range-tabs { margin-top: 12px; justify-content: flex-start; }
@@ -452,6 +642,13 @@
       main { width: min(100% - 24px, 1440px); padding-top: 18px; }
       .kpi-grid, .attention-grid { grid-template-columns: 1fr; }
       .card { min-height: 88px; }
+      .chart-copy { display: block; }
+      .chart-bars,
+      .chart-panel.primary .chart-bars { height: 150px; gap: 4px; }
+      .chart-bar:nth-child(odd) small { display: none; }
+      .split-row { grid-template-columns: 1fr auto; }
+      .split-track { grid-column: 1 / -1; grid-row: 2; }
+      .meter-wrap { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 1fr auto; gap: 8px; }
       .bar-label {
         white-space: normal;
@@ -473,7 +670,7 @@
       <div>
         <p class="eyebrow">Sleep Tracker AI</p>
         <h1>Админ-панель</h1>
-        <p class="subtitle">Базовая статистика: релиз, скачивания, установки, оплаты, Premium и проблемы.</p>
+        <p class="subtitle">Релиз, скачивания, оплаты, Premium и выручка без технического шума.</p>
       </div>
     </header>
 
@@ -503,17 +700,6 @@
     <div class="status" id="status">Введите пароль или токен и обновите данные.</div>
 
     <section class="section is-active" id="overview">
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h2>Требует внимания</h2>
-            <p class="muted">То, что может мешать релизу, оплате или Premium-доступу.</p>
-          </div>
-          <span class="badge" id="windowBadge">30 д</span>
-        </div>
-        <div class="attention-grid" id="attentionGrid"></div>
-      </div>
-
       <section class="kpi-grid" id="kpis">
         <article class="card skeleton"><span>Текущий релиз</span><strong id="kpiVersion">—</strong><small id="kpiVersionNote">Загружаем манифест...</small></article>
         <article class="card"><span>Скачивания</span><strong id="kpiDownloads">—</strong><small id="kpiDownloadsNote">Сайт + обновления</small></article>
@@ -524,6 +710,75 @@
         <article class="card purple is-technical-kpi"><span>Доля последней</span><strong id="kpiAdoption">—</strong><small id="kpiAdoptionNote">Доля актуальной версии</small></article>
         <article class="card is-technical-kpi"><span>CTR обновлений</span><strong id="kpiCtr">—</strong><small id="kpiCtrNote">Показ → клик</small></article>
         <article class="card warn is-technical-kpi"><span>Cloudflare CDN</span><strong id="kpiCloudflare">—</strong><small id="kpiCloudflareNote">Только через сервер</small></article>
+      </section>
+
+      <section class="dashboard-grid" aria-label="Графики админки">
+        <article class="panel chart-panel primary">
+          <div class="chart-copy">
+            <div>
+              <h2>Деньги и оплаты</h2>
+              <p class="muted">Оплаченные заказы по дням. Сначала выручка, потом детали.</p>
+              <strong class="chart-value" id="heroRevenue">—</strong>
+              <span class="chart-note" id="heroRevenueNote">Выручка за период</span>
+            </div>
+            <span class="badge" id="windowBadge">30 д</span>
+          </div>
+          <div class="chart-bars" id="paymentChart"></div>
+        </article>
+
+        <div class="chart-stack">
+          <article class="panel chart-panel">
+            <div class="chart-copy">
+              <div>
+                <h2>Скачивания APK</h2>
+                <p class="muted">Сайт и клики из окна обновления.</p>
+              </div>
+              <span class="badge" id="downloadTotalBadge">—</span>
+            </div>
+            <div class="chart-bars" id="downloadChart"></div>
+          </article>
+
+          <article class="panel chart-panel">
+            <div class="chart-copy">
+              <div>
+                <h2>Каналы оплаты</h2>
+                <p class="muted">Robokassa, крипта и другие провайдеры.</p>
+              </div>
+              <span class="badge" id="providerTotalBadge">—</span>
+            </div>
+            <div class="split-list" id="providerSplit"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-grid" aria-label="Premium и тарифы">
+        <article class="panel chart-panel">
+          <div class="chart-copy">
+            <div>
+              <h2>Premium</h2>
+              <p class="muted">Активный доступ и общая база прав.</p>
+            </div>
+            <span class="badge" id="premiumBadge">—</span>
+          </div>
+          <div class="meter-wrap">
+            <div class="meter-ring" id="premiumMeter"><strong id="premiumMeterPercent">0%</strong></div>
+            <div class="meter-copy">
+              <strong id="premiumMeterValue">—</strong>
+              <span id="premiumMeterNote">Активных Premium пока нет.</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="chart-copy">
+            <div>
+              <h2>Тарифы</h2>
+              <p class="muted">Какие планы покупают чаще.</p>
+            </div>
+            <span class="badge" id="planTotalBadge">—</span>
+          </div>
+          <div class="split-list" id="planSplit"></div>
+        </article>
       </section>
 
       <div class="panel">
@@ -549,6 +804,13 @@
 
       <details class="panel">
         <summary class="technical-summary">Технические детали</summary>
+        <div class="panel-head">
+          <div>
+            <h3>Требует внимания</h3>
+            <p class="muted">Технические хвосты: зависшие заказы, старые установки, Cloudflare и статусы.</p>
+          </div>
+        </div>
+        <div class="attention-grid" id="attentionGrid"></div>
         <div class="two-col">
           <div>
             <h3>Провайдеры</h3>
@@ -748,6 +1010,111 @@
       });
     }
 
+    function dateLabel(value) {
+      const parts = String(value || '').split('-');
+      return parts.length >= 3 ? `${parts[2]}.${parts[1]}` : String(value || '');
+    }
+
+    function renderChartBars(id, byDay, mapper, emptyText) {
+      const node = $(id);
+      clear(node);
+      const entries = Object.entries(byDay || {})
+        .sort(([a], [b]) => a.localeCompare(b))
+        .slice(-14)
+        .map(([day, value]) => ({ day, value: mapper(value) }))
+        .filter((item) => num(item.value) >= 0);
+      if (!entries.length || entries.every((item) => num(item.value) === 0)) {
+        const empty = document.createElement('div');
+        empty.className = 'chart-empty';
+        empty.textContent = emptyText || 'Данных пока нет.';
+        node.replaceWith(empty);
+        empty.id = id;
+        return;
+      }
+      if (!node.classList.contains('chart-bars')) node.className = 'chart-bars';
+      const max = Math.max(...entries.map((item) => num(item.value)), 1);
+      entries.forEach((item) => {
+        const bar = document.createElement('div');
+        bar.className = 'chart-bar';
+        bar.title = `${dateLabel(item.day)}: ${fmt(item.value)}`;
+        const fill = document.createElement('span');
+        fill.style.height = `${Math.max(5, Math.round((num(item.value) / max) * 100))}%`;
+        const labelNode = document.createElement('small');
+        labelNode.textContent = dateLabel(item.day);
+        bar.append(fill, labelNode);
+        node.appendChild(bar);
+      });
+    }
+
+    function renderSplitList(id, mapOrRows, options = {}) {
+      const node = $(id);
+      clear(node);
+      const rows = Array.isArray(mapOrRows)
+        ? mapOrRows
+        : Object.entries(mapOrRows || {}).map(([label, value]) => ({ label, value }));
+      const filtered = rows.filter((row) => num(row.value) > 0).slice(0, options.limit || 5);
+      if (!filtered.length) {
+        const div = document.createElement('div');
+        div.className = 'chart-empty';
+        div.textContent = options.empty || 'Данных пока нет.';
+        node.appendChild(div);
+        return;
+      }
+      const max = Math.max(...filtered.map((row) => num(row.value)), 1);
+      filtered.forEach((row) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'split-row';
+        const name = document.createElement('div');
+        name.className = 'split-label';
+        name.textContent = options.label ? options.label(row.label) : row.label;
+        const track = document.createElement('div');
+        track.className = 'split-track';
+        const fill = document.createElement('span');
+        fill.className = 'split-fill';
+        fill.style.width = `${Math.max(6, Math.round((num(row.value) / max) * 100))}%`;
+        track.appendChild(fill);
+        const value = document.createElement('div');
+        value.className = 'split-value';
+        value.textContent = row.valueLabel || fmt(row.value);
+        wrap.append(name, track, value);
+        node.appendChild(wrap);
+      });
+    }
+
+    function renderPremiumVisual(entitlements) {
+      const active = num(entitlements.active || 0);
+      const total = num(entitlements.total || 0);
+      const percent = total > 0 ? Math.min(100, Math.round((active / total) * 100)) : 0;
+      const meter = $('premiumMeter');
+      meter.style.setProperty('--meter', `${percent}%`);
+      setText('premiumMeterPercent', `${percent}%`);
+      setText('premiumMeterValue', `${fmt(active)} активных`);
+      setText('premiumMeterNote', total ? `${fmt(total)} всего прав доступа` : 'Premium-прав пока нет.');
+      setText('premiumBadge', total ? `${fmt(active)} / ${fmt(total)}` : 'нет данных');
+    }
+
+    function renderOverviewCharts(data) {
+      const release = data.release || {};
+      const orders = data.payments?.orders || {};
+      const entitlements = data.payments?.entitlements || {};
+      const revenue = data.revenue || {};
+      const downloadTotal = (release.downloads?.total || 0) + (release.downloads?.update || 0);
+      const paidTotal = orders.paid || 0;
+      const planTotal = Object.values(orders.byPlan || {}).reduce((sum, value) => sum + num(value), 0);
+      const providerTotal = Object.values(orders.byProvider || {}).reduce((sum, value) => sum + num(value), 0);
+
+      setText('heroRevenue', moneyMap(revenue.grossPaid?.byCurrency));
+      setText('heroRevenueNote', `${fmt(paidTotal)} оплаченных заказов за период`);
+      setText('downloadTotalBadge', `${fmt(downloadTotal)} всего`);
+      setText('providerTotalBadge', providerTotal ? `${fmt(providerTotal)} заказов` : 'нет заказов');
+      setText('planTotalBadge', planTotal ? `${fmt(planTotal)} покупок` : 'нет покупок');
+      renderChartBars('paymentChart', orders.paidByDay || {}, (value) => num(value), 'Оплат за период пока нет.');
+      renderChartBars('downloadChart', release.downloads?.byDay || {}, (counts) => num(counts.download_clicked) + num(counts.update_download_clicked), 'Скачиваний за период пока нет.');
+      renderSplitList('providerSplit', orders.byProvider || {}, { empty: 'Заказов пока нет.', label: (value) => label('provider', value) });
+      renderSplitList('planSplit', orders.byPlan || {}, { empty: 'Покупок тарифов пока нет.', label: (value) => label('plan', value) });
+      renderPremiumVisual(entitlements);
+    }
+
     async function hydrateManifest() {
       try {
         const response = await fetch('apk-release.json', { cache: 'no-store' });
@@ -850,15 +1217,15 @@
       setText('kpiDownloads', fmt((release.downloads?.total || 0) + (release.downloads?.update || 0)));
       setText('kpiDownloadsNote', `${fmt(release.downloads?.total || 0)} сайт · ${fmt(release.downloads?.update || 0)} обновления`);
       setText('kpiActive', fmt(release.totalActiveInstalls || 0));
-      setText('kpiActiveNote', `${fmt(release.staleInstalls || 0)} устаревших установок`);
+      setText('kpiActiveNote', 'уникальные установки');
       setText('kpiAdoption', pct(release.latestAdoptionRate || 0));
       setText('kpiAdoptionNote', `${fmt(release.latestActiveInstalls || 0)} на последней`);
       setText('kpiCtr', pct(release.updateCtr || 0));
       setText('kpiCtrNote', `${fmt(data.totals?.update_download_clicked || 0)} кликов / ${fmt(data.totals?.update_prompted || 0)} показов`);
       setText('kpiPaid', fmt(orders.paid || 0));
-      setText('kpiPaidNote', `${fmt(orders.pending || 0)} ожидают · ${fmt(orders.failed || 0)} ошибок`);
+      setText('kpiPaidNote', 'успешные покупки');
       setText('kpiPremium', fmt(entitlements.active || 0));
-      setText('kpiPremiumNote', `${fmt(entitlements.total || 0)} всего прав доступа`);
+      setText('kpiPremiumNote', 'активный доступ');
       setText('kpiRevenue', moneyMap(revenue.grossPaid?.byCurrency));
       setText('kpiRevenueNote', 'До возвратов и комиссий');
       const cdnRequests = cloudflare.cdn?.requests ?? null;
@@ -866,6 +1233,7 @@
       setText('kpiCloudflareNote', cloudflare.configured ? `${label('cloudflare', cloudflare.status || 'ok')} · CDN-запросы` : 'Не настроено');
       setText('windowBadge', `${rangeLabel(data.range || range)} · ${dateTime(data.since)} → ${dateTime(data.until)}`);
 
+      renderOverviewCharts(data);
       renderAttention(attention, cloudflare);
       renderVersionPanel(data, selectedVersionData);
       renderPayments(data);
