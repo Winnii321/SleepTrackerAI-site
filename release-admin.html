@@ -625,7 +625,7 @@
           </div>
         </div>
         <div class="version-summary-grid" id="versionSummaryGrid"></div>
-        <div class="table-wrap"><table><thead><tr><th>Версия</th><th>Активные установки</th><th>Доля</th><th>Скачивания</th><th>Показы</th><th>Клики обновления</th><th>CTR</th></tr></thead><tbody id="versionsRows"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Версия</th><th>Активные установки</th><th>Доля</th><th>Скачивания</th><th>CDN APK</th><th>Показы</th><th>Клики обновления</th><th>CTR</th></tr></thead><tbody id="versionsRows"></tbody></table></div>
         <div class="diagnostic-links">
           <a href="index.html">На сайт</a>
           <a href="apk-release.json" target="_blank" rel="noopener">APK-манифест</a>
@@ -1041,14 +1041,19 @@
       return item?.publicVersionName || item?.displayVersionName || item?.versionName || '';
     }
 
-    function buildVersionRows(release) {
+    function buildVersionRows(data) {
+      const release = data.release || {};
       const downloads = release.downloadsByTarget || {};
+      const cdnDownloads = data.cloudflare?.configured && data.cloudflare?.cdn?.byVersionCode
+        ? data.cloudflare.cdn.byVersionCode
+        : {};
       const prompted = release.promptedByTarget || {};
       const clicks = release.updateClicksByTarget || {};
       const activeByCode = new Map((release.activeVersions || []).map((item) => [String(item.versionCode), item]));
       const keys = [...new Set([
         ...activeByCode.keys(),
         ...Object.keys(downloads),
+        ...Object.keys(cdnDownloads),
         ...Object.keys(prompted),
         ...Object.keys(clicks),
         ...((release.updateFunnel || []).map((item) => String(item.targetVersionCode)).filter(Boolean)),
@@ -1066,6 +1071,7 @@
           activeInstalls30d: active.activeInstalls30d || 0,
           share: active.share || 0,
           downloads: downloads[key] || 0,
+          cdnDownloads: cdnDownloads[key] || 0,
           prompted: prompted[key] || 0,
           clicks: clicks[key] || 0,
         };
@@ -1082,6 +1088,7 @@
         existing.activeInstalls30d += row.activeInstalls30d || 0;
         existing.share += row.share || 0;
         existing.downloads += row.downloads || 0;
+        existing.cdnDownloads += row.cdnDownloads || 0;
         existing.prompted += row.prompted || 0;
         existing.clicks += row.clicks || 0;
         if (num(row.versionCode) > num(existing.versionCode)) {
@@ -1133,8 +1140,11 @@
 
     function renderVersionPanel(data, filteredData) {
       const release = data.release || {};
-      const rows = buildVersionRows(release);
+      const rows = buildVersionRows(data);
       renderVersionSelect(rows);
+      const hasCdnMetrics = Boolean(data.cloudflare?.configured && data.cloudflare?.cdn?.byVersionCode);
+      const totalCdnDownloads = hasCdnMetrics ? rows.reduce((sum, row) => sum + (row.cdnDownloads || 0), 0) : null;
+      const cdnNote = hasCdnMetrics ? 'Фактические запросы APK' : 'Cloudflare не настроен';
 
       const summaryGrid = $('versionSummaryGrid');
       clear(summaryGrid);
@@ -1142,6 +1152,7 @@
         addVersionStat('Режим', 'Все версии', 'Верхние KPI тоже общие');
         addVersionStat('Активные установки', fmt(release.totalActiveInstalls || 0), `${fmt(release.staleInstalls || 0)} устаревших`);
         addVersionStat('Скачивания', fmt((release.downloads?.total || 0) + (release.downloads?.update || 0)), 'Сайт + обновления');
+        addVersionStat('CDN APK', totalCdnDownloads === null ? '—' : fmt(totalCdnDownloads), cdnNote);
         addVersionStat('CTR обновлений', pct(release.updateCtr || 0), 'Показ → клик');
       } else {
         const row = rows.find((item) => String(item.versionCode) === selectedVersionCode) || {
@@ -1156,14 +1167,16 @@
         addVersionStat('Выбрана версия', displayVersionName(row) || row.versionCode, 'Деталь за тот же период');
         addVersionStat('Активные установки', fmt(row.activeInstalls30d || 0), `${pct(row.share || 0)} от активных`);
         addVersionStat('Скачивания', fmt(row.downloads || filteredRelease.downloads?.total || 0), 'По целевой версии');
+        addVersionStat('CDN APK', hasCdnMetrics ? fmt(row.cdnDownloads || 0) : '—', cdnNote);
         addVersionStat('События версии', fmt(filteredEvents.length), `${fmt(funnel.prompted || row.prompted || 0)} показов · ${fmt(funnel.updateClicks || row.clicks || 0)} кликов`);
       }
 
-      tableRows('versionsRows', rows, 7, (tableRow, item) => {
+      tableRows('versionsRows', rows, 8, (tableRow, item) => {
         cell(tableRow, displayVersionName(item) || item.versionCode, { code: true });
         cell(tableRow, fmt(item.activeInstalls30d));
         cell(tableRow, pct(item.share));
         cell(tableRow, fmt(item.downloads));
+        cell(tableRow, hasCdnMetrics ? fmt(item.cdnDownloads || 0) : '—');
         cell(tableRow, fmt(item.prompted));
         cell(tableRow, fmt(item.clicks));
         cell(tableRow, pct(item.prompted ? (item.clicks || 0) / item.prompted * 100 : 0));
