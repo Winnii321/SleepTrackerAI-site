@@ -879,13 +879,16 @@ h2 {
 }
 
 .release-notes {
-  display: grid;
-  gap: 12px;
   padding: 16px;
   margin-bottom: 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(181, 255, 106, 0.045), rgba(125, 232, 255, 0.025));
+}
+
+.release-notes[open] {
+  display: grid;
+  gap: 12px;
 }
 
 .release-history-head,
@@ -899,6 +902,31 @@ h2 {
 .release-history-head {
   justify-content: space-between;
   padding-bottom: 4px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.release-history-head::-webkit-details-marker {
+  display: none;
+}
+
+.release-history-head::after {
+  content: "+";
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--cyan);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.release-notes[open] .release-history-head::after {
+  content: "-";
 }
 
 .release-history-head strong {
@@ -918,9 +946,21 @@ h2 {
 .release-timeline {
   display: grid;
   gap: 0;
-  padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 8px 0 0;
   margin: 0;
   list-style: none;
+}
+
+.release-timeline::-webkit-scrollbar {
+  width: 6px;
+}
+
+.release-timeline::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(125, 232, 255, 0.28);
 }
 
 .release-entry {
@@ -1251,6 +1291,15 @@ footer div {
   .release-entry-top {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .release-history-head::after {
+    align-self: flex-end;
+    margin-top: -28px;
+  }
+
+  .release-timeline {
+    max-height: 190px;
   }
 
   .release-entry:not(:last-child) .release-entry-top::after {
