@@ -5,22 +5,22 @@
   "distribution": "website",
   "paymentProvider": "rub",
   "versionName": "1.0.4",
-  "publicVersionName": "1.0.3",
+  "publicVersionName": "1.0.4",
   "versionCode": 125,
   "minimumVersionCode": 0,
   "minSupportedVersionCode": 0,
   "forceUpdate": false,
-  "apkName": "sleeptrackerai-1.0.3.apk",
-  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.3.apk?v=d2e108363e9a",
+  "apkName": "sleeptrackerai-1.0.4.apk",
+  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.4.apk?v=f4a0293ecc62",
   "latestUrl": "https://downloads.sleeptrackerai.org/downloads/latest.json",
   "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "status": "public_cdn",
-  "sha256": "d2e108363e9a0d1996bddd29dd4054579fe174d80a17e100c41a8178f8936a0f",
+  "sha256": "f4a0293ecc62773071cb15fd011fe94d508061c04a2916d69fe532da8f878c8e",
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-  "sizeBytes": 358913814,
+  "sizeBytes": 358935231,
   "sizeLabel": "342 MB",
-  "releaseDate": "2026-06-21",
-  "updatedAt": "2026-06-21T19:43:34.474Z",
+  "releaseDate": "2026-06-23",
+  "updatedAt": "2026-06-23T05:17:57.865Z",
   "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "updateSeverity": "recommended",
   "minSupportedReason": "",
@@ -30,70 +30,70 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-    "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-    "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-    "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-    "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+    "If sleep is already finished, the app no longer tries to save the same night a second time.",
+    "Sleep events show the real audio length, and unlocked clips can be shared right away."
   ],
   "changelogEn": [
-    "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-    "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-    "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-    "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-    "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+    "If sleep is already finished, the app no longer tries to save the same night a second time.",
+    "Sleep events show the real audio length, and unlocked clips can be shared right away."
   ],
   "changelogRu": [
-    "Экран активного сна быстрее синхронизируется утром после возврата в приложение, чтобы не держать старое ночное время минутами.",
-    "Выбор времени будильника на Android снова прокручивается колесом, без ручного тыканья по каждой цифре.",
-    "Индикатор микрофона с децибелами скрывается после остановки сна и больше не перезапускает живой recorder из-за ложного stuck-сигнала.",
-    "По умному будильнику стало больше понятной диагностики: целевое время, окно, deadline, фаза и решение будить/ждать.",
-    "В website APK платежный экран держит Robokassa и крипту с ценами в RUB/USDT, а не сваливается только в store-прайсы."
+    "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
+    "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
+    "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
+    "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
+    "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
   ],
   "fullChangelog": [
-    "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-    "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-    "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-    "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-    "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+    "If sleep is already finished, the app no longer tries to save the same night a second time.",
+    "Sleep events show the real audio length, and unlocked clips can be shared right away."
   ],
   "fullChangelogEn": [
-    "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-    "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-    "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-    "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-    "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+    "If sleep is already finished, the app no longer tries to save the same night a second time.",
+    "Sleep events show the real audio length, and unlocked clips can be shared right away."
   ],
   "fullChangelogRu": [
-    "Экран активного сна быстрее синхронизируется утром после возврата в приложение, чтобы не держать старое ночное время минутами.",
-    "Выбор времени будильника на Android снова прокручивается колесом, без ручного тыканья по каждой цифре.",
-    "Индикатор микрофона с децибелами скрывается после остановки сна и больше не перезапускает живой recorder из-за ложного stuck-сигнала.",
-    "По умному будильнику стало больше понятной диагностики: целевое время, окно, deadline, фаза и решение будить/ждать.",
-    "В website APK платежный экран держит Robokassa и крипту с ценами в RUB/USDT, а не сваливается только в store-прайсы."
+    "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
+    "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
+    "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
+    "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
+    "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
   ],
-  "historyGeneratedAt": "2026-06-21T19:57:37.723Z",
+  "historyGeneratedAt": "2026-06-23T05:17:57.865Z",
   "releases": [
     {
       "id": "1.0.4-125",
       "versionName": "1.0.4",
-      "publicVersionName": "1.0.3",
+      "publicVersionName": "1.0.4",
       "versionCode": 125,
       "lifecycle": "latest",
       "listed": true,
       "downloadable": true,
       "publishType": "hotfix",
       "summary": {
-        "en": "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-        "ru": "Экран активного сна быстрее синхронизируется утром после возврата в приложение, чтобы не держать старое ночное время минутами."
+        "ru": "Исправлены утреннее завершение сна, старое время на экране сна и зависающий индикатор микрофона.",
+        "en": "Fixed morning sleep finish flow, stale sleep-screen time, and the stuck microphone indicator."
       },
-      "releaseDate": "2026-06-21",
+      "releaseDate": "2026-06-23",
       "createdAt": "2026-06-21T15:49:36.404Z",
-      "updatedAt": "2026-06-21T15:50:34.972Z",
-      "apkName": "sleeptrackerai-1.0.3.apk",
-      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.3.apk",
-      "sha256": "35dce23603327112d8aa5e13d2c0e6d64871e970d7ac98bdaf43bc3f3a5a3148",
+      "updatedAt": "2026-06-23T05:17:57.865Z",
+      "apkName": "sleeptrackerai-1.0.4.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.4.apk",
+      "sha256": "f4a0293ecc62773071cb15fd011fe94d508061c04a2916d69fe532da8f878c8e",
       "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-      "sizeBytes": 358913398,
+      "sizeBytes": 358935231,
       "sizeLabel": "342 MB",
       "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
       "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
@@ -107,46 +107,46 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-        "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-        "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-        "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-        "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+        "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+        "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+        "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+        "If sleep is already finished, the app no longer tries to save the same night a second time.",
+        "Sleep events show the real audio length, and unlocked clips can be shared right away."
       ],
       "changelogEn": [
-        "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-        "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-        "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-        "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-        "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+        "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+        "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+        "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+        "If sleep is already finished, the app no longer tries to save the same night a second time.",
+        "Sleep events show the real audio length, and unlocked clips can be shared right away."
       ],
       "changelogRu": [
-        "Экран активного сна быстрее синхронизируется утром после возврата в приложение, чтобы не держать старое ночное время минутами.",
-        "Выбор времени будильника на Android снова прокручивается колесом, без ручного тыканья по каждой цифре.",
-        "Индикатор микрофона с децибелами скрывается после остановки сна и больше не перезапускает живой recorder из-за ложного stuck-сигнала.",
-        "По умному будильнику стало больше понятной диагностики: целевое время, окно, deadline, фаза и решение будить/ждать.",
-        "В website APK платежный экран держит Robokassa и крипту с ценами в RUB/USDT, а не сваливается только в store-прайсы."
+        "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
+        "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
+        "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
+        "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
+        "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
       ],
       "fullChangelog": [
-        "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-        "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-        "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-        "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-        "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+        "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+        "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+        "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+        "If sleep is already finished, the app no longer tries to save the same night a second time.",
+        "Sleep events show the real audio length, and unlocked clips can be shared right away."
       ],
       "fullChangelogEn": [
-        "The active sleep screen now syncs faster after returning in the morning, so it should not keep showing the old night time for minutes.",
-        "Android alarm time selection is scrollable again with a wheel picker instead of forcing manual taps.",
-        "The microphone dB badge is hidden after sleep recording stops and no longer restarts a healthy recorder from a false stuck-meter signal.",
-        "Smart alarm diagnostics are clearer: the app logs the target time, smart window, deadline, phase, and wake decision.",
-        "The website APK paywall keeps Robokassa and crypto payment paths visible with RUB/USDT pricing instead of falling back to store-only pricing."
+        "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
+        "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
+        "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
+        "If sleep is already finished, the app no longer tries to save the same night a second time.",
+        "Sleep events show the real audio length, and unlocked clips can be shared right away."
       ],
       "fullChangelogRu": [
-        "Экран активного сна быстрее синхронизируется утром после возврата в приложение, чтобы не держать старое ночное время минутами.",
-        "Выбор времени будильника на Android снова прокручивается колесом, без ручного тыканья по каждой цифре.",
-        "Индикатор микрофона с децибелами скрывается после остановки сна и больше не перезапускает живой recorder из-за ложного stuck-сигнала.",
-        "По умному будильнику стало больше понятной диагностики: целевое время, окно, deadline, фаза и решение будить/ждать.",
-        "В website APK платежный экран держит Robokassa и крипту с ценами в RUB/USDT, а не сваливается только в store-прайсы."
+        "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
+        "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
+        "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
+        "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
+        "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
       ]
     },
     {
