@@ -31,37 +31,43 @@
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
     "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-    "Removed the extra App account block from Profile.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogEn": [
     "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-    "Removed the extra App account block from Profile.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogRu": [
     "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
-    "Из профиля убрали лишний блок «Аккаунт приложения».",
+    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
   "fullChangelog": [
     "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-    "Removed the extra App account block from Profile.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogEn": [
     "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-    "Removed the extra App account block from Profile.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogRu": [
     "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
-    "Из профиля убрали лишний блок «Аккаунт приложения».",
+    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
@@ -77,8 +83,8 @@
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "en": "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-        "ru": "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot."
+        "ru": "Добавлена статья про оплату рублями, исправлены Premium-проверка, статистика и стадии сна.",
+        "en": "Added the ruble payment guide and fixed Premium checks, sleep statistics, and sleep stages."
       },
       "releaseDate": "2026-07-01",
       "createdAt": "2026-07-01T13:32:28.804Z",
@@ -102,37 +108,43 @@
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
         "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-        "Removed the extra App account block from Profile.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
         "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogEn": [
         "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-        "Removed the extra App account block from Profile.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
         "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogRu": [
         "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
-        "Из профиля убрали лишний блок «Аккаунт приложения».",
+        "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+        "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
         "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
       ],
       "fullChangelog": [
         "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-        "Removed the extra App account block from Profile.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
         "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogEn": [
         "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
-        "Removed the extra App account block from Profile.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
         "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogRu": [
         "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
-        "Из профиля убрали лишний блок «Аккаунт приложения».",
+        "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+        "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
         "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
       ]
@@ -147,8 +159,8 @@
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "ru": "Исправлены статистика сна, стадии сна на Android, профиль Premium и цены.",
-        "en": "Fixed sleep statistics, Android sleep stages, Premium profile state, and pricing."
+        "ru": "Добавлена статья про оплату рублями, исправлены Premium-проверка, статистика и стадии сна.",
+        "en": "Added the ruble payment guide and fixed Premium checks, sleep statistics, and sleep stages."
       },
       "releaseDate": "2026-07-01",
       "createdAt": "2026-06-27T12:13:48.651Z",
@@ -171,39 +183,45 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogEn": [
-        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogRu": [
-        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
+        "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
         "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
         "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
       ],
       "fullChangelog": [
-        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogEn": [
-        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogRu": [
-        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
+        "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
         "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
         "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
       ],
       "paymentProvider": "crypto_rub"
