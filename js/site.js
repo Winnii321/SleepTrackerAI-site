@@ -325,7 +325,7 @@ const translations = {
     downloadText: 'Здесь лежит свежая Android-сборка Sleep Tracker AI: версия, дата, что изменилось и проверка файла.',
     downloadVersionLabel: 'Версия',
     downloadUpdatedLabel: 'Обновлено',
-    downloadUpdatedValue: '1 июля 2026',
+    downloadUpdatedValue: 'July 1, 2026',
     downloadSizeLabel: 'Размер',
     downloadInstallNote: 'После скачивания откройте APK на Android и следуйте подсказкам системы.',
     releaseHistoryTitle: 'История версий',

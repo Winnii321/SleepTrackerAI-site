@@ -6,21 +6,21 @@
   "paymentProvider": "crypto_rub",
   "versionName": "1.0.5",
   "publicVersionName": "1.0.5",
-  "versionCode": 126,
+  "versionCode": 127,
   "minimumVersionCode": 0,
   "minSupportedVersionCode": 0,
   "forceUpdate": false,
-  "apkName": "sleeptrackerai-1.0.5-126.apk",
-  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.5-126.apk?v=2a7aa497cdc8",
+  "apkName": "sleeptrackerai-1.0.5.apk",
+  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.5.apk?v=75b946b9022e",
   "latestUrl": "https://downloads.sleeptrackerai.org/downloads/latest.json",
   "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "status": "public_cdn",
-  "sha256": "2a7aa497cdc8ae75a1fe828ab324eace565b4b002375ceb61256469b82ed07b8",
+  "sha256": "75b946b9022ed32e4cc409d9a2bf8b64308c2d1f1f1b0420732d317267b3672e",
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-  "sizeBytes": 358937191,
+  "sizeBytes": 358936519,
   "sizeLabel": "342 MB",
   "releaseDate": "2026-07-01",
-  "updatedAt": "2026-07-01T09:51:39.910Z",
+  "updatedAt": "2026-07-01T13:34:17.608Z",
   "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "updateSeverity": "recommended",
   "minSupportedReason": "",
@@ -30,49 +30,119 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
+    "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+    "Removed the extra App account block from Profile.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
-    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
-    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogEn": [
+    "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+    "Removed the extra App account block from Profile.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
-    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
-    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogRu": [
+    "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
+    "Из профиля убрали лишний блок «Аккаунт приложения».",
     "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
-    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
-    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
   "fullChangelog": [
+    "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+    "Removed the extra App account block from Profile.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
-    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
-    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogEn": [
+    "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+    "Removed the extra App account block from Profile.",
     "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
-    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
-    "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogRu": [
+    "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
+    "Из профиля убрали лишний блок «Аккаунт приложения».",
     "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
-    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
-    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
-  "historyGeneratedAt": "2026-07-01T09:51:39.910Z",
+  "historyGeneratedAt": "2026-07-01T13:35:52.045Z",
   "releases": [
+    {
+      "id": "1.0.5-127",
+      "versionName": "1.0.5",
+      "publicVersionName": "1.0.5",
+      "versionCode": 127,
+      "lifecycle": "latest",
+      "listed": true,
+      "downloadable": true,
+      "publishType": "patch",
+      "summary": {
+        "en": "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+        "ru": "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot."
+      },
+      "releaseDate": "2026-07-01",
+      "createdAt": "2026-07-01T13:32:28.804Z",
+      "updatedAt": "2026-07-01T13:34:17.608Z",
+      "apkName": "sleeptrackerai-1.0.5.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.5.apk?v=75b946b9022e",
+      "sha256": "75b946b9022ed32e4cc409d9a2bf8b64308c2d1f1f1b0420732d317267b3672e",
+      "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
+      "sizeBytes": 358936519,
+      "sizeLabel": "342 MB",
+      "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
+      "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
+      "updateSeverity": "recommended",
+      "forceUpdate": false,
+      "minSupportedVersionCode": 0,
+      "minSupportedReason": "",
+      "maxLaterClicks": 10,
+      "forceAfterLaterClicks": true,
+      "promptEveryMinutes": 30,
+      "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
+      "laterLimitReasonEn": "You have already delayed this update 10 times.",
+      "changelog": [
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+        "Removed the extra App account block from Profile.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "changelogEn": [
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+        "Removed the extra App account block from Profile.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "changelogRu": [
+        "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
+        "Из профиля убрали лишний блок «Аккаунт приложения».",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
+        "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
+      ],
+      "fullChangelog": [
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+        "Removed the extra App account block from Profile.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "fullChangelogEn": [
+        "Added a guide article on paying for Sleep Tracker in rubles through CryptoBot.",
+        "Removed the extra App account block from Profile.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "fullChangelogRu": [
+        "Добавили статью о том, как оплатить Sleep Tracker рублями через CryptoBot.",
+        "Из профиля убрали лишний блок «Аккаунт приложения».",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
+        "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
+      ]
+    },
     {
       "id": "1.0.5-126",
       "versionName": "1.0.5",
       "publicVersionName": "1.0.5",
       "versionCode": 126,
-      "lifecycle": "latest",
+      "lifecycle": "previous",
       "listed": true,
       "downloadable": true,
       "publishType": "patch",
