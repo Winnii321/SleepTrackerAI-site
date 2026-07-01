@@ -3,24 +3,24 @@
   "app": "Sleep Tracker AI",
   "package": "com.dmitriiway.sleeptracker",
   "distribution": "website",
-  "paymentProvider": "rub",
-  "versionName": "1.0.4",
-  "publicVersionName": "1.0.4",
-  "versionCode": 125,
+  "paymentProvider": "crypto_rub",
+  "versionName": "1.0.5",
+  "publicVersionName": "1.0.5",
+  "versionCode": 126,
   "minimumVersionCode": 0,
   "minSupportedVersionCode": 0,
   "forceUpdate": false,
-  "apkName": "sleeptrackerai-1.0.4.apk",
-  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.4.apk?v=f4a0293ecc62",
+  "apkName": "sleeptrackerai-1.0.5-126.apk",
+  "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.5-126.apk?v=2a7aa497cdc8",
   "latestUrl": "https://downloads.sleeptrackerai.org/downloads/latest.json",
   "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "status": "public_cdn",
-  "sha256": "f4a0293ecc62773071cb15fd011fe94d508061c04a2916d69fe532da8f878c8e",
+  "sha256": "2a7aa497cdc8ae75a1fe828ab324eace565b4b002375ceb61256469b82ed07b8",
   "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
-  "sizeBytes": 358935231,
+  "sizeBytes": 358937191,
   "sizeLabel": "342 MB",
-  "releaseDate": "2026-06-23",
-  "updatedAt": "2026-06-23T05:17:57.865Z",
+  "releaseDate": "2026-07-01",
+  "updatedAt": "2026-07-01T09:51:39.910Z",
   "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
   "updateSeverity": "recommended",
   "minSupportedReason": "",
@@ -30,55 +30,120 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
-    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
-    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
-    "If sleep is already finished, the app no longer tries to save the same night a second time.",
-    "Sleep events show the real audio length, and unlocked clips can be shared right away."
+    "Added USDT and ruble payments through CryptoBot.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
+    "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogEn": [
-    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
-    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
-    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
-    "If sleep is already finished, the app no longer tries to save the same night a second time.",
-    "Sleep events show the real audio length, and unlocked clips can be shared right away."
+    "Added USDT and ruble payments through CryptoBot.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
+    "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogRu": [
-    "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
-    "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
-    "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
-    "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
-    "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
+    "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+    "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
   "fullChangelog": [
-    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
-    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
-    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
-    "If sleep is already finished, the app no longer tries to save the same night a second time.",
-    "Sleep events show the real audio length, and unlocked clips can be shared right away."
+    "Added USDT and ruble payments through CryptoBot.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
+    "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogEn": [
-    "After stopping the alarm, the app should no longer get confused and ask you to finish the same sleep twice.",
-    "When you open the app in the morning, the sleep screen now shows the real current state instead of old night-time data.",
-    "The microphone indicator updates normally again and no longer gets stuck on old decibel values.",
-    "If sleep is already finished, the app no longer tries to save the same night a second time.",
-    "Sleep events show the real audio length, and unlocked clips can be shared right away."
+    "Added USDT and ruble payments through CryptoBot.",
+    "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+    "Premium status in Profile is clearer and works correctly for website purchases.",
+    "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogRu": [
-    "После выключения будильника приложение больше не должно путаться и просить два раза завершить один и тот же сон.",
-    "Если утром открыть приложение, экран сна теперь показывает актуальное состояние, а не старое время с ночи.",
-    "Индикатор микрофона снова обновляется нормально и не зависает на старых децибелах.",
-    "Если сон уже завершён, приложение больше не пытается сохранить его второй раз.",
-    "События сна показывают реальную длину аудио, а разблокированным клипом можно сразу поделиться."
+    "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+    "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+    "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+    "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
-  "historyGeneratedAt": "2026-06-23T05:17:57.865Z",
+  "historyGeneratedAt": "2026-07-01T09:51:39.910Z",
   "releases": [
+    {
+      "id": "1.0.5-126",
+      "versionName": "1.0.5",
+      "publicVersionName": "1.0.5",
+      "versionCode": 126,
+      "lifecycle": "latest",
+      "listed": true,
+      "downloadable": true,
+      "publishType": "patch",
+      "summary": {
+        "ru": "Добавлены CryptoBot-платежи, обновлены цены и стабильность анализа сна.",
+        "en": "Added CryptoBot payments, updated pricing, and improved sleep analysis stability."
+      },
+      "releaseDate": "2026-07-01",
+      "createdAt": "2026-06-27T12:13:48.651Z",
+      "updatedAt": "2026-07-01T09:51:39.910Z",
+      "apkName": "sleeptrackerai-1.0.5-126.apk",
+      "apkUrl": "https://downloads.sleeptrackerai.org/downloads/sleeptrackerai-1.0.5-126.apk?v=2a7aa497cdc8",
+      "sha256": "2a7aa497cdc8ae75a1fe828ab324eace565b4b002375ceb61256469b82ed07b8",
+      "signerSha256": "99c3a1cf3502ba83b4a8c6378751da714a70654923d2371eccba00cac0772e3f",
+      "sizeBytes": 358937191,
+      "sizeLabel": "342 MB",
+      "changelogUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
+      "releaseNotesUrl": "https://downloads.sleeptrackerai.org/downloads/changelog.txt",
+      "updateSeverity": "recommended",
+      "forceUpdate": false,
+      "minSupportedVersionCode": 0,
+      "minSupportedReason": "",
+      "maxLaterClicks": 10,
+      "forceAfterLaterClicks": true,
+      "promptEveryMinutes": 30,
+      "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
+      "laterLimitReasonEn": "You have already delayed this update 10 times.",
+      "changelog": [
+        "Added USDT and ruble payments through CryptoBot.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "changelogEn": [
+        "Added USDT and ruble payments through CryptoBot.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "changelogRu": [
+        "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+        "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+        "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+        "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
+      ],
+      "fullChangelog": [
+        "Added USDT and ruble payments through CryptoBot.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "fullChangelogEn": [
+        "Added USDT and ruble payments through CryptoBot.",
+        "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
+        "Premium status in Profile is clearer and works correctly for website purchases.",
+        "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
+      ],
+      "fullChangelogRu": [
+        "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+        "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
+        "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
+        "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
+      ],
+      "paymentProvider": "crypto_rub"
+    },
     {
       "id": "1.0.4-125",
       "versionName": "1.0.4",
       "publicVersionName": "1.0.4",
       "versionCode": 125,
-      "lifecycle": "latest",
+      "lifecycle": "previous",
       "listed": true,
       "downloadable": true,
       "publishType": "hotfix",
