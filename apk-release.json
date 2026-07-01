@@ -30,37 +30,37 @@
   "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
   "laterLimitReasonEn": "You have already delayed this update 10 times.",
   "changelog": [
-    "Added USDT and ruble payments through CryptoBot.",
+    "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
     "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogEn": [
-    "Added USDT and ruble payments through CryptoBot.",
+    "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
     "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "changelogRu": [
-    "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+    "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
     "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
     "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
   ],
   "fullChangelog": [
-    "Added USDT and ruble payments through CryptoBot.",
+    "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
     "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogEn": [
-    "Added USDT and ruble payments through CryptoBot.",
+    "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
     "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
     "Premium status in Profile is clearer and works correctly for website purchases.",
     "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
   ],
   "fullChangelogRu": [
-    "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+    "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
     "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
     "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
     "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
@@ -77,8 +77,8 @@
       "downloadable": true,
       "publishType": "patch",
       "summary": {
-        "ru": "Добавлены CryptoBot-платежи, обновлены цены и стабильность анализа сна.",
-        "en": "Added CryptoBot payments, updated pricing, and improved sleep analysis stability."
+        "ru": "Исправлены статистика сна, стадии сна на Android, профиль Premium и цены.",
+        "en": "Fixed sleep statistics, Android sleep stages, Premium profile state, and pricing."
       },
       "releaseDate": "2026-07-01",
       "createdAt": "2026-06-27T12:13:48.651Z",
@@ -101,37 +101,37 @@
       "laterLimitReasonRu": "Вы уже 10 раз откладывали это обновление.",
       "laterLimitReasonEn": "You have already delayed this update 10 times.",
       "changelog": [
-        "Added USDT and ruble payments through CryptoBot.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogEn": [
-        "Added USDT and ruble payments through CryptoBot.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "changelogRu": [
-        "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
         "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
       ],
       "fullChangelog": [
-        "Added USDT and ruble payments through CryptoBot.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogEn": [
-        "Added USDT and ruble payments through CryptoBot.",
+        "Fixed sleep statistics: nights without reliable stages no longer distort AI reports or sleep debt.",
         "Prices are now aligned in the app and on the website: 990 RUB monthly or 5 390 RUB yearly.",
         "Premium status in Profile is clearer and works correctly for website purchases.",
         "Sleep analysis is more stable: saved sleep stages are preserved even when Android collects less data."
       ],
       "fullChangelogRu": [
-        "Добавили оплату USDT и рублёвый счёт через CryptoBot.",
+        "Исправили статистику сна: ночи без достоверных стадий больше не портят AI-отчёты и долг сна.",
         "Цены теперь одинаковые в приложении и на сайте: 990 ₽ в месяц или 5 390 ₽ в год.",
         "В профиле стало понятнее, активен ли Premium, и покупки с сайта проверяются корректно.",
         "Анализ сна стал стабильнее: сохранённые стадии не пропадают, даже если Android собрал мало данных."
